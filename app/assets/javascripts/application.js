@@ -17,8 +17,8 @@
 //= require_tree .
 
 (function($){
-  $(function(){
+  $(document).on('turbolinks:load', function() {
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
-  }); // end of document ready
+  });
 })(jQuery); // end of j

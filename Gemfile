@@ -16,8 +16,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise' # 言わずもがな
 gem 'annotate', require: false # モデル生成後に自動でドキュメントを生成しコメントを追加してくれる

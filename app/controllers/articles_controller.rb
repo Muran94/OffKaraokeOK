@@ -54,6 +54,7 @@ class ArticlesController < ApplicationController
       :title,               # タイトル
       :text,                # 投稿本文
       :venue,               # 会場
+      :prefecture_code,     # 都道府県
       :event_date,          # 開催日
       :application_period,  # 応募締切日
       :capacity,            # 定員

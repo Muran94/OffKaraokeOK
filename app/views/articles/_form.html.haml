@@ -1,33 +1,36 @@
 .row
   = form_for @article, html: {class: "col s12"} do |f|
     .row
-      .input-field.col.s12
+      .col.s12
         = f.label "投稿タイトル"
         = f.text_field :title, class: "validate", required: ""
 
     .row
-      .input-field.col.s12
+      .col.s12
         = f.label "投稿本文"
         = f.text_area :text, class: "materialize-textarea validate", required: ""
 
     .row
-      .input-field.col.s12
+      .col.s8
         = f.label "会場"
-        = f.text_field :venue, class: "validate", required: ""
+        = f.text_field :venue, class: "validate" , required: ""
+      .col.s4
+        = f.label "都道府県"
+        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: true, required: ""
 
     .row
-      .input-field.col.s6
+      .col.s6
         = f.label "開催日"
-        = f.text_field :event_date, class: "datepicker validate", required: ""
-      .input-field.col.s6
+        = f.text_field :event_date, class: "datepicker validate cursor-pointer", required: ""
+      .col.s6
         = f.label "応募締切日"
-        = f.text_field :application_period, class: "datepicker validate", required: ""
+        = f.text_field :application_period, class: "datepicker validate cursor-pointer", required: ""
 
     .row
-      .input-field.col.s6
+      .col.s6
         = f.label "定員"
         = f.telephone_field :capacity, class: "validate", required: ""
-      .input-field.col.s6
+      .col.s6
         = f.label "予算"
         = f.text_field :budget, class: "validate", required: ""
 

@@ -18,7 +18,7 @@
 # JpPrefecture関連フィールド
 # prefecture_code     :integer
 
-class Article < ApplicationRecord
+class Article < ActiveRecord::Base
   include JpPrefecture
 
   belongs_to :user
@@ -27,6 +27,7 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true, length: { maximum: 1000 }
   validates :venue, presence: true
+  validates :prefecture_code, presence: true, numericality: true
   validates :event_date, presence: true
   validates :application_period, presence: true
   validates :capacity, presence: true, numericality: true
