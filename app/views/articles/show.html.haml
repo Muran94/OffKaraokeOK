@@ -17,7 +17,7 @@
 
     .section
       %strong.light-blue-text 投稿本文
-      %p= @article.text
+      %p= simple_format(@article.text)
 
     .divider
 
