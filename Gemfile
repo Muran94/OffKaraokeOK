@@ -9,7 +9,7 @@ gem 'rails', '~> 5.1.3'
 gem 'sqlite3' # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'
-gem 'materialize-sass' # Materializeドキュメント : http://materializecss.com/
+gem 'materialize-sass' # Materializeドキュメント : http://materializecss.com/, github : https://github.com/mkhairi/materialize-sass
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
