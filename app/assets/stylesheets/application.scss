@@ -13,21 +13,13 @@
  *= require_tree .
  *= require_self
  */
+ 
+ @import "materialize/extras/nouislider";
+ @import "materialize/components/color";
+ @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+ $primary-color: color("light-blue", "base") !default;
 @import "materialize";
-@import "materialize/extras/nouislider";
-@import "materialize/components/color";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-$primary-color: color("light-blue", "base") !default;
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
 
 nav ul a,
 nav .brand-logo {
