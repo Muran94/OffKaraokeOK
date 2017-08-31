@@ -11,40 +11,45 @@
           %i.material-icons delete
 
   .container
-    %h4.light-blue-text= @article.title
+    %h4.light-blue-text= @article.format_title
 
     .divider
 
-    .section
-      %strong.light-blue-text 投稿本文
-      %p= simple_format(@article.text)
+    .section.no-pad-bot
+      .row
+        .col.s12
+          %strong.light-blue-text 投稿本文
+          %p= simple_format(@article.format_text)
 
     .divider
 
-    .section
-      %strong.light-blue-text 会場
-      %p= @article.venue
+    .section.no-pad-bot
+      .row
+        .col.s6
+          %strong.light-blue-text 会場
+          %p= @article.format_venue
+        .col.s6
+          %strong.light-blue-text 都道府県
+          %p= @article.format_prefecture_name
 
     .divider
 
-    .section
-      %strong.light-blue-text 開催日
-      %p= @article.event_date.strftime("%Y年%m月%d日")
+    .section.no-pad-bot
+      .row
+        .col.s6
+          %strong.light-blue-text 開催日
+          %p= @article.format_event_date
+        .col.s6
+          %strong.light-blue-text 応募締切日
+          %p= @article.format_application_period
 
     .divider
 
-    .section
-      %strong.light-blue-text 応募締切日
-      %p= @article.application_period.strftime("%Y年%m月%d日")
-
-    .divider
-
-    .section
-      %strong.light-blue-text 定員
-      %p= @article.capacity
-
-    .divider
-
-    .section
-      %strong.light-blue-text 予算
-      %p= @article.budget
+    .section.no-pad-bot
+      .row
+        .col.s6
+          %strong.light-blue-text 定員
+          %p= @article.format_capacity
+        .col.s6
+          %strong.light-blue-text 予算
+          %p= @article.format_budget

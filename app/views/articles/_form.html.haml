@@ -11,10 +11,10 @@
         = f.text_area :text, class: "materialize-textarea validate", required: ""
 
     .row
-      .col.s8
+      .col.s6
         = f.label "会場"
         = f.text_field :venue, class: "validate" , required: ""
-      .col.s4
+      .col.s6
         = f.label "都道府県"
         = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: true, required: ""
 
