@@ -9,7 +9,11 @@ gem 'rails', '~> 5.1.3'
 gem 'sqlite3' # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'
-gem 'materialize-sass' # Materializeドキュメント : http://materializecss.com/, github : https://github.com/mkhairi/materialize-sass
+# Materialize
+## ドキュメント : http://materializecss.com/
+## github : https://github.com/mkhairi/materialize-sass
+## サンプル : github : http://materialize.labs.my/
+gem 'materialize-sass'
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
@@ -39,11 +43,11 @@ group :development do
   gem 'better_errors' # 標準のエラー画面よりもわかりやすいエラー画面にするためのGem
   gem 'binding_of_caller'
   gem 'guard-rspec' # ファイルが変更されたらRsepcを自動実行
+  gem 'pry-rails' # github : https://github.com/rweng/pry-rails
 end
 
 group :test do
   gem 'database_cleaner', '~> 1.3.0' # テスト実行後にDBをクリア
-  gem 'capybara', '~> 2.4.3'         # ブラウザでの操作をシミュレートしてテストができる
   gem 'simplecov', require: false # テストカバレッジ(テストカバー率)
 end
 
