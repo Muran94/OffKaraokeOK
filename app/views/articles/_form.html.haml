@@ -1,35 +1,35 @@
 .row
-  = form_for @article, html: {class: "col s12", id: "formValidate"} do |f|
+  = form_for @article, html: {class: "col s12"} do |f|
     .row
       .input-field.col.s12
         = f.label "投稿タイトル"
-        = f.text_field :title, class: "validate"
+        = f.text_field :title, class: "validate", required: ""
 
     .row
       .input-field.col.s12
         = f.label "投稿本文"
-        = f.text_area :text, class: "materialize-textarea validate"
+        = f.text_area :text, class: "materialize-textarea validate", required: ""
 
     .row
       .input-field.col.s12
         = f.label "会場"
-        = f.text_field :venue, class: "validate"
+        = f.text_field :venue, class: "validate", required: ""
 
     .row
       .input-field.col.s6
         = f.label "開催日"
-        = f.text_field :event_date, class: "datepicker validate"
+        = f.text_field :event_date, class: "datepicker validate", required: ""
       .input-field.col.s6
         = f.label "応募締切日"
-        = f.text_field :application_period, class: "datepicker validate"
+        = f.text_field :application_period, class: "datepicker validate", required: ""
 
     .row
       .input-field.col.s6
         = f.label "定員"
-        = f.telephone_field :capacity, class: "validate"
+        = f.telephone_field :capacity, class: "validate", required: ""
       .input-field.col.s6
         = f.label "予算"
-        = f.text_field :budget, class: "validate"
+        = f.text_field :budget, class: "validate", required: ""
 
     .row
-      =f.button "投稿する", class: " btn light-blue right waves-effect waves-light"
+      =f.button form_submit_button_text, class: " btn light-blue right waves-effect waves-light"

@@ -1,2 +1,50 @@
-%h1 Articles#show
-%p Find me in app/views/articles/show.html.erb
+.card-panel
+
+  - if current_user.present? && current_user.id == @article.user_id
+    .row.right
+      .session{style: "margin-bottom: 15px;"}
+        = link_to edit_article_path(@article), class: "btn-floating btn-large scale-transition waves-effect waves-light light-blue" do
+          %i.material-icons edit
+
+      .session
+        = link_to article_path(@article), method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn-floating btn-large waves-effect waves-light red" do
+          %i.material-icons delete
+
+  .container
+    %h4.light-blue-text= @article.title
+
+    .divider
+
+    .section
+      %strong.light-blue-text 投稿本文
+      %p= @article.text
+
+    .divider
+
+    .section
+      %strong.light-blue-text 会場
+      %p= @article.venue
+
+    .divider
+
+    .section
+      %strong.light-blue-text 開催日
+      %p= @article.event_date.strftime("%Y年%m月%d日")
+
+    .divider
+
+    .section
+      %strong.light-blue-text 応募締切日
+      %p= @article.application_period.strftime("%Y年%m月%d日")
+
+    .divider
+
+    .section
+      %strong.light-blue-text 定員
+      %p= @article.capacity
+
+    .divider
+
+    .section
+      %strong.light-blue-text 予算
+      %p= @article.budget

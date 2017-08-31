@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'devise'
 gem 'annotate', require: false # モデル生成後に自動でドキュメントを生成しコメントを追加してくれる
 gem 'haml-rails'
+gem 'active_decorator'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console

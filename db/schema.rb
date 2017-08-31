@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_831_093_928) do
+ActiveRecord::Schema.define(version: 20_170_831_120_835) do
   create_table 'articles', force: :cascade do |t|
     t.string 'title'
     t.text 'text'
@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20_170_831_093_928) do
     t.integer 'budget'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'event_date'
+    t.datetime 'event_date'
+    t.integer 'user_id'
   end
 
   create_table 'users', force: :cascade do |t|

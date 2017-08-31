@@ -1,3 +1,7 @@
-.card-panel
-  %h4.light-blue-text.header2= article.title
-  %p= article.text
+= link_to article do
+  .card-panel.hoverable.cursor-pointer
+    %h5.light-blue-text= article.title
+
+    .divider
+
+    %p.light= article.text

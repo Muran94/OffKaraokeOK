@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  belongs_to :user
+
   validates :title, presence: true
   validates :text, presence: true, length: { maximum: 1000 }
   validates :venue, presence: true

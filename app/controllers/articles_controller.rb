@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :_get_article, only: [:show, :edit, :destroy]
+  before_action :_get_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @articles = Article.all.order('created_at DESC')
   end
@@ -8,16 +10,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
 
   def create
-    @article = Article.new(_get_article_params)
+    @article = current_user.articles.build(_get_article_params)
     if @article.save
+      flash[:notice] = '記事を投稿しました'
       redirect_to @article
     else
-      flash[:alert] = '投稿に失敗しました。'
-      render "new"
+      flash[:alert] = '記事の投稿に失敗しました。'
+      render 'new'
     end
   end
 
@@ -25,9 +28,19 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    if @article.update(_get_article_params)
+      flash[:notice] = '記事を更新しました。'
+      redirect_to @article
+    else
+      flash[:alert] = '記事の更新に失敗しました。'
+      render 'edit'
+    end
   end
 
   def destroy
+    @article.delete
+    flash[:notice] = "記事を削除しました。"
+    redirect_to root_path
   end
 
   private

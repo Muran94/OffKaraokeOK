@@ -1,17 +1,25 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.card-panel
+  .container
+    %h4.light-blue-text.center ログイン
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .row
+        .input-field
+          = f.label "メールアドレス"
+          = f.email_field :email, autofocus: true, required: ""
+
+      .row
+        .input-field
+          = f.label "パスワード"
+          = f.password_field :password, autocomplete: "off", required: ""
+
+      - if devise_mapping.rememberable?
+        .row
+          = f.check_box :remember_me, id: "remember_me"
+          = f.label "サインインしたままにする", for: "remember_me"
+
+      .row
+        .input-field
+          = f.button "ログイン", class: " btn light-blue right waves-effect waves-light"
+
+    = render "devise/shared/links"
