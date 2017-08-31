@@ -9,8 +9,10 @@ gem 'rails', '~> 5.1.3'
 gem 'sqlite3' # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'
+gem 'materialize-sass' # Materializeドキュメント : http://materializecss.com/
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.2'
+gem 'jquery-rails'
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'devise'
@@ -22,6 +24,7 @@ group :development, :test do
   gem 'capybara', '~> 2.4.3'               # ブラウザでの操作をシミュレートしてテストができる
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'              # Rails用機能を追加するRSpecラッハー
+  gem 'rails-controller-testing'
   gem 'factory_girl_rails'                 # テストデータの生成
   gem 'faker', '~> 1.4.3'                  # メールアドレス等のデータをランダム生成する
   gem 'spring-commands-rspec', '~> 1.0.2'  # RspecなどでRailsをプリロードする
