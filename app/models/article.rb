@@ -13,11 +13,16 @@
 #  updated_at         :datetime         not null
 #  event_date         :datetime
 #  user_id            :integer
-#  prefecture_id      :integer
 #
 
+# JpPrefecture関連フィールド
+# prefecture_code     :integer
+
 class Article < ApplicationRecord
+  include JpPrefecture
+
   belongs_to :user
+  jp_prefecture :prefecture_code
 
   validates :title, presence: true
   validates :text, presence: true, length: { maximum: 1000 }

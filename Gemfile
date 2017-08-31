@@ -23,7 +23,7 @@ gem 'devise' # 言わずもがな
 gem 'annotate', require: false # モデル生成後に自動でドキュメントを生成しコメントを追加してくれる
 gem 'haml-rails'
 gem 'active_decorator' # デコレーター, github : https://github.com/amatsuda/active_decorator
-gem 'jp_prefecture' # 都道府県用Gem
+gem 'jp_prefecture' # 都道府県用Gem, github : https://github.com/chocoby/jp_prefecture
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console

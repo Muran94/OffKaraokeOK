@@ -13,7 +13,6 @@
 #  updated_at         :datetime         not null
 #  event_date         :datetime
 #  user_id            :integer
-#  prefecture_id      :integer
 #
 
 FactoryGirl.define do
