@@ -5,24 +5,24 @@
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
       .row
-        .input-field
+        .col.s12
           = f.label "メールアドレス"
           = f.email_field :email, autofocus: true, required: ""
       .row
-        .input-field
+        .col.s12
           = f.label "新パスワード（#{@minimum_password_length}文字以上）"
           = f.password_field :password, autocomplete: "off", placeholder: "変更しない場合は空欄のまま"
 
       .row
-        .input-field
+        .col.s12
           = f.label "新パスワードを再入力"
           = f.password_field :password_confirmation, autocomplete: "off"
 
       .row
-        .input-field
+        .col.s12
           = f.label "現在のパスワード"
           = f.password_field :current_password, autocomplete: "off", required: ""
 
       .row
-        .input-field
+        .col.s12
           = f.button "更新する", class: " btn light-blue right waves-effect waves-light"
