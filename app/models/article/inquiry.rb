@@ -11,4 +11,8 @@
 #
 
 class Article::Inquiry < ApplicationRecord
+  belongs_to :user_id
+  belongs_to :article_id
+
+  validates :text, presence: true, length: { maximum: 500 }
 end

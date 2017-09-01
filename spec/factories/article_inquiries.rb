@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :article_inquiry, class: 'Article::Inquiry' do
-    text "MyText"
+    text 'MyText'
     user_id 1
     article_id 1
   end

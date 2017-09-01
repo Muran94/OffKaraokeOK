@@ -23,6 +23,8 @@ class Article < ActiveRecord::Base
   include JpPrefecture
 
   belongs_to :user
+  has_many :inquiries
+
   jp_prefecture :prefecture_code
 
   validates :title, presence: true

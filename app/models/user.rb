@@ -28,4 +28,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+  has_many :inquiries
 end
