@@ -13,6 +13,7 @@
 #  updated_at         :datetime         not null
 #  event_date         :datetime
 #  user_id            :integer
+#  prefecture_code    :integer
 #
 
 require 'rails_helper'
