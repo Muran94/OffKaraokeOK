@@ -29,10 +29,14 @@
     .row
       .col.s6
         = f.label "定員"
-        = f.telephone_field :capacity, class: "validate", required: ""
+        .u-df
+          = f.text_field :capacity, class: "validate", required: ""
+          .u-m-a20 人
+
       .col.s6
         = f.label "予算"
-        = f.text_field :budget, class: "validate", required: ""
-
+        .u-df
+          = f.text_field :budget, class: "validate", required: ""
+          .u-m-a20 円
     .row
-      =f.button form_submit_button_text, class: " btn light-blue right waves-effect waves-light"
+      =f.button form_submit_button_text, class: " btn light-blue right waves-effect waves-light", data: { disable_with: "送信中..."}
