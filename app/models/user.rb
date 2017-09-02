@@ -28,6 +28,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+  has_many :participants
 
   # ニックネーム
   NICKNAME_MAXIMUM_LENGTH = 50
@@ -37,4 +38,20 @@ class User < ApplicationRecord
   # 自己紹介
   INTRODUCTION_MAXIMUM_LENGTH = 2000
   validates :introduction, length: { maximum: INTRODUCTION_MAXIMUM_LENGTH }
+
+  def owner?(model_object)
+    # model_objectが空か、user_idフィールドを持たない場合はfalseを返す
+    return false if model_object.blank? || !model_object.try(:user_id)
+    id == model_object.user_id
+  end
+
+  def not_owner?(model_object)
+    !owner?(model_object)
+  end
+
+  # すでに参加表明済みか？
+  def already_participated?(article)
+    return false if article.blank?
+    participants.where(article_id: article.id).any?
+  end
 end

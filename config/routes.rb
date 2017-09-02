@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   devise_for :users
-  resources :articles
+  resources :articles do
+    resources :participants
+  end
 end
