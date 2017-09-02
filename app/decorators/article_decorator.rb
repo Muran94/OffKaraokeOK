@@ -24,7 +24,7 @@ module ArticleDecorator
   end
 
   def format_application_period
-    application_period.present? ? application_period.strftime('%Y年%m月%d日') : '-'
+    application_period.present? ? application_period.strftime('%Y年%m月%d日 %X') : '-'
   end
 
   def format_capacity
