@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
     context 'ニックネーム' do
       let(:user) { build(:user, nickname: nickname) }
       context '正常系' do
-        let(:nickname) { Faker::Name.name }
+        let(:nickname) { "かかかかかかかし" }
         it '通ること' do
           expect(user).to be_valid
         end
@@ -39,6 +39,13 @@ RSpec.describe User, type: :model do
           it 'バリデーションに引っかかること' do
             user.valid?
             expect(user.errors.messages[:nickname]).to match_array "can't be blank"
+          end
+        end
+        context '51文字以上' do
+          let(:nickname) { "a" * 51 }
+          it 'バリデーションに引っかかること' do
+            user.valid?
+            expect(user.errors.messages[:nickname]).to match_array "is too long (maximum is 50 characters)"
           end
         end
       end
@@ -102,6 +109,15 @@ RSpec.describe User, type: :model do
           let(:introduction) { nil }
           it '通ること' do
             expect(user).to be_valid
+          end
+        end
+      end
+      context "異常系" do
+        context '2001文字以上' do
+          let(:introduction) { "a" * 2001 }
+          it '通ること' do
+            user.valid?
+            expect(user.errors.messages[:introduction]).to match_array "is too long (maximum is 2000 characters)"
           end
         end
       end

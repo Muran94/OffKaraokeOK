@@ -27,8 +27,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  NICKNAME_MAXIMUM_LENGTH = 50
+  INTRODUCTION_MAXIMUM_LENGTH = 2000
+
   has_many :articles
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: NICKNAME_MAXIMUM_LENGTH }
   validates :sex, inclusion: { in: %w[male female]}, allow_nil: true
+  validates :introduction, length: { maximum: INTRODUCTION_MAXIMUM_LENGTH }
 end
