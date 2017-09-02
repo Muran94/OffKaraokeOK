@@ -92,7 +92,7 @@ describe ArticleDecorator do
     context '応募締切日が存在する場合' do
       let(:application_period) { 2.days.from_now }
       it '応募締切日を整形して返すこと' do
-        expect(subject).to eq article.application_period.strftime('%Y年%m月%d日 %X')
+        expect(subject).to eq %(#{application_period.strftime('%Y年%m月%d日')} まで)
       end
     end
     context '応募締切日が存在しない場合' do
