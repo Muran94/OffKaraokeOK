@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :articles do
-    resources :participants
+    resources :participants, only: [:create, :destroy]
   end
 end

@@ -10,6 +10,7 @@
 
 FactoryGirl.define do
   factory :participant do
-    user_id 1
+    association :user
+    association :article
   end
 end
