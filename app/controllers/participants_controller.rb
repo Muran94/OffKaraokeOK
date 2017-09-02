@@ -1,26 +1,28 @@
 class ParticipantsController < ApplicationController
-  before_action :_get_article, only: [:create, :destroy]
   before_action :authenticate_user!
 
   def create
-    @participant = Participant.new(user_id: current_user.id, article_id: @article.id)
-    if @participant.save
-      redirect_to @article, flash: {notice: "参加申請が完了しました。"}
+    @participant = Participant.find_or_initialize_by(user_id: current_user.id, article_id: params[:article_id])
+    if @participant.new_record?
+      if @participant.save
+        flash[:notice] = "参加申請が完了しました。"
+      else
+        flash[:alert] = "エラーにより参加できませんでした。"
+      end
     else
-      redirect_to @article, flash: {alert: "参加に失敗しました。"}
+      flash[:alert] = "既に参加済みです。"
     end
+    redirect_to article_path(params[:article_id])
   end
 
   def destroy
-    @participant = Participant.where(user_id: current_user.id, article_id: @article.id).first
-    @participant.delete
-    flash[:notice] = "参加を辞退しました。"
-    redirect_to @article
-  end
-
-  private
-
-    def _get_article
-      @article = Article.find(params[:article_id])
+    @participant = Participant.where(user_id: current_user.id, article_id: params[:article_id]).first
+    if @participant.present?
+      @participant.delete
+      flash[:notice] = "参加を辞退しました。"
+    else
+      flash[:alert] = "既に辞退しています。"
     end
+    redirect_to article_path(params[:article_id])
+  end
 end
