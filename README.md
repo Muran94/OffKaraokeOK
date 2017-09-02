@@ -1,24 +1,13 @@
-# README
+# 開発タスク
+## 投稿に対する問い合わせ機能
+ - [ ] 問い合わせフォームを追加
+ - [ ] メッセージやりとり画面の作成
+ - [ ] メッセージ受信時にActionMailerでお知らせメールを飛ばす
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 運営に対する問い合わせ機能
+ - [ ] フッターにフォームを実装(paizaのような感じ)
 
-Things you may want to cover:
+## admin画面の作成
+ - [ ] rails_admin gemの導入
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 投稿一覧の絞り込み機能の実装
