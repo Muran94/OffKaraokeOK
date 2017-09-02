@@ -28,4 +28,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+
+  validates :nickname, presence: true
 end
