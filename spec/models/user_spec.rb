@@ -24,5 +24,19 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'バリデーション' do
+    context 'ニックネーム' do
+      let(:user) { create(:user, nickname: nickname) }
+      context '正常系' do
+        let(:nickname) { Faker::Name.name }
+        it '通ること' do
+          expect(user).to be_valid
+        end
+      end
+      context '異常系' do
+        context '空' do
+        end
+      end
+    end
+  end
 end

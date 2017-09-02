@@ -7,8 +7,13 @@
 
       .row
         .col.s12
+          = f.label "ニックネーム"
+          = f.text_field :nickname, autofocus: true, required: ""
+
+      .row
+        .col.s12
           = f.label "メールアドレス"
-          = f.email_field :email, autofocus: true, required: ""
+          = f.email_field :email, required: ""
 
       .row
         .col.s12
@@ -18,6 +23,19 @@
         .col.s12
           = f.label "もう一度パスワードを入力してください"
           = f.password_field :password_confirmation, autocomplete: "off", required: ""
+      .row
+        .col.s6
+          = f.label "生年月日（任意）"
+          = f.text_field :birthday, class: "datepicker validate cursor-pointer"
+
+        .col.s6
+          = f.label "性別（任意）"
+          = f.select :sex, [["男性", "male"], ["女性" ,"female"]], include_blank: true
+
+      .row
+        .col.s12
+          = f.label "自己紹介文（任意）"
+          = f.text_area :introduction, class: "materialize-textarea validate"
       .row
         .col.s12
           = f.button "登録する", class: " btn light-blue right waves-effect waves-light"
