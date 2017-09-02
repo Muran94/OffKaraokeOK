@@ -14,6 +14,7 @@
 //= require jquery
 //= require turbolinks
 //= require materialize-sprockets
+//= require xray
 //= require_tree .
 
 (function($){
