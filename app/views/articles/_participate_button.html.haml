@@ -1,0 +1,15 @@
+- if current_user.present?
+  - if current_user.not_owner?(@article)
+    .section.na-pad-bot
+      .row
+        - if current_user.already_participated?(@article)
+          = link_to article_participant_path(@article), method: :delete, data: { confirm: "本当に辞退しますか？" } do
+            .col.s6.offset-s3.grey.lighten-2.btn-large 参加を辞退する
+        - else
+          = link_to article_participants_path(@article), method: :post do
+            .col.s6.offset-s3.light-blue.btn-large.waves-effect.waves-light 参加する
+- else
+  .section.na-pad-bot
+    .row
+      = link_to new_user_session_path do
+        .col.s6.offset-s3.grey.lighten-2.btn-large 参加するにはログインが必要です
