@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.delete
-    flash[:notice] = "記事を削除しました。"
+    flash[:notice] = '記事を削除しました。'
     redirect_to root_path
   end
 

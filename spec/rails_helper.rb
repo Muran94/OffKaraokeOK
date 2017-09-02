@@ -39,18 +39,11 @@ RSpec.configure do |config|
   end
 
   # テスト実行後にDBをクリア
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation, except: %w(categories jobs initials job_positions))
-    DatabaseCleaner.strategy = :transaction
-  end
-
   config.before :each do
-    DatabaseCleaner[:active_record].start
     DatabaseCleaner.start
   end
 
   config.after :each do
-    DatabaseCleaner[:active_record].clean
     DatabaseCleaner.clean
   end
 
