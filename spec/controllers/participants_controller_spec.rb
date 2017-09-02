@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'shared_examples/controllers/participants_controller_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
+
 
 RSpec.describe ParticipantsController, type: :controller do
   let(:article) { create(:article) }
@@ -14,9 +16,8 @@ RSpec.describe ParticipantsController, type: :controller do
         context 'レスポンス' do
           before { post :create, params: params }
 
-          it '投稿詳細ページにリダイレクトされること' do
-            expect(response).to redirect_to article
-          end
+          it_behaves_like "投稿詳細ページにリダイレクトされる"
+
           it 'flash[:notice]の中にメッセージが含まれていること' do
             expect(flash[:notice]).to eq '参加申請が完了しました。'
           end
@@ -38,9 +39,8 @@ RSpec.describe ParticipantsController, type: :controller do
           context 'レスポンス' do
             before { post :create, params: params }
 
-            it '投稿詳細ページにリダイレクトされること' do
-              expect(response).to redirect_to article
-            end
+            it_behaves_like "投稿詳細ページにリダイレクトされる"
+
             it 'flash[:alert]の中にメッセージが含まれていること' do
               expect(flash[:alert]).to eq '既に参加済みです。'
             end
@@ -54,9 +54,8 @@ RSpec.describe ParticipantsController, type: :controller do
               post :create, params: params
             end
 
-            it '投稿詳細ページにリダイレクトされること' do
-              expect(response).to redirect_to article
-            end
+            it_behaves_like "投稿詳細ページにリダイレクトされる"
+
             it 'flash[:alert]の中にメッセージが含まれていること' do
               expect(flash[:alert]).to eq 'エラーにより参加できませんでした。'
             end
@@ -73,9 +72,8 @@ RSpec.describe ParticipantsController, type: :controller do
         context 'レスポンス' do
           before { delete :destroy, params: params }
 
-          it '投稿詳細ページにリダイレクトされること' do
-            expect(response).to redirect_to article
-          end
+          it_behaves_like "投稿詳細ページにリダイレクトされる"
+
           it 'flash[:notice]の中にメッセージが含まれていること' do
             expect(flash[:notice]).to eq '参加を辞退しました。'
           end
@@ -98,9 +96,8 @@ RSpec.describe ParticipantsController, type: :controller do
               delete :destroy, params: params
             end
 
-            it '投稿詳細ページにリダイレクトされること' do
-              expect(response).to redirect_to article
-            end
+            it_behaves_like "投稿詳細ページにリダイレクトされる"
+
             it 'flash[:alert]の中にメッセージが含まれていること' do
               expect(flash[:alert]).to eq '既に辞退しています。'
             end
