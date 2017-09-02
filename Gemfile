@@ -35,6 +35,7 @@ group :development, :test do
   gem 'faker', '~> 1.4.3'                  # メールアドレス等のデータをランダム生成する
   gem 'spring-commands-rspec', '~> 1.0.2'  # RspecなどでRailsをプリロードする
   gem 'shoulda-matchers'                   # RSpecで使える便利なマッチャー集(ActiveRecord)
+  gem 'pry-rails' # github : https://github.com/rweng/pry-rails
 end
 
 group :development do
@@ -45,7 +46,6 @@ group :development do
   gem 'better_errors' # 標準のエラー画面よりもわかりやすいエラー画面にするためのGem
   gem 'binding_of_caller'
   gem 'guard-rspec' # ファイルが変更されたらRsepcを自動実行
-  gem 'pry-rails' # github : https://github.com/rweng/pry-rails
 end
 
 group :test do

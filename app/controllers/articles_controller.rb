@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(_get_article_params)
     if @article.save
-      flash[:notice] = '記事を投稿しました'
+      flash[:notice] = '記事を投稿しました。'
       redirect_to @article
     else
       flash[:alert] = '記事の投稿に失敗しました。'
