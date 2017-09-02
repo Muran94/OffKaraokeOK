@@ -28,9 +28,11 @@ class Article < ActiveRecord::Base
   # 投稿タイトル
   validates :title, presence: true
   # 投稿本文
-  validates :text, presence: true, length: { maximum: 1000 }
+  TEXT_MAXIMUM_LENGTH = 1000
+  validates :text, presence: true, length: { maximum: TEXT_MAXIMUM_LENGTH }
   # 会場
-  validates :venue, presence: true, length: { maximum: 50 }
+  VENUE_MAXIMUM_LENGTH = 50
+  validates :venue, presence: true, length: { maximum: VENUE_MAXIMUM_LENGTH }
   # 都道府県コード
   validates :prefecture_code, presence: true, numericality: true
   # 応募締切日時

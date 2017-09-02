@@ -27,12 +27,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  NICKNAME_MAXIMUM_LENGTH = 50
-  INTRODUCTION_MAXIMUM_LENGTH = 2000
-
   has_many :articles
 
+  # ニックネーム
+  NICKNAME_MAXIMUM_LENGTH = 50
   validates :nickname, presence: true, length: { maximum: NICKNAME_MAXIMUM_LENGTH }
+  # 性別
   validates :sex, inclusion: { in: %w[male female]}, allow_nil: true
+  # 自己紹介
+  INTRODUCTION_MAXIMUM_LENGTH = 2000
   validates :introduction, length: { maximum: INTRODUCTION_MAXIMUM_LENGTH }
 end
