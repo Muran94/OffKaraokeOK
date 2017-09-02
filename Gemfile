@@ -46,6 +46,7 @@ group :development do
   gem 'better_errors' # 標準のエラー画面よりもわかりやすいエラー画面にするためのGem
   gem 'binding_of_caller'
   gem 'guard-rspec' # ファイルが変更されたらRsepcを自動実行
+  gem 'active_decorator-rspec' # デコレーター用rspecを追加
 end
 
 group :test do
