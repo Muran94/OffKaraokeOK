@@ -11,19 +11,19 @@
 require 'rails_helper'
 
 RSpec.describe Participant, type: :model do
-  context "バリデーション" do
-    context "article_idが存在しない" do
-      let(:participant) {build(:participant, article_id: nil)}
-      it "バリデーションに引っかかること" do
+  context 'バリデーション' do
+    context 'article_idが存在しない' do
+      let(:participant) { build(:participant, article_id: nil) }
+      it 'バリデーションに引っかかること' do
         participant.valid?
         expect(participant.errors.messages[:article_id]).to match_array(["can't be blank"])
       end
     end
-    context "user_idが存在しない" do
-      let(:participant) {build(:participant, user_id: nil)}
-      it "バリデーションに引っかかること" do
-          participant.valid?
-          expect(participant.errors.messages[:user_id]).to match_array(["can't be blank"])
+    context 'user_idが存在しない' do
+      let(:participant) { build(:participant, user_id: nil) }
+      it 'バリデーションに引っかかること' do
+        participant.valid?
+        expect(participant.errors.messages[:user_id]).to match_array(["can't be blank"])
       end
     end
   end
