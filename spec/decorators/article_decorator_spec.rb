@@ -61,7 +61,7 @@ describe ArticleDecorator do
         expect(subject).to eq article.prefecture.name
       end
     end
-    context '開催日が存在しない場合' do
+    context '都道府県コードが存在しない場合' do
       let(:prefecture_code) { nil }
       it '「-」が返ること' do
         expect(subject).to eq '-'
@@ -90,7 +90,7 @@ describe ArticleDecorator do
     let(:article) { build(:article, application_period: application_period) }
     subject { decorate(article).format_application_period }
     context '応募締切日が存在する場合' do
-      let(:application_period) { Date.new(1970, 1, 1) }
+      let(:application_period) { 2.days.from_now }
       it '応募締切日を整形して返すこと' do
         expect(subject).to eq article.application_period.strftime('%Y年%m月%d日 %X')
       end
