@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
     context 'ニックネーム' do
       let(:user) { build(:user, nickname: nickname) }
       context '正常系' do
-        let(:nickname) { "かかかかかかかし" }
+        let(:nickname) { 'かかかかかかかし' }
         it '通ること' do
           expect(user).to be_valid
         end
@@ -42,10 +42,10 @@ RSpec.describe User, type: :model do
           end
         end
         context '51文字以上' do
-          let(:nickname) { "a" * 51 }
+          let(:nickname) { 'a' * 51 }
           it 'バリデーションに引っかかること' do
             user.valid?
-            expect(user.errors.messages[:nickname]).to match_array "is too long (maximum is 50 characters)"
+            expect(user.errors.messages[:nickname]).to match_array 'is too long (maximum is 50 characters)'
           end
         end
       end
@@ -72,13 +72,13 @@ RSpec.describe User, type: :model do
     context '性別' do
       let(:user) { build(:user, sex: sex) }
       context '正常系' do
-        context "正常値" do
-          let(:sex) { "male" }
+        context '正常値' do
+          let(:sex) { 'male' }
           it '通ること' do
             expect(user).to be_valid
           end
         end
-        context "空" do
+        context '空' do
           let(:sex) { nil }
           it '通ること' do
             expect(user).to be_valid
@@ -87,10 +87,10 @@ RSpec.describe User, type: :model do
       end
       context '異常系' do
         context 'male or female 意外' do
-          let(:sex) { "other" }
+          let(:sex) { 'other' }
           it '通ること' do
             user.valid?
-            expect(user.errors.messages[:sex]).to match_array "is not included in the list"
+            expect(user.errors.messages[:sex]).to match_array 'is not included in the list'
           end
         end
       end
@@ -99,25 +99,25 @@ RSpec.describe User, type: :model do
     context '自己紹介文' do
       let(:user) { build(:user, introduction: introduction) }
       context '正常系' do
-        context "正常値" do
-          let(:introduction) { "よろしくお願い致します！" }
+        context '正常値' do
+          let(:introduction) { 'よろしくお願い致します！' }
           it '通ること' do
             expect(user).to be_valid
           end
         end
-        context "空" do
+        context '空' do
           let(:introduction) { nil }
           it '通ること' do
             expect(user).to be_valid
           end
         end
       end
-      context "異常系" do
+      context '異常系' do
         context '2001文字以上' do
-          let(:introduction) { "a" * 2001 }
+          let(:introduction) { 'a' * 2001 }
           it '通ること' do
             user.valid?
-            expect(user.errors.messages[:introduction]).to match_array "is too long (maximum is 2000 characters)"
+            expect(user.errors.messages[:introduction]).to match_array 'is too long (maximum is 2000 characters)'
           end
         end
       end

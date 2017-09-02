@@ -37,16 +37,16 @@ RSpec.describe Article, type: :model do
         end
       end
       context 'length検証' do
-        it '1,000字未満であれば通る' do
-          article = build(:article, text: 'a' * 999)
+        it "#{Article::TEXT_MAXIMUM_LENGTH}字未満であれば通る" do
+          article = build(:article, text: 'a' * (Article::TEXT_MAXIMUM_LENGTH - 1))
           expect(article.valid?).to eq true
         end
-        it '1,000字ちょうどであれば通る' do
-          article = build(:article, text: 'a' * 1000)
+        it "#{Article::TEXT_MAXIMUM_LENGTH}字ちょうどであれば通る" do
+          article = build(:article, text: 'a' * Article::TEXT_MAXIMUM_LENGTH)
           expect(article.valid?).to eq true
         end
-        it '1,000字を超えていれば通る' do
-          article = build(:article, text: 'a' * 1001)
+        it "#{Article::TEXT_MAXIMUM_LENGTH}字を超えていれば通る" do
+          article = build(:article, text: 'a' * (Article::TEXT_MAXIMUM_LENGTH + 1))
           expect(article.valid?).to eq false
         end
       end
@@ -61,16 +61,16 @@ RSpec.describe Article, type: :model do
         end
       end
       context 'length検証' do
-        it '50時未満であれば通る' do
-          article = build(:article, venue: 'a' * 49)
+        it "#{Article::VENUE_MAXIMUM_LENGTH}字未満であれば通る" do
+          article = build(:article, venue: 'a' * (Article::VENUE_MAXIMUM_LENGTH - 1))
           expect(article.valid?).to eq true
         end
-        it '50時ちょうどであれば通る' do
-          article = build(:article, venue: 'a' * 50)
+        it "#{Article::VENUE_MAXIMUM_LENGTH}字ちょうどであれば通る" do
+          article = build(:article, venue: 'a' * Article::VENUE_MAXIMUM_LENGTH)
           expect(article.valid?).to eq true
         end
-        it '50字を超えていれば通らない' do
-          article = build(:article, venue: 'a' * 51)
+        it "#{Article::VENUE_MAXIMUM_LENGTH}字を超えていれば通らない" do
+          article = build(:article, venue: 'a' * (Article::VENUE_MAXIMUM_LENGTH + 1))
           expect(article.valid?).to eq false
         end
       end
