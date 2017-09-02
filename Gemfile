@@ -24,6 +24,7 @@ gem 'annotate', require: false # モデル生成後に自動でドキュメン�
 gem 'haml-rails'
 gem 'active_decorator' # デコレーター, github : https://github.com/amatsuda/active_decorator
 gem 'jp_prefecture' # 都道府県用Gem, github : https://github.com/chocoby/jp_prefecture
+gem 'rails_admin', '~> 1.2' # 管理画面作成用Gem, github : https://github.com/sferik/rails_admin
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
