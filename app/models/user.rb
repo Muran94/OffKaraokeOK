@@ -30,4 +30,5 @@ class User < ApplicationRecord
   has_many :articles
 
   validates :nickname, presence: true
+  validates :sex, inclusion: { in: %w[male female]}, allow_nil: true
 end
