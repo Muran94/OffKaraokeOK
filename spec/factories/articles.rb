@@ -20,13 +20,13 @@ FactoryGirl.define do
   factory :article do
     association :user
 
-    title 'カラオケオフ会開催！（8/31）'
+    title 'カラオケオフ会開催！'
     text '新宿hogehoge店にてカラオケオフ会を開催いたします！'
+    venue 'カラオケ館hogehoge店'
+    prefecture_code 13 # 東京
     application_period Time.zone.now
     event_date 2.days.from_now
     capacity 10
-    venue 'カラオケ館hogehoge店'
-    prefecture_code 13 # 東京
     budget 3000 # 予算
   end
 end

@@ -17,6 +17,24 @@ RSpec.describe ArticlesController, type: :controller do
     describe 'GET #new' do
       it_behaves_like 'newアクション正常系'
     end
+
+    describe 'POST #create' do
+      it_behaves_like 'createアクション正常系'
+      it_behaves_like 'createアクション異常系（バリデーションに引っかかる）'
+    end
+
+    describe 'GET #edit' do
+      it_behaves_like 'editアクション正常系'
+    end
+
+    describe 'PATCH #update' do
+      it_behaves_like 'updateアクション正常系'
+      it_behaves_like 'updateアクション異常系（バリデーションに引っかかる）'
+    end
+
+    describe 'DELETE #edit' do
+      it_behaves_like 'deleteアクション正常系'
+    end
   end
 
   context '未ログイン' do
@@ -29,7 +47,36 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     describe 'GET #new' do
-      it_behaves_like 'newアクション異常系（未ログイン時の処理）'
+      before { get :new }
+      it_behaves_like '未ログイン状態ではログインページにリダイレクト'
+    end
+
+    describe 'POST #create' do
+      let(:article) { create(:article) }
+      let(:params) { { article: attributes_for(:article) } }
+      before { post :create, params: params }
+      it_behaves_like '未ログイン状態ではログインページにリダイレクト'
+    end
+
+    describe 'GET #edit' do
+      let(:article) { create(:article) }
+      let(:params) { { id: article } }
+      before { get :edit, params: params }
+      it_behaves_like '未ログイン状態ではログインページにリダイレクト'
+    end
+
+    describe 'PATCH #update' do
+      let(:article) { create(:article) }
+      let(:params) { { id: article, article: attributes_for(:article).merge(title: 'カラオケオフ会開催！（◯/◯ 更新）') } }
+      before { patch :update, params: params }
+      it_behaves_like '未ログイン状態ではログインページにリダイレクト'
+    end
+
+    describe 'DELETE #destroy' do
+      let(:article) { create(:article) }
+      let(:params) { { id: article } }
+      before { delete :destroy, params: params }
+      it_behaves_like '未ログイン状態ではログインページにリダイレクト'
     end
   end
 end
