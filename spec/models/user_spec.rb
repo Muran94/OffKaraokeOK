@@ -41,11 +41,11 @@ RSpec.describe User, type: :model do
             expect(user.errors.messages[:nickname]).to match_array "can't be blank"
           end
         end
-        context '51文字以上' do
-          let(:nickname) { 'a' * 51 }
+        context "#{User::NICKNAME_MAXIMUM_LENGTH}字を超える" do
+          let(:nickname) { 'a' * (User::NICKNAME_MAXIMUM_LENGTH + 1) }
           it 'バリデーションに引っかかること' do
             user.valid?
-            expect(user.errors.messages[:nickname]).to match_array 'is too long (maximum is 50 characters)'
+            expect(user.errors.messages[:nickname]).to match_array "is too long (maximum is #{User::NICKNAME_MAXIMUM_LENGTH} characters)"
           end
         end
       end
@@ -113,11 +113,11 @@ RSpec.describe User, type: :model do
         end
       end
       context '異常系' do
-        context '2001文字以上' do
-          let(:introduction) { 'a' * 2001 }
+        context "#{User::INTRODUCTION_MAXIMUM_LENGTH}字を超える" do
+          let(:introduction) { 'a' * (User::INTRODUCTION_MAXIMUM_LENGTH + 1) }
           it '通ること' do
             user.valid?
-            expect(user.errors.messages[:introduction]).to match_array 'is too long (maximum is 2000 characters)'
+            expect(user.errors.messages[:introduction]).to match_array "is too long (maximum is #{User::INTRODUCTION_MAXIMUM_LENGTH} characters)"
           end
         end
       end
