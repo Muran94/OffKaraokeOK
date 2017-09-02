@@ -122,5 +122,106 @@ RSpec.describe User, type: :model do
         end
       end
     end
+
+    context '#owner?(model_object)' do
+      let(:user) { create(:user) }
+
+      context '正常系' do
+        let(:owner_article) { create(:article, user_id: user.id) }
+        let(:not_owner_article) { create(:article) }
+
+        context 'オブジェクトオーナーである場合' do
+          it 'trueが返ること' do
+            expect(user.owner?(owner_article)).to eq true
+          end
+        end
+        context 'オブジェクトオーナーでない場合' do
+          it 'falseが返ること' do
+            expect(user.owner?(not_owner_article)).to eq false
+          end
+        end
+      end
+
+      context '異常系' do
+        context 'オブジェクトが存在しない場合' do
+          let(:article) { nil }
+          it 'falseが返ること' do
+            expect(user.owner?(article)).to eq false
+          end
+        end
+
+        context 'user_idフィールドを持たないオブジェクトの場合' do
+          let(:date) { Date.new }
+          it 'falseが返ること' do
+            expect(user.owner?(date)).to eq false
+          end
+        end
+      end
+    end
+
+    context '#not_owner?(model_object)' do
+      let(:user) { create(:user) }
+
+      context '正常系' do
+        let(:owner_article) { create(:article, user_id: user.id) }
+        let(:not_owner_article) { create(:article) }
+
+        context 'オブジェクトオーナーである場合' do
+          it 'falseが返ること' do
+            expect(user.not_owner?(owner_article)).to eq false
+          end
+        end
+        context 'オブジェクトオーナーでない場合' do
+          it 'trueが返ること' do
+            expect(user.not_owner?(not_owner_article)).to eq true
+          end
+        end
+      end
+
+      context '異常系' do
+        context 'オブジェクトが存在しない場合' do
+          let(:article) { nil }
+          it 'trueが返ること' do
+            expect(user.not_owner?(article)).to eq true
+          end
+        end
+
+        context 'user_idフィールドを持たないオブジェクトの場合' do
+          let(:date) { Date.new }
+          it 'trueが返ること' do
+            expect(user.not_owner?(date)).to eq true
+          end
+        end
+      end
+    end
+
+    context '#already_participated?(article)' do
+      let(:user) { create(:user) }
+      let(:article) { create(:article) }
+
+      context '正常系' do
+        context '参加済みだった場合' do
+          let!(:partipants) { create(:participant, user: user, article: article) }
+          it 'trueが返ること' do
+            expect(user.already_participated?(article)).to eq true
+          end
+        end
+
+        context 'まだ参加していなかった場合' do
+          it 'falseが返ること' do
+            expect(user.already_participated?(article)).to eq false
+          end
+        end
+      end
+
+      context '異常系' do
+        context '渡されたarticleが空' do
+          let(:article) { nil }
+          it 'falseが返ること' do
+            expect(user.already_participated?(article)).to eq false
+          end
+        end
+      end
+    end
   end
 end

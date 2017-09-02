@@ -49,7 +49,7 @@ class User < ApplicationRecord
     !owner?(model_object)
   end
 
-  # すでに参加表明済みか？
+  # すでに参加済みか？
   def already_participated?(article)
     return false if article.blank?
     participants.where(article_id: article.id).any?
