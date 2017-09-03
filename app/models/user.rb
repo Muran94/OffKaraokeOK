@@ -37,7 +37,7 @@ class User < ApplicationRecord
   SEX_OPTIONS = { '男性' => 'male', '女性' => 'female' }.freeze
   validates :sex, inclusion: { in: SEX_OPTIONS.values }, allow_nil: true
   # 自己紹介
-  INTRODUCTION_MAXIMUM_LENGTH = 2000
+  INTRODUCTION_MAXIMUM_LENGTH = 1000
   validates :introduction, length: { maximum: INTRODUCTION_MAXIMUM_LENGTH }
 
   def owner?(model_object)
