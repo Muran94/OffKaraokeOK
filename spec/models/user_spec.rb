@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
             expect(user).to be_valid
           end
         end
-        context '空' do
+        context 'nil' do
           let(:sex) { nil }
           it '通ること' do
             expect(user).to be_valid
@@ -86,6 +86,13 @@ RSpec.describe User, type: :model do
         end
       end
       context '異常系' do
+        context '空文字' do
+          let(:sex) { '' }
+          it '通ること' do
+            user.valid?
+            expect(user.errors.messages[:sex]).to match_array 'is not included in the list'
+          end
+        end
         context 'male or female 意外' do
           let(:sex) { 'other' }
           it '通ること' do
