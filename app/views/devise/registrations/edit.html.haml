@@ -31,7 +31,7 @@
       .row
         .col.s6
           = f.label "生年月日（任意）"
-          = f.text_field :birthday, class: "datepicker validate cursor-pointer"
+          = f.text_field :birthday, class: "datepicker validate cursor-pointer", id: "js-birthday-picker"
         .col.s6
           = f.label "性別（任意）"
           = f.select :sex, User::SEX_OPTIONS, include_blank: true
