@@ -12,7 +12,7 @@ class ParticipantsController < ApplicationController
     else
       flash[:alert] = '既に参加済みです。'
     end
-    redirect_to article_path(params[:article_id])
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -23,6 +23,6 @@ class ParticipantsController < ApplicationController
     else
       flash[:alert] = '既に辞退しています。'
     end
-    redirect_to article_path(params[:article_id])
+    redirect_back(fallback_location: root_path)
   end
 end
