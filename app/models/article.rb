@@ -36,13 +36,13 @@ class Article < ActiveRecord::Base
   VENUE_MAXIMUM_LENGTH = 50
   validates :venue, presence: true, length: { maximum: VENUE_MAXIMUM_LENGTH }
   # 都道府県コード
-  validates :prefecture_code, presence: true, numericality: true
+  validates :prefecture_code, inclusion: JpPrefecture::Prefecture.all.map(&:code)
   # 応募締切日時
   validates :application_period, presence: true
   # 開催日
   validates :event_date, presence: true
   # 定員
-  validates :capacity, presence: true, numericality: true
+  validates :capacity, numericality: true
   # 予算
-  validates :budget, presence: true, numericality: true
+  validates :budget, numericality: true
 end
