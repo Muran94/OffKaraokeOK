@@ -48,75 +48,66 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context '生年月日' do
-      context 'presence検証' do
-        it_behaves_like '空文字かnilの時はバリデーションに引っかかること' do
-          let(:model_object) { :user }
-          let(:field_name) { :birthday }
+    context '性別' do
+      let(:user) { build(:user, sex: sex) }
+      context '正常系' do
+        context '正常値' do
+          let(:sex) { 'male' }
+          it '通ること' do
+            expect(user).to be_valid
+          end
+        end
+        context 'nil' do
+          let(:sex) { nil }
+          it '通ること' do
+            expect(user).to be_valid
+          end
+        end
+      end
+
+      context '異常系' do
+        context '空文字' do
+          let(:sex) { '' }
+          it '通ること' do
+            user.valid?
+            expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
+          end
+        end
+        context 'male or female 意外' do
+          let(:sex) { 'other' }
+          it '通ること' do
+            user.valid?
+            expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
+          end
         end
       end
     end
-  end
 
-  context '性別' do
-    let(:user) { build(:user, sex: sex) }
-    context '正常系' do
+    context '自己紹介文' do
+      let(:user) { build(:user, introduction: introduction) }
       context '正常値' do
-        let(:sex) { 'male' }
+        let(:introduction) { 'よろしくお願い致します！' }
         it '通ること' do
           expect(user).to be_valid
         end
       end
       context 'nil' do
-        let(:sex) { nil }
+        let(:introduction) { nil }
         it '通ること' do
           expect(user).to be_valid
         end
       end
-    end
-
-    context '異常系' do
-      context '空文字' do
-        let(:sex) { '' }
-        it '通ること' do
-          user.valid?
-          expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
+      context 'length検証(maximum)' do
+        it_behaves_like '値の長さが上限値以下であれば通る' do
+          let(:model_object) { :user }
+          let(:field_name) { :introduction }
+          let(:max_length) { User::INTRODUCTION_MAXIMUM_LENGTH }
         end
-      end
-      context 'male or female 意外' do
-        let(:sex) { 'other' }
-        it '通ること' do
-          user.valid?
-          expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
+        it_behaves_like '値の長さが上限値を超えていたらバリデーションに引っかかる' do
+          let(:model_object) { :user }
+          let(:field_name) { :introduction }
+          let(:max_length) { User::INTRODUCTION_MAXIMUM_LENGTH }
         end
-      end
-    end
-  end
-
-  context '自己紹介文' do
-    let(:user) { build(:user, introduction: introduction) }
-    context '正常値' do
-      let(:introduction) { 'よろしくお願い致します！' }
-      it '通ること' do
-        expect(user).to be_valid
-      end
-    end
-    context 'nil' do
-      let(:introduction) { nil }
-      it '通ること' do
-        expect(user).to be_valid
-      end
-    end
-    context 'length検証(maximum)' do
-      it_behaves_like '値の長さが上限値以下であれば通る' do
-        let(:model_object) { :user }
-        let(:field_name) { :user }
-        let(:max_length) { User::INTRODUCTION_MAXIMUM_LENGTH }
-      end
-      it_behaves_like '値の長さが上限値を超えていたらバリデーションに引っかかる' do
-        let(:model_object) { :article }
-        let(:field_name) { :title }
-        let(:max_length) { User::INTRODUCTION_MAXIMUM_LENGTH }
       end
     end
 
