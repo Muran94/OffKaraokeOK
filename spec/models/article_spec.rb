@@ -17,81 +17,70 @@
 #
 
 require 'rails_helper'
+require 'shared_examples/model/article_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe Article, type: :model do
   context 'バリデーション' do
     context '投稿タイトル' do
       context 'presence検証' do
-        it '空の時はバリデーションに引っかかる' do
-          article = build(:article, title: nil)
-          article.valid?
-          expect(article.errors.messages[:title]).to match_array ["can't be blank"]
+        it_behaves_like "空文字かnilの時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:title}
         end
       end
 
-      context 'length検証' do
-        it "#{Article::TITLE_MAXIMUM_LENGTH}字未満であれば通る" do
-          article = build(:article, title: 'a' * (Article::TITLE_MAXIMUM_LENGTH - 1))
-          expect(article.valid?).to eq true
+      context 'length検証(maximum)' do
+        it_behaves_like "値の長さが上限値以下であれば通る" do
+          let(:model_object) {:article}
+          let(:field_name) {:title}
+          let(:max_length) {Article::TITLE_MAXIMUM_LENGTH}
         end
-        it "#{Article::TITLE_MAXIMUM_LENGTH}字ちょうどであれば通る" do
-          article = build(:article, title: 'a' * Article::TITLE_MAXIMUM_LENGTH)
-          expect(article.valid?).to eq true
-        end
-        it "#{Article::TITLE_MAXIMUM_LENGTH}字を超えていれば通らない" do
-          article = build(:article, title: 'a' * (Article::TITLE_MAXIMUM_LENGTH + 1))
-          article.valid?
-          expect(article.errors.messages[:title]).to match_array(["is too long (maximum is #{Article::TITLE_MAXIMUM_LENGTH} characters)"])
+        it_behaves_like "値の長さが上限値を超えていたらバリデーションに引っかかる" do
+          let(:model_object) {:article}
+          let(:field_name) {:title}
+          let(:max_length) {Article::TITLE_MAXIMUM_LENGTH}
         end
       end
     end
 
     context '投稿本文' do
       context 'presence検証' do
-        it '空の時はバリデーションに引っかかる' do
-          article = build(:article, text: nil)
-          article.valid?
-          expect(article.errors.messages[:text]).to match_array ["can't be blank"]
+        it_behaves_like "空文字かnilの時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:text}
         end
       end
-      context 'length検証' do
-        it "#{Article::TEXT_MAXIMUM_LENGTH}字未満であれば通る" do
-          article = build(:article, text: 'a' * (Article::TEXT_MAXIMUM_LENGTH - 1))
-          expect(article.valid?).to eq true
+      context 'length検証(maximum)' do
+        it_behaves_like "値の長さが上限値以下であれば通る" do
+          let(:model_object) {:article}
+          let(:field_name) {:text}
+          let(:max_length) {Article::TEXT_MAXIMUM_LENGTH}
         end
-        it "#{Article::TEXT_MAXIMUM_LENGTH}字ちょうどであれば通る" do
-          article = build(:article, text: 'a' * Article::TEXT_MAXIMUM_LENGTH)
-          expect(article.valid?).to eq true
-        end
-        it "#{Article::TEXT_MAXIMUM_LENGTH}字を超えていれば通らない" do
-          article = build(:article, text: 'a' * (Article::TEXT_MAXIMUM_LENGTH + 1))
-          article.valid?
-          expect(article.errors.messages[:text]).to match_array(["is too long (maximum is #{Article::TEXT_MAXIMUM_LENGTH} characters)"])
+        it_behaves_like "値の長さが上限値を超えていたらバリデーションに引っかかる" do
+          let(:model_object) {:article}
+          let(:field_name) {:text}
+          let(:max_length) {Article::TEXT_MAXIMUM_LENGTH}
         end
       end
     end
 
     context '会場' do
       context 'presence検証' do
-        it '空の時はバリデーションに引っかかる' do
-          article = build(:article, venue: nil)
-          article.valid?
-          expect(article.errors.messages[:venue]).to match_array ["can't be blank"]
+        it_behaves_like "空文字かnilの時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:venue}
         end
       end
-      context 'length検証' do
-        it "#{Article::VENUE_MAXIMUM_LENGTH}字未満であれば通る" do
-          article = build(:article, venue: 'a' * (Article::VENUE_MAXIMUM_LENGTH - 1))
-          expect(article.valid?).to eq true
+      context 'length検証(maximum)' do
+        it_behaves_like "値の長さが上限値以下であれば通る" do
+          let(:model_object) {:article}
+          let(:field_name) {:venue}
+          let(:max_length) {Article::VENUE_MAXIMUM_LENGTH}
         end
-        it "#{Article::VENUE_MAXIMUM_LENGTH}字ちょうどであれば通る" do
-          article = build(:article, venue: 'a' * Article::VENUE_MAXIMUM_LENGTH)
-          expect(article.valid?).to eq true
-        end
-        it "#{Article::VENUE_MAXIMUM_LENGTH}字を超えていれば通らない" do
-          article = build(:article, venue: 'a' * (Article::VENUE_MAXIMUM_LENGTH + 1))
-          article.valid?
-          expect(article.errors.messages[:venue]).to match_array(["is too long (maximum is #{Article::VENUE_MAXIMUM_LENGTH} characters)"])
+        it_behaves_like "値の長さが上限値を超えていたらバリデーションに引っかかる" do
+          let(:model_object) {:article}
+          let(:field_name) {:venue}
+          let(:max_length) {Article::VENUE_MAXIMUM_LENGTH}
         end
       end
     end
@@ -123,60 +112,36 @@ RSpec.describe Article, type: :model do
 
     context '応募締切日' do
       context 'presence検証' do
-        it 'nilの時はバリデーションに引っかかる' do
-          article = build(:article, application_period: nil)
-          article.valid?
-          expect(article.errors.messages[:application_period]).to match_array ["can't be blank"]
-        end
-        it '空文字の時はバリデーションに引っかかる' do
-          article = build(:article, application_period: '')
-          article.valid?
-          expect(article.errors.messages[:application_period]).to match_array ["can't be blank"]
+        it_behaves_like "空文字かnilの時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:application_period}
         end
       end
     end
 
     context '開催日' do
       context 'presence検証' do
-        it 'nilの時はバリデーションに引っかかる' do
-          article = build(:article, event_date: nil)
-          article.valid?
-          expect(article.errors.messages[:event_date]).to match_array ["can't be blank"]
-        end
-        it '空文字の時はバリデーションに引っかかる' do
-          article = build(:article, event_date: '')
-          article.valid?
-          expect(article.errors.messages[:event_date]).to match_array ["can't be blank"]
+        it_behaves_like "空文字かnilの時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:event_date}
         end
       end
     end
 
     context '定員' do
-      context '整数値' do
-        it 'nilの時はバリデーションに引っかかる' do
-          article = build(:article, capacity: nil)
-          article.valid?
-          expect(article.errors.messages[:capacity]).to match_array ['is not a number']
-        end
-        it '数値以外の時はバリデーションに引っかかる' do
-          article = build(:article, capacity: 'aaaaa')
-          article.valid?
-          expect(article.errors.messages[:capacity]).to match_array ['is not a number']
+      context 'numericality検証' do
+        it_behaves_like "整数値以外の時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:capacity}
         end
       end
     end
 
     context '予算' do
-      context '整数値' do
-        it 'nilの時はバリデーションに引っかかる' do
-          article = build(:article, budget: nil)
-          article.valid?
-          expect(article.errors.messages[:budget]).to match_array ['is not a number']
-        end
-        it '数値以外の時はバリデーションに引っかかる' do
-          article = build(:article, budget: 'aaaaa')
-          article.valid?
-          expect(article.errors.messages[:budget]).to match_array ['is not a number']
+      context 'numericality検証' do
+        it_behaves_like "整数値以外の時はバリデーションに引っかかること" do
+          let(:model_object) {:article}
+          let(:field_name) {:budget}
         end
       end
     end
