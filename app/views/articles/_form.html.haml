@@ -21,10 +21,10 @@
     .row
       .col.s6
         = f.label "開催日"
-        = f.text_field :event_date, class: "datepicker validate cursor-pointer", required: ""
+        = f.text_field :event_date, class: "datepicker validate cursor-pointer", id: "js-event-data-picker", required: ""
       .col.s6
         = f.label "応募締切日"
-        = f.text_field :application_period, class: "datepicker validate cursor-pointer", required: ""
+        = f.text_field :application_period, class: "datepicker validate cursor-pointer", id: "js-application-period", required: ""
 
     .row
       .col.s6

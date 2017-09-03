@@ -34,7 +34,7 @@ class User < ApplicationRecord
   NICKNAME_MAXIMUM_LENGTH = 50
   validates :nickname, presence: true, length: { maximum: NICKNAME_MAXIMUM_LENGTH }
   # 性別
-  SEX_OPTIONS = { '男性' => 'male', '女性' => 'female' }
+  SEX_OPTIONS = { '男性' => 'male', '女性' => 'female' }.freeze
   validates :sex, inclusion: { in: SEX_OPTIONS.values }, allow_nil: true
   # 自己紹介
   INTRODUCTION_MAXIMUM_LENGTH = 2000
