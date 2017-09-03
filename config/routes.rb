@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # Userログイン時
-   authenticated :user do
-     root :to => "articles#index"
-   end
+  authenticated :user do
+    root to: 'articles#index'
+  end
   # ログインしてない時のパス
   root 'static_pages#home'
 

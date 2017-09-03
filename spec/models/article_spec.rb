@@ -21,10 +21,28 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   context 'バリデーション' do
     context '投稿タイトル' do
-      it '空の時はバリデーションに引っかかる' do
-        article = build(:article, title: nil)
-        article.valid?
-        expect(article.errors.messages[:title]).to match_array ["can't be blank"]
+      context 'presence検証' do
+        it '空の時はバリデーションに引っかかる' do
+          article = build(:article, title: nil)
+          article.valid?
+          expect(article.errors.messages[:title]).to match_array ["can't be blank"]
+        end
+      end
+
+      context 'length検証' do
+        it "#{Article::TITLE_MAXIMUM_LENGTH}字未満であれば通る" do
+          article = build(:article, title: 'a' * (Article::TITLE_MAXIMUM_LENGTH - 1))
+          expect(article.valid?).to eq true
+        end
+        it "#{Article::TITLE_MAXIMUM_LENGTH}字ちょうどであれば通る" do
+          article = build(:article, title: 'a' * Article::TITLE_MAXIMUM_LENGTH)
+          expect(article.valid?).to eq true
+        end
+        it "#{Article::TITLE_MAXIMUM_LENGTH}字を超えていれば通らない" do
+          article = build(:article, title: 'a' * (Article::TITLE_MAXIMUM_LENGTH + 1))
+          article.valid?
+          expect(article.errors.messages[:title]).to match_array(["is too long (maximum is #{Article::TITLE_MAXIMUM_LENGTH} characters)"])
+        end
       end
     end
 

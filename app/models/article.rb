@@ -27,7 +27,8 @@ class Article < ActiveRecord::Base
   jp_prefecture :prefecture_code
 
   # 投稿タイトル
-  validates :title, presence: true
+  TITLE_MAXIMUM_LENGTH = 100
+  validates :title, presence: true, length: { maximum: TITLE_MAXIMUM_LENGTH }
   # 投稿本文
   TEXT_MAXIMUM_LENGTH = 1000
   validates :text, presence: true, length: { maximum: TEXT_MAXIMUM_LENGTH }
