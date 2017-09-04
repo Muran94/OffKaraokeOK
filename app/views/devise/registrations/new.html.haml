@@ -19,19 +19,7 @@
         .col.s12
           = f.label "パスワード"
           = f.password_field :password, autocomplete: "off", required: ""
-      .row
-        .col.s6
-          = f.label "生年月日（任意）"
-          = f.text_field :birthday, class: "datepicker validate cursor-pointer", id: "js-birthday-picker"
 
-        .col.s6
-          = f.label "性別（任意）"
-          = f.select :sex, User::SEX_OPTIONS, include_blank: true
-
-      .row
-        .col.s12
-          = f.label "自己紹介文（任意）"
-          = f.text_area :introduction, class: "materialize-textarea validate", maxlength: User::INTRODUCTION_MAXIMUM_LENGTH, data: { length: User::INTRODUCTION_MAXIMUM_LENGTH }
       .row
         .col.s12
           = f.button "登録する", class: "btn light-blue right waves-effect waves-light"
