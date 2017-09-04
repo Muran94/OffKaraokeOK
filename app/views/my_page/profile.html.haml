@@ -1,0 +1,53 @@
+.card-panel
+  .container
+    .row
+      .col.s12
+        %ul.tabs
+          %li.tab.col.s3= link_to "プロフィール", "#profile"
+          %li.tab.col.s3= link_to "参加中のイベント", "#participating_event"
+
+    #profile{style: "min-height: 500px;"}
+      .section.no-pad-bot
+        .row
+          .col.s12
+            %strong.light-blue-text ニックネーム
+            %p= current_user.nickname
+
+      .divider
+
+      .section.no-pad-bot
+        .row
+          .col.s12
+            %strong.light-blue-text メールアドレス
+            %p= current_user.email
+
+      .divider
+
+      .section.no-pad-bot
+        .row
+          .col.s6
+            %strong.light-blue-text 性別
+            %p= current_user.sex
+          .col.s6
+            %strong.light-blue-text 生年月日
+            %p= current_user.birthday
+
+      .divider
+
+      .section.no-pad-bot
+        .row
+          .col.s12
+            %strong.light-blue-text 自己紹介
+            %p= current_user.introduction
+
+      .divider
+
+      .section.no-pad-bot
+        .row
+          .col.s6
+            = link_to "プロフィール編集", edit_user_registration_path(current_user), class: "btn light-blue center waves-effect waves-light"
+          .col.s6
+            = link_to "退会する", user_registration_path, method: :delete, data: { confirm: "一度退会するとアカウントを復活させることができません。\n\n本当に退会しますか？"}, class: "btn light-blue waves-effect waves-light"
+
+    #participating_event{style: "min-height: 500px;"}
+      = render @participating_events

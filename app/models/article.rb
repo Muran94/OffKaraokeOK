@@ -30,7 +30,7 @@ class Article < ActiveRecord::Base
   TITLE_MAXIMUM_LENGTH = 100
   validates :title, presence: true, length: { maximum: TITLE_MAXIMUM_LENGTH }
   # 投稿本文
-  TEXT_MAXIMUM_LENGTH = 1000
+  TEXT_MAXIMUM_LENGTH = 2000
   validates :text, presence: true, length: { maximum: TEXT_MAXIMUM_LENGTH }
   # 会場
   VENUE_MAXIMUM_LENGTH = 50
