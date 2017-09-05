@@ -39,6 +39,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.2'  # RspecなどでRailsをプリロードする
   gem 'shoulda-matchers'                   # RSpecで使える便利なマッチャー集(ActiveRecord)
   gem 'pry-rails' # github : https://github.com/rweng/pry-rails
+  gem 'letter_opener_web'
 end
 
 group :development do
