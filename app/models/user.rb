@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :participants, dependent: :destroy
 
+  before_validation :_convert_empty_values
+
   # ニックネーム
   NICKNAME_MAXIMUM_LENGTH = 50
   validates :nickname, presence: true, length: { maximum: NICKNAME_MAXIMUM_LENGTH }
@@ -54,5 +56,11 @@ class User < ApplicationRecord
   def already_participated?(article)
     return false if article.blank?
     participants.where(article_id: article.id).any?
+  end
+
+  private
+
+  def _convert_empty_values
+    self.sex = nil if sex.blank?
   end
 end

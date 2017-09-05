@@ -17,7 +17,10 @@
 #
 
 require 'rails_helper'
-require 'shared_examples/model_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
+
+# spec内で使われてるshared_examplesはこのファイル内で定義
+require 'shared_examples/model_spec_shared_examples'
+require 'shared_examples/models/article_spec_shared_examples'
 
 RSpec.describe Article, type: :model do
   context '関連付け' do
@@ -142,6 +145,11 @@ RSpec.describe Article, type: :model do
           let(:model_object) { :article }
           let(:field_name) { :capacity }
         end
+
+        it_behaves_like '負の数の時はバリデーションに引っかかること' do
+          let(:model_object) { :article }
+          let(:field_name) { :capacity }
+        end
       end
     end
 
@@ -150,6 +158,95 @@ RSpec.describe Article, type: :model do
         it_behaves_like '整数値以外の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
           let(:field_name) { :budget }
+        end
+
+        it_behaves_like '負の数の時はバリデーションに引っかかること' do
+          let(:model_object) { :article }
+          let(:field_name) { :budget }
+        end
+      end
+    end
+  end
+
+  context 'コールバック' do
+    # 抽選
+    context '#_draw_lots' do
+      before {create(:article)}
+      it "抽選結果の報告メールがキューされること" do
+        expect(enqueued_jobs.size).to eq 1
+      end
+    end
+  end
+
+  context 'メソッド' do
+    context '#execute_lottery' do
+      before {article.execute_lottery}
+      let(:article) { create(:article, :with_3_participant, capacity: capacity) } # ３件の参加申請を持つ投稿
+
+      context '参加申請数が定員を満たなかったら' do
+        let(:capacity) { 4 } # 定員３人
+
+        it_behaves_like "当選者と落選者の人数が正しいこと" do
+          let(:expected_winner_count) {3}
+          let(:expected_rejected_people_count) {0}
+        end
+      end
+
+      context '参加申請数がちょうど定員と同じ数だったら' do
+        let(:capacity) { 3 }
+
+        it_behaves_like "当選者と落選者の人数が正しいこと" do
+          let(:expected_winner_count) {3}
+          let(:expected_rejected_people_count) {0}
+        end
+      end
+
+      context '参加申請数が定員を超えたら' do
+        let(:capacity) { 2 }
+
+        it_behaves_like "当選者と落選者の人数が正しいこと" do
+          let(:expected_winner_count) {2}
+          let(:expected_rejected_people_count) {1}
+        end
+      end
+    end
+
+    context '#get_winners' do
+      let(:article) { create(:article) }
+      let(:user) { create(:user) }
+
+      context '当選者が１人以上いる場合' do
+        let!(:participant) { create(:participant, :elected, user: user, article: article) }
+
+        it '当選者のUserオブジェクトを含む配列を返すこと' do
+          expect(article.get_winners).to match_array([user])
+        end
+      end
+      context '当選者が１人もいない場合' do
+        let(:participant) { create(:participant, user: user, article: article) }
+
+        it '空配列を返すこと' do
+          expect(article.get_winners).to match_array([])
+        end
+      end
+    end
+
+    context '#get_rejected_people' do
+      let(:article) { create(:article) }
+      let(:user) { create(:user) }
+
+      context '落選者が１人以上いる場合' do
+        let!(:participant) { create(:participant, user: user, article: article) }
+
+        it '当選者のUserオブジェクトを含む配列を返すこと' do
+          expect(article.get_rejected_people).to match_array([user])
+        end
+      end
+      context '当選者が１人もいない場合' do
+        let(:participant) { create(:participant, :elected, user: user, article: article) }
+
+        it '空配列を返すこと' do
+          expect(article.get_winners).to match_array([])
         end
       end
     end

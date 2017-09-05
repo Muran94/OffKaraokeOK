@@ -4,7 +4,17 @@ require 'active_decorator/rspec'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  # テスト対象となるファイルをグループ化
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Decorators', 'app/decorators'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'Mailers', 'app/mailers'
+
+  # フィルター（テストしたくないファイルを指定）
+  add_filter 'spec/*'
+end
 
 require 'factory_girl'
 require 'shoulda-matchers'
@@ -24,7 +34,12 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ActiveJob::TestHelper
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
+  config.include MailerMacros
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -41,6 +56,7 @@ RSpec.configure do |config|
 
   # テスト実行後にDBをクリア
   config.before :each do
+    reset_email
     DatabaseCleaner.start
   end
 

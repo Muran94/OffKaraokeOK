@@ -26,6 +26,8 @@ class Article < ActiveRecord::Base
   has_many :participants, dependent: :destroy
   jp_prefecture :prefecture_code
 
+  after_create :_draw_lots
+
   # 投稿タイトル
   TITLE_MAXIMUM_LENGTH = 100
   validates :title, presence: true, length: { maximum: TITLE_MAXIMUM_LENGTH }
@@ -42,12 +44,27 @@ class Article < ActiveRecord::Base
   # 開催日
   validates :event_date, presence: true
   # 定員
-  validates :capacity, numericality: true
+  validates :capacity, numericality: { greater_than_or_equal_to: 0 }
   # 予算
-  validates :budget, numericality: true
+  validates :budget, numericality: { greater_than_or_equal_to: 0 }
 
-  def choose_participant
-    return false if capacity.blank? || capacity < 0
-    participants.order('RANDOM()').limit(capacity)
+  def execute_lottery
+    winners = participants.order('RANDOM()').limit(capacity)
+    winners.each { |winner| winner.update(elected: true) }
+    User.find(winners.pluck(:user_id))
+  end
+
+  def get_winners
+    User.find(participants.where(elected: true).pluck(:user_id))
+  end
+
+  def get_rejected_people
+    User.find(participants.where(elected: false).pluck(:user_id))
+  end
+
+  private
+
+  def _draw_lots
+    EventLotteryJob.set(wait_until: application_period).perform_later(self)
   end
 end

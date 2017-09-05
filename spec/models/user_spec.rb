@@ -85,19 +85,18 @@ RSpec.describe User, type: :model do
             expect(user).to be_valid
           end
         end
-      end
-
-      context '異常系' do
         context '空文字' do
           let(:sex) { '' }
           it '通ること' do
-            user.valid?
-            expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
+            expect(user).to be_valid
           end
         end
+      end
+
+      context '異常系' do
         context 'male or female 意外' do
           let(:sex) { 'other' }
-          it '通ること' do
+          it 'バリデーションに引っかかること' do
             user.valid?
             expect(user.errors.messages[:sex]).to match_array ['is not included in the list']
           end
