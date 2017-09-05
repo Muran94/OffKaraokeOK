@@ -27,8 +27,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :articles
-  has_many :participants
+  has_many :articles, dependent: :destroy
+  has_many :participants, dependent: :destroy
 
   # ニックネーム
   NICKNAME_MAXIMUM_LENGTH = 50

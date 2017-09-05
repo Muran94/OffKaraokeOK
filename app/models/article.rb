@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
   include JpPrefecture
 
   belongs_to :user
-  has_many :participants
+  has_many :participants, dependent: :destroy
   jp_prefecture :prefecture_code
 
   # 投稿タイトル
@@ -45,4 +45,9 @@ class Article < ActiveRecord::Base
   validates :capacity, numericality: true
   # 予算
   validates :budget, numericality: true
+
+  def choose_participant
+    return false if capacity.blank? || capacity < 0
+    participants.order('RANDOM()').limit(capacity)
+  end
 end
