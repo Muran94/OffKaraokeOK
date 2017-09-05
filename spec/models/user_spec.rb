@@ -30,18 +30,18 @@ RSpec.describe User, type: :model do
       let(:user) { create(:user) }
 
       context 'Article' do
-        let!(:article) { create(:article, user: user) }
+        let!(:article) { create_list(:article, 2, user: user) }
 
         it 'userが削除されたらarticleも削除される' do
-          expect { user.destroy }.to change(Article, :count).by(-1)
+          expect { user.destroy }.to change(Article, :count).by(-2)
         end
       end
 
       context 'Participant' do
-        let!(:participant) { create(:participant, user: user) }
+        let!(:participant) { create_list(:participant, 2, user: user) }
 
         it 'userが削除されたらarticleも削除される' do
-          expect { user.destroy }.to change(Participant, :count).by(-1)
+          expect { user.destroy }.to change(Participant, :count).by(-2)
         end
       end
     end
