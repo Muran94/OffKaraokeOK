@@ -26,6 +26,7 @@ gem 'active_decorator' # デコレーター, github : https://github.com/amatsud
 gem 'jp_prefecture' # 都道府県用Gem, github : https://github.com/chocoby/jp_prefecture
 gem 'rails_admin', '~> 1.2' # 管理画面作成用Gem, github : https://github.com/sferik/rails_admin
 gem 'xray-rails'
+gem 'config'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
