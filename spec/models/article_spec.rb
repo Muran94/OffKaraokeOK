@@ -20,13 +20,13 @@ require 'rails_helper'
 require 'shared_examples/model_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe Article, type: :model do
-  context "関連付け" do
-    context "dependent" do
-      let(:article) {create(:article)}
-      let!(:participant) {create_list(:participant, 2, article: article)}
+  context '関連付け' do
+    context 'dependent' do
+      let(:article) { create(:article) }
+      let!(:participant) { create_list(:participant, 2, article: article) }
 
-      it "Articleが削除されたらそれに紐づくParticipantも削除する" do
-        expect {article.destroy}.to change(Participant, :count).by(-2)
+      it 'Articleが削除されたらそれに紐づくParticipantも削除する' do
+        expect { article.destroy }.to change(Participant, :count).by(-2)
       end
     end
   end
@@ -98,25 +98,22 @@ RSpec.describe Article, type: :model do
 
     context '都道府県コード' do
       context '列挙' do
-        it 'nilの時はバリデーションに引っかかる' do
-          article = build(:article, prefecture_code: nil)
+        before do
           article.valid?
           expect(article.errors.messages[:prefecture_code]).to match_array ['is not included in the list']
         end
-        it '空文字の時はバリデーションに引っかかる' do
-          article = build(:article, prefecture_code: '')
-          article.valid?
-          expect(article.errors.messages[:prefecture_code]).to match_array ['is not included in the list']
+
+        context 'nilが与えられた時' do
+          let(:article) { build(:article, prefecture_code: nil) }
         end
-        it '文字列の時はバリデーションに引っかかる' do
-          article = build(:article, prefecture_code: 'aaaaa')
-          article.valid?
-          expect(article.errors.messages[:prefecture_code]).to match_array ['is not included in the list']
+        context '空文字が与えられた時' do
+          let(:article) { build(:article, prefecture_code: '') }
         end
-        it 'リスト（1 ~ 47)以外の数値の時はバリデーションに引っかかる' do
-          article = build(:article, prefecture_code: 100)
-          article.valid?
-          expect(article.errors.messages[:prefecture_code]).to match_array ['is not included in the list']
+        context '文字列が与えられた時' do
+          let(:article) { build(:article, prefecture_code: 'something') }
+        end
+        context 'リスト（1 ~ 47)以外の数値が与えられた時' do
+          let(:article) { build(:article, prefecture_code: 100) }
         end
       end
     end
