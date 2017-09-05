@@ -20,6 +20,17 @@ require 'rails_helper'
 require 'shared_examples/model_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe Article, type: :model do
+  context "関連付け" do
+    context "dependent" do
+      let(:article) {create(:article)}
+      let!(:participant) {create_list(:participant, 2, article: article)}
+
+      it "Articleが削除されたらそれに紐づくParticipantも削除する" do
+        expect {article.destroy}.to change(Participant, :count).by(-2)
+      end
+    end
+  end
+
   context 'バリデーション' do
     context '投稿タイトル' do
       context 'presence検証' do
