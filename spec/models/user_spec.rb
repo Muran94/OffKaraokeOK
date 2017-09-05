@@ -25,6 +25,28 @@ require 'rails_helper'
 require 'shared_examples/model_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe User, type: :model do
+  context '関連付け' do
+    context 'dependent' do
+      let(:user) { create(:user) }
+
+      context 'Article' do
+        let!(:article) { create(:article, user: user) }
+
+        it 'userが削除されたらarticleも削除される' do
+          expect { user.destroy }.to change(Article, :count).by(-1)
+        end
+      end
+
+      context 'Participant' do
+        let!(:participant) { create(:participant, user: user) }
+
+        it 'userが削除されたらarticleも削除される' do
+          expect { user.destroy }.to change(Participant, :count).by(-1)
+        end
+      end
+    end
+  end
+
   context 'バリデーション' do
     context 'ニックネーム' do
       context 'presence検証' do
