@@ -51,3 +51,14 @@ shared_examples '整数値以外の時はバリデーションに引っかかる
     @model_object = build(model_object, field_name => 'something')
   end
 end
+
+shared_examples '負の数の時はバリデーションに引っかかること' do
+  after do
+    @model_object.valid?
+    expect(@model_object.errors.messages[field_name]).to match_array ['must be greater than or equal to 0']
+  end
+
+  it '-1' do
+    @model_object = build(model_object, field_name => -1)
+  end
+end
