@@ -2,7 +2,7 @@
 shared_examples '空文字かnilの時はバリデーションに引っかかること' do
   after do
     @model_object.valid?
-    expect(@model_object.errors.messages[field_name]).to match_array ["can't be blank"]
+    expect(@model_object.errors.messages[field_name]).to include("can't be blank")
   end
   it 'nil' do
     @model_object = build(model_object, field_name => nil)
@@ -27,7 +27,7 @@ end
 shared_examples '値の長さが上限値を超えていたらバリデーションに引っかかる' do
   after do
     @model_object.valid?
-    expect(@model_object.errors.messages[field_name]).to match_array(["is too long (maximum is #{max_length} characters)"])
+    expect(@model_object.errors.messages[field_name]).to include("is too long (maximum is #{max_length} characters)")
   end
   it '#上限値を超えていれば通らない' do
     @model_object = build(model_object, field_name => 'a' * (max_length + 1))
@@ -38,7 +38,7 @@ end
 shared_examples '整数値以外の時はバリデーションに引っかかること' do
   after do
     @model_object.valid?
-    expect(@model_object.errors.messages[field_name]).to match_array ['is not a number']
+    expect(@model_object.errors.messages[field_name]).to include('is not a number')
   end
 
   it 'nil' do
@@ -55,7 +55,7 @@ end
 shared_examples '負の数の時はバリデーションに引っかかること' do
   after do
     @model_object.valid?
-    expect(@model_object.errors.messages[field_name]).to match_array ['must be greater than or equal to 0']
+    expect(@model_object.errors.messages[field_name]).to include('must be greater than or equal to 0')
   end
 
   it '-1' do

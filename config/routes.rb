@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :articles do
     resources :participants, only: [:create, :destroy]
   end
+
+  resources :inquiries, only: [:create]
 end

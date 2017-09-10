@@ -1,32 +1,15 @@
 %footer.page-footer.grey.darken-4
   .container
     .row
-      .col.l6.s12
-        %h5.white-text Company Bio
-        %p.grey-text.text-lighten-4 We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
-      .col.l3.s12
-        %h5.white-text Settings
+      .col.l7.s12
         %ul
           %li
-            %a.white-text{:href => "#!"} Link 1
-          %li
-            %a.white-text{:href => "#!"} Link 2
-          %li
-            %a.white-text{:href => "#!"} Link 3
-          %li
-            %a.white-text{:href => "#!"} Link 4
-      .col.l3.s12
-        %h5.white-text Connect
-        %ul
-          %li
-            %a.white-text{:href => "#!"} Link 1
-          %li
-            %a.white-text{:href => "#!"} Link 2
-          %li
-            %a.white-text{:href => "#!"} Link 3
-          %li
-            %a.white-text{:href => "#!"} Link 4
+            =link_to "記事リンク", articles_path, class: "white-text"
+
+      .col.l5.s12
+        -# お問い合わせフォーム
+        = render 'inquiries/footer_form'
+
   .footer-copyright.black
     .container
-      Made by
-      %a.brown-text.text-lighten-3{:href => "http://materializecss.com"} Materialize
+      = "© 2017 OffOK, All rights reserved."

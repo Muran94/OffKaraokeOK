@@ -100,7 +100,7 @@ RSpec.describe Article, type: :model do
     end
 
     context '都道府県コード' do
-      context '列挙' do
+      context 'inclusion検証' do
         before do
           article.valid?
           expect(article.errors.messages[:prefecture_code]).to match_array ['is not included in the list']
@@ -108,15 +108,27 @@ RSpec.describe Article, type: :model do
 
         context 'nilが与えられた時' do
           let(:article) { build(:article, prefecture_code: nil) }
+
+          it 'バリデーションに引っかかること' do
+          end
         end
         context '空文字が与えられた時' do
           let(:article) { build(:article, prefecture_code: '') }
+
+          it 'バリデーションに引っかかること' do
+          end
         end
         context '文字列が与えられた時' do
           let(:article) { build(:article, prefecture_code: 'something') }
+
+          it 'バリデーションに引っかかること' do
+          end
         end
         context 'リスト（1 ~ 47)以外の数値が与えられた時' do
           let(:article) { build(:article, prefecture_code: 100) }
+
+          it 'バリデーションに引っかかること' do
+          end
         end
       end
     end
@@ -171,8 +183,8 @@ RSpec.describe Article, type: :model do
   context 'コールバック' do
     # 抽選
     context '#_draw_lots' do
-      before {create(:article)}
-      it "抽選結果の報告メールがキューされること" do
+      before { create(:article) }
+      it '抽選結果の報告メールがキューされること' do
         expect(enqueued_jobs.size).to eq 1
       end
     end
@@ -180,33 +192,33 @@ RSpec.describe Article, type: :model do
 
   context 'メソッド' do
     context '#execute_lottery' do
-      before {article.execute_lottery}
+      before { article.execute_lottery }
       let(:article) { create(:article, :with_3_participant, capacity: capacity) } # ３件の参加申請を持つ投稿
 
       context '参加申請数が定員を満たなかったら' do
         let(:capacity) { 4 } # 定員３人
 
-        it_behaves_like "当選者と落選者の人数が正しいこと" do
-          let(:expected_winner_count) {3}
-          let(:expected_rejected_people_count) {0}
+        it_behaves_like '当選者と落選者の人数が正しいこと' do
+          let(:expected_winner_count) { 3 }
+          let(:expected_rejected_people_count) { 0 }
         end
       end
 
       context '参加申請数がちょうど定員と同じ数だったら' do
         let(:capacity) { 3 }
 
-        it_behaves_like "当選者と落選者の人数が正しいこと" do
-          let(:expected_winner_count) {3}
-          let(:expected_rejected_people_count) {0}
+        it_behaves_like '当選者と落選者の人数が正しいこと' do
+          let(:expected_winner_count) { 3 }
+          let(:expected_rejected_people_count) { 0 }
         end
       end
 
       context '参加申請数が定員を超えたら' do
         let(:capacity) { 2 }
 
-        it_behaves_like "当選者と落選者の人数が正しいこと" do
-          let(:expected_winner_count) {2}
-          let(:expected_rejected_people_count) {1}
+        it_behaves_like '当選者と落選者の人数が正しいこと' do
+          let(:expected_winner_count) { 2 }
+          let(:expected_rejected_people_count) { 1 }
         end
       end
     end
