@@ -7,7 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  article_id :integer
-#  elected    :boolean
+#  elected    :boolean          default(FALSE)
 #
 
 require 'rails_helper'
