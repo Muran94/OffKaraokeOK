@@ -10,7 +10,7 @@ begin
   user = User.create(nickname: '名無し', email: 'nanashi@gmail.com', password: 'nanashi')
 
   Article.skip_callback(:create, :after, :_draw_lots)
-  50.times do |num|
+  300.times do |num|
     article = Article.create(
         title: "カラオケオフ会！#{num}",
         text: 'やりますよ！',

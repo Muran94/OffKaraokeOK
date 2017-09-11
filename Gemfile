@@ -41,6 +41,7 @@ group :development, :test do
   gem 'shoulda-matchers'                   # RSpecで使える便利なマッチャー集(ActiveRecord)
   gem 'pry-rails' # github : https://github.com/rweng/pry-rails
   gem 'letter_opener_web'
+  gem 'kaminari'
 end
 
 group :development do
