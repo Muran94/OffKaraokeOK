@@ -10,55 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_910_145_815) do
-  create_table 'articles', force: :cascade do |t|
-    t.string 'title'
-    t.text 'text'
-    t.datetime 'application_period'
-    t.integer 'capacity'
-    t.string 'venue'
-    t.integer 'budget'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.datetime 'event_date'
-    t.integer 'user_id'
-    t.integer 'prefecture_code'
+ActiveRecord::Schema.define(version: 20170910145815) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.datetime "application_period"
+    t.integer "capacity"
+    t.string "venue"
+    t.integer "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "event_date"
+    t.integer "user_id"
+    t.integer "prefecture_code"
   end
 
-  create_table 'inquiries', force: :cascade do |t|
-    t.string 'inquirers_email'
-    t.integer 'type'
-    t.text 'message'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "inquiries", force: :cascade do |t|
+    t.string "inquirers_email"
+    t.integer "type"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'participants', force: :cascade do |t|
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'article_id'
-    t.boolean 'elected', default: false
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "article_id"
+    t.boolean "elected", default: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.integer 'sign_in_count', default: 0, null: false
-    t.datetime 'current_sign_in_at'
-    t.datetime 'last_sign_in_at'
-    t.string 'current_sign_in_ip'
-    t.string 'last_sign_in_ip'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.text 'introduction'
-    t.string 'sex'
-    t.date 'birthday'
-    t.string 'nickname'
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "introduction"
+    t.string "sex"
+    t.date "birthday"
+    t.string "nickname"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
