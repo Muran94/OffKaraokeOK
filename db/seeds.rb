@@ -34,11 +34,11 @@ begin
         title: title_samples.sample,
         text: text_samples.sample,
         application_period: Time.zone.now,
-        event_date: 1.day.from_now,
+        event_date: Random.rand(Time.zone.now..2.month.from_now),
         capacity: (1..5).to_a.sample,
         venue: "カラオケ館hogehoge#{num}号店",
         budget: (1000..3000).to_a.sample,
-        prefecture_code: 1,
+        prefecture_code: (1..47).to_a.sample,
         user: user
       )
     if article.save
