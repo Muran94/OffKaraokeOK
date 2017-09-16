@@ -7,11 +7,17 @@ $ ->
       status = event.detail[0]['status']
       switch status
         when "created" # 保存に成功した場合
+          # 問い合わせ完了フラッシュメッセージを表示
+          Materialize.toast('問い合わせが完了しました', 4000)
+
           # 問い合わせに対する感謝のメッセージを表示
           $('#js-inquiry-form-container').addClass('hide')
           $('#js-inquiry-form-success-message-container').removeClass('hide')
 
         when "unprocessable_entity" # 保存に失敗した場合
+          # 問い合わせ失敗フラッシュメッセージを表示
+          Materialize.toast('問い合わせに失敗しました', 4000)
+
           # エラーメッセージを表示
           errors = event.detail[0]['data']
           if errors["inquirers_email"]?

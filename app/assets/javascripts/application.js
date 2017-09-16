@@ -16,10 +16,3 @@
 //= require materialize-sprockets
 //= require xray
 //= require_tree .
-
-(function($){
-  $(document).on('turbolinks:load', function() {
-    $('.button-collapse').sideNav();
-    $('.parallax').parallax();
-  });
-})(jQuery); // end of j

@@ -75,7 +75,7 @@ describe ArticleDecorator do
     context '開催日が存在する場合' do
       let(:event_date) { Date.new(1970, 1, 1) }
       it '開催日を整形して返すこと' do
-        expect(subject).to eq article.event_date.strftime('%Y年%m月%d日')
+        expect(subject).to eq article.event_date.strftime("%Y年%m月%d日（#{ArticleDecorator::WD[event_date.wday]}）")
       end
     end
     context '開催日が存在しない場合' do
@@ -92,7 +92,7 @@ describe ArticleDecorator do
     context '応募締切日が存在する場合' do
       let(:application_period) { 2.days.from_now }
       it '応募締切日を整形して返すこと' do
-        expect(subject).to eq %(#{application_period.strftime('%Y年%m月%d日')} まで)
+        expect(subject).to eq %(#{application_period.strftime("%Y年%m月%d日（#{ArticleDecorator::WD[application_period.wday]}）")} まで)
       end
     end
     context '応募締切日が存在しない場合' do
