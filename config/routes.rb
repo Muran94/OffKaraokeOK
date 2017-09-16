@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   # ログインしてない時のパス
   root 'articles#index'
 
-  # ランディングページ
-  get 'static_pages/top'
   # マイページ
   get 'my_page/profile'
   get 'my_page/participating_event'
