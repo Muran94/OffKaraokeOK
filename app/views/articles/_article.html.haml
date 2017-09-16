@@ -1,7 +1,7 @@
-= link_to article do
-  .card-panel.hoverable.u-cur
-    %h5.light-blue-text= article.title
-
-    .divider
-
-    %p.truncate= article.text
+%li.collection-item.avatar.grey-text.text-darken-2
+  = image_tag(%w[shimaenaga.jpg ugly_cat.jpg].sample, class: "circle")
+  %span.title= article.title
+  %span
+    %i.material-icons.right grade
+  %p= article.text
+  %span.right.u-fz12.grey-text= "開催日 : #{article.format_event_date}"

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     root to: 'articles#index'
   end
   # ログインしてない時のパス
-  root 'static_pages#home'
+  root 'articles#index'
 
   # ランディングページ
-  get 'static_pages/home'
+  get 'static_pages/top'
   # マイページ
   get 'my_page/profile'
   get 'my_page/participating_event'
