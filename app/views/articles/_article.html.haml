@@ -1,5 +1,7 @@
 %li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
+  / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
   = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg].sample, class: "circle")
+
   %span.u-fz11.grey-text.valign-wrapper
     %i.material-icons.tiny.u-mr5 date_range
     = article.format_event_date
@@ -49,6 +51,8 @@
     .col.s6
       %p.light-blue-text 予算
       %span.u-fz13.grey-text.text-darken-2= article.format_budget
+
+  .divider
 
   / 投稿リストプルダウン時に表示されるメニューバー
   = render "article_detail_menu_bar.html.haml", article: article
