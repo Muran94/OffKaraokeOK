@@ -1,4 +1,6 @@
 module ArticleDecorator
+  WD = %w(日 月 火 水 木 金 土).freeze
+
   def format_title
     title.present? ? title : '投稿タイトルがありません。'
   end
@@ -20,11 +22,11 @@ module ArticleDecorator
   end
 
   def format_event_date
-    event_date.present? ? event_date.strftime('%Y年%m月%d日') : '-'
+    event_date.present? ? event_date.strftime("%Y年%m月%d日（#{WD[event_date.wday]}）") : '-'
   end
 
   def format_application_period
-    application_period.present? ? %(#{application_period.strftime('%Y年%m月%d日')} まで) : '-'
+    application_period.present? ? %(#{application_period.strftime("%Y年%m月%d日（#{WD[application_period.wday]}）")} まで) : '-'
   end
 
   def format_capacity

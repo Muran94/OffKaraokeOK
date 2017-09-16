@@ -12,18 +12,18 @@ begin
   Article.skip_callback(:create, :after, :_draw_lots)
   300.times do |num|
     article = Article.create(
-        title: "カラオケオフ会！#{num}",
-        text: 'やりますよ！',
-        application_period: Time.zone.now,
-        event_date: 1.day.from_now,
-        capacity: (1..5).to_a.sample,
-        venue: "カラオケ館hogehoge#{num}号店",
-        budget: (1000..3000).to_a.sample,
-        prefecture_code: 1,
-        user: user
-      )
+      title: "カラオケオフ会！#{num}",
+      text: 'やりますよ！',
+      application_period: Time.zone.now,
+      event_date: 1.day.from_now,
+      capacity: (1..5).to_a.sample,
+      venue: "カラオケ館hogehoge#{num}号店",
+      budget: (1000..3000).to_a.sample,
+      prefecture_code: 1,
+      user: user
+    )
     if article.save
-      puts "success!!!"
+      puts 'success!!!'
     else
       puts article.errors.messages
     end

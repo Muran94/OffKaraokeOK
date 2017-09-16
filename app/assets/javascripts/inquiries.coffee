@@ -8,12 +8,14 @@ $ ->
       switch status
         when "created" # 保存に成功した場合
           # 問い合わせに対する感謝のメッセージを表示
+          Materialize.toast('問い合わせが完了しました', 4000)
           $('#js-inquiry-form-container').addClass('hide')
           $('#js-inquiry-form-success-message-container').removeClass('hide')
 
         when "unprocessable_entity" # 保存に失敗した場合
           # エラーメッセージを表示
           errors = event.detail[0]['data']
+          Materialize.toast('問い合わせに失敗しました', 4000)
           if errors["inquirers_email"]?
             $("#error-message-for-inquiry-inquirers-email-field.red-text").removeClass('hide')
           if errors["type"]?

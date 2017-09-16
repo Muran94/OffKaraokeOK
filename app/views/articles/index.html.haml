@@ -2,12 +2,13 @@
   .row
     .col.s9.m9
       %ul.collection.with-header
-        %li.collection-header
-          %h5 オフ会一覧
+        %li.collection-header.center-align.grey.darken-4
+          %h5.light-blue-text
+            オフ会一覧
+
         = render @articles
 
-      .col.s3.m3
+      .center-align
+        = paginate @articles
 
-
-.center-align
-  = paginate @articles
+    .col.s3.m3
