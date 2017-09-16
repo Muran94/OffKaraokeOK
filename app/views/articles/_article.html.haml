@@ -1,4 +1,4 @@
-%li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
+%li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp{style: "padding-bottom: 0;"}
   / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
   = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg].sample, class: "circle")
 
@@ -15,6 +15,11 @@
   - else
     %span
       %i.secondary-content.material-icons.small.grey-text grade
+
+    / 参加人数を表示
+    .right
+      %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{article.participants.count}"
+      %span.u-fz11.grey-text.text-lighten-1= " / #{article.capacity}人参加予定"
 
 .collection-item.js-article-detail.grey.lighten-5{style: "display: none;"}
   .row

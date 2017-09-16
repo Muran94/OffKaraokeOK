@@ -18,19 +18,8 @@
           詳細
 
         / 参加ボタン
-        - if current_user.already_participated?(article) # 参加済みの場合
-          - participant = Participant.where(article: article, user: current_user).first
-          = link_to article_participant_path(article_id: article.id, id: participant.id), method: :delete, data: { confirm: "本当に辞退しますか？" }, class: " grey-text text-darken-2", style: "text-decoration: none;" do
-            .col.m3.center.u-curp{style: "border-right: 1px solid #e0e0e0;"}
-              %i.material-icons.grey-text group
-              %br
-              辞退
-        - else # まだ参加していない場合
-          = link_to article_participants_path(article), method: :post, class: "grey-text text-darken-2", style: "text-decoration: none;" do
-            .col.m3.center.u-curp{style: "border-right: 1px solid #e0e0e0;"}
-              %i.material-icons.red-text group_add
-              %br
-              参加
+        #js-participate-container
+          = render 'participate_button', article: article
 
         / メッセージボタン
         .col.m3.center.u-curp.grey-text.text-darken-2{style: "border-right: 1px solid #e0e0e0;"}
