@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :participants, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   before_validation :_convert_empty_values
 
@@ -56,6 +57,11 @@ class User < ApplicationRecord
   def already_participated?(article)
     return false if article.blank?
     participants.where(article_id: article.id).any?
+  end
+
+  def already_favorite?(article)
+    return false if article.blank?
+    Favorite.where(user_id: id, article_id: article.id).any?
   end
 
   private

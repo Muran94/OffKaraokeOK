@@ -1,6 +1,6 @@
 %li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
   / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
-  = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg].sample, class: "circle")
+  = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg galaxy.jpg live_man.jpg].sample, class: "circle")
 
   %span.u-fz11.grey-text.valign-wrapper
     %i.material-icons.tiny.u-mr5 date_range
@@ -9,17 +9,16 @@
     = article.format_prefecture_name
   %span.title.truncate= article.format_title
 
-  - if user_signed_in? && current_user.id == article.user_id
-    %span.right.grey-text.u-fz11
-      自分の投稿
-  - else
-    %span
-      %i.secondary-content.material-icons.small.grey-text grade
+  - if user_signed_in?
+    - if current_user.owner?(article)
+      %span.u-fz11.grey-text.text-lighten-1.secondary-content 自分の投稿
+    - else
+      = render 'favorite_button', article: article
 
-    / 参加人数を表示
-    .right
-      %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{article.participants.count}"
-      %span.u-fz11.grey-text.text-lighten-1= " / #{article.capacity}人参加予定"
+  / 参加人数を表示
+  .right
+    %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{article.participants.count}"
+    %span.u-fz11.grey-text.text-lighten-1= " / #{article.capacity}人参加予定"
 
 .collection-item.js-article-detail.grey.lighten-5{style: "display: none;"}
   .row
