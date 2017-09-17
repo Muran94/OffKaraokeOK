@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   // 投稿リストの開閉処理
   // 投稿リストのタイトルをクリックした時に詳細をプルダウンする
-  $(".js-article-header").click(function() {
+  $(".js-article-header").click(function(e) {
     if( $(e.target).closest('.favorite-btn').length ){
       return // お気に入りボタンを押した時はプルダウンしたくない
     }

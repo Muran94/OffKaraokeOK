@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
       @favorite.delete
       render json: { post_path: article_favorites_path(@favorite.article), status: 'deleted' }
     else
-      render json: { status: 'already_deleted' }
+      render json: { post_path: article_favorites_path(@favorite.article), status: 'already_deleted' }
     end
   end
 end
