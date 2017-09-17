@@ -1,0 +1,64 @@
+.section
+  .row.detail-container-menu.u-fz13
+    / ログインユーザー
+    - if user_signed_in?
+      / 投稿オーナー用メニューバー
+      - if article.user_id == current_user.id
+        / 閉じるボタン
+        .col.m12.center.u-curp.js-close-article-detail.grey-text.text-darken-2
+          %i.material-icons.grey-text cancel
+          %br
+          閉じる
+
+      - else # 投稿オーナーではない一般ユーザー用のメニュー
+        / 詳細ボタン
+        = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+          %i.material-icons.blue-text library_books
+          %br
+          詳細
+
+        / 参加ボタン
+        #js-participate-container
+          = render 'participate_button', article: article
+
+        / メッセージボタン
+        .col.m3.center.u-curp.grey-text.text-darken-2{style: "border-right: 1px solid #e0e0e0;"}
+          - if user_signed_in?
+            %i.material-icons.green-text email
+            %br
+            メッセージ
+
+        / 閉じるボタン
+        .col.m3.center.u-curp.js-close-article-detail.grey-text.text-darken-2
+          %i.material-icons cancel
+          %br
+          閉じる
+
+    - else # 未ログインユーザー
+      / 詳細ボタン
+      = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+        %i.material-icons.blue-text library_books
+        %br
+        詳細
+
+      .u-posr{style: "text-align:center;"}
+        = link_to new_user_session_path, class: "u-posa btn waves-effect waves-teal white grey-text text-darken-2 hoverable", style: "z-index: 2; width: 300px; top: 5px; bottom: 0; left: 0; right: 0; margin: 0 auto; opacity: 0.7;" do
+          %b ログインして利用する
+
+        / 参加ボタン
+        .col.m3.center.u-curp{style: "border-right: 1px solid #e0e0e0; filter: blur(1.5px);"}
+          %i.material-icons.red-text group_add
+          %br
+          参加
+
+        / メッセージボタン
+        .col.m3.center.u-curp.grey-text.text-darken-2{style: "filter: blur(1.5px);"}
+          %i.material-icons.green-text email
+          %br
+          メッセージ
+
+      / 閉じるボタン
+      .col.m3.center.u-curp.js-close-article-detail.grey-text.text-darken-2{style: "border-left: 1px solid #e0e0e0;"}
+        %i.material-icons.grey-text cancel
+        %br
+        閉じる

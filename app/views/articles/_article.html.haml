@@ -1,7 +1,63 @@
-= link_to article do
-  .card-panel.hoverable.cursor-pointer
-    %h5.light-blue-text= article.title
+%li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
+  / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
+  = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg].sample, class: "circle")
 
-    .divider
+  %span.u-fz11.grey-text.valign-wrapper
+    %i.material-icons.tiny.u-mr5 date_range
+    = article.format_event_date
+    %i.material-icons.tiny.u-mr5.u-pl10 place
+    = article.format_prefecture_name
+  %span.title.truncate= article.format_title
 
-    %p.truncate= article.text
+  - if user_signed_in? && current_user.id == article.user_id
+    %span.right.grey-text.u-fz11
+      自分の投稿
+  - else
+    %span
+      %i.secondary-content.material-icons.small.grey-text grade
+
+    / 参加人数を表示
+    .right
+      %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{article.participants.count}"
+      %span.u-fz11.grey-text.text-lighten-1= " / #{article.capacity}人参加予定"
+
+.collection-item.js-article-detail.grey.lighten-5{style: "display: none;"}
+  .row
+    .col.s12
+      %p.light-blue-text 投稿本文
+      %span.u-fz13.grey-text.text-darken-2= simple_format(article.format_text)
+
+  .divider
+
+  .row
+    .col.s6
+      %p.light-blue-text 会場
+      %span.u-fz13.grey-text.text-darken-2= article.format_venue
+    .col.s6
+      %p.light-blue-text 都道府県
+      %span.u-fz13.grey-text.text-darken-2= article.format_prefecture_name
+
+  .divider
+
+  .row
+    .col.s6
+      %p.light-blue-text 開催日
+      %span.u-fz13.grey-text.text-darken-2= article.format_event_date
+    .col.s6
+      %p.light-blue-text 応募締切日
+      %span.u-fz13.grey-text.text-darken-2= article.format_application_period
+
+  .divider
+
+  .row
+    .col.s6
+      %p.light-blue-text 定員
+      %span.u-fz13.grey-text.text-darken-2= article.format_capacity
+    .col.s6
+      %p.light-blue-text 予算
+      %span.u-fz13.grey-text.text-darken-2= article.format_budget
+
+  .divider
+
+  / 投稿リストプルダウン時に表示されるメニューバー
+  = render "article_detail_menu_bar.html.haml", article: article

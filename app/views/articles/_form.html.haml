@@ -3,17 +3,17 @@
     .row
       .col.s12
         = f.label "投稿タイトル"
-        = f.text_field :title, class: "validate", required: ""
+        = f.text_field :title, class: "validate", required: "", maxlength: Article::TITLE_MAXIMUM_LENGTH, data: { length: Article::TITLE_MAXIMUM_LENGTH }
 
     .row
       .col.s12
         = f.label "投稿本文"
-        = f.text_area :text, class: "materialize-textarea validate", required: ""
+        = f.text_area :text, class: "materialize-textarea validate", required: "", maxlength: Article::TEXT_MAXIMUM_LENGTH, data: { length: Article::TEXT_MAXIMUM_LENGTH }
 
     .row
       .col.s6
         = f.label "会場"
-        = f.text_field :venue, class: "validate" , required: ""
+        = f.text_field :venue, class: "validate" , required: "", maxlength: Article::VENUE_MAXIMUM_LENGTH, data: { length: Article::VENUE_MAXIMUM_LENGTH }
       .col.s6
         = f.label "都道府県"
         = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: true, required: ""
@@ -21,10 +21,10 @@
     .row
       .col.s6
         = f.label "開催日"
-        = f.text_field :event_date, class: "datepicker validate cursor-pointer", required: ""
+        = f.text_field :event_date, class: "datepicker validate cursor-pointer", id: "js-event-data-picker", required: ""
       .col.s6
         = f.label "応募締切日"
-        = f.text_field :application_period, class: "datepicker validate cursor-pointer", required: ""
+        = f.text_field :application_period, class: "datepicker validate cursor-pointer", id: "js-application-period", required: ""
 
     .row
       .col.s6

@@ -1,0 +1,11 @@
+.section
+  .row
+    .col.s8= participant.article.title
+    .col.s4
+      - if current_user.already_participated?(participant.article)
+        = link_to article_participant_path(id:participant.id, article_id: participant.article.id), method: :delete, data: { confirm: "本当に辞退しますか？" } do
+          .col.s6.offset-s3.grey.lighten-2.btn 参加を辞退する
+      - else
+        = link_to article_participants_path, method: :post do
+          .col.s6.offset-s3.light-blue.btn-large.waves-effect.waves-light 参加する
+.divider

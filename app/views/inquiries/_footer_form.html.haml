@@ -1,0 +1,52 @@
+%h5.grey-text.center-align お問い合わせ
+
+.divider.grey
+
+.section#js-inquiry-form-container
+  = form_with scope: :inquiry, url: inquiries_path, remote: true, id: "js-inquiry-form" do |f|
+    -# ログイン済みのユーザーによる問い合わせの場合はメールアドレスを自動で補完する
+    - inquirers_email = current_user.present? ? current_user.email : nil
+    = f.label "メールアドレス（必須）"
+    = f.text_field :inquirers_email, value: inquirers_email, class: "browser-default", id: "inquiry-form-text-field", required: true
+    #error-message-for-inquiry-inquirers-email-field.red-text.text-lighten-2.hide ※ 不正な値です
+
+    .section
+      = f.label "問い合わせの種類（必須）"
+      %br
+      - Inquiry::TYPE_OPTIONS.each do |key, value|
+        = f.radio_button :type, value, class: "with-gap", id: "inquiry_type_#{value}"
+        = f.label "type_#{value}", key
+        %br
+      #error-message-for-inquiry-type-field.red-text.text-lighten-2.hide ※ 不正な値です
+
+    = f.label "問い合わせ内容（必須）"
+    %br
+    = f.text_area :message, placeholder: "お問い合わせ内容（#{Inquiry::MESSAGE_MAXIMUM_LENGTH.to_s(:delimited, delimiter: ',')}字以内）", maxlength: Inquiry::MESSAGE_MAXIMUM_LENGTH, class: "browser-default", id: "inquiry-form-text-area", required: true
+    #error-message-for-inquiry-message-field.red-text.text-lighten-2.hide ※ 不正な値です
+
+    = f.button class: "btn light-blue right waves-effect waves-light", id: "js-inquiry-form-submit-btn" do
+      送信
+      %i.material-icons.right send
+
+-# 問い合わせ送信失敗時のメッセージ
+.section#js-inquiry-form-success-message-container.hide
+  %p
+    %b ご意見ありがとうございました。
+
+  %p
+    頂いたご意見を元にサービスの改善に務めさせていただきます。
+
+  %p
+    なお、個々のご意見に返信できない場合があります。
+    %br
+    あらかじめご了承ください。
+
+-# 問い合わせ送信失敗時のメッセージ
+.section#js-inquiry-form-error-message-container.hide
+  %p
+    %b 送信に失敗しました。
+
+  %p
+    ご迷惑をおかけしてしまい大変申し訳ございません。
+    %br
+    しばらく時間を置いてから再度お試しください。

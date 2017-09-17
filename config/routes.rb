@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'static_pages#home'
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
-  get 'static_pages/home'
+  # ログインしてない時のパス
+  root 'articles#index'
+
+  # マイページ
+  get 'my_page/profile'
+  get 'my_page/participating_event'
 
   devise_for :users
-  resources :articles
+  resources :articles do
+    resources :participants, only: [:create, :destroy]
+  end
+
+  resources :inquiries, only: [:create]
 end

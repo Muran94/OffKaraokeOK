@@ -7,19 +7,21 @@
 
       .row
         .col.s12
+          = f.label "ニックネーム"
+          = f.text_field :nickname, autofocus: true, required: "", maxlength: User::NICKNAME_MAXIMUM_LENGTH, data: { length: User::NICKNAME_MAXIMUM_LENGTH }
+
+      .row
+        .col.s12
           = f.label "メールアドレス"
-          = f.email_field :email, autofocus: true, required: ""
+          = f.email_field :email, required: ""
 
       .row
         .col.s12
           = f.label "パスワード"
           = f.password_field :password, autocomplete: "off", required: ""
+
       .row
         .col.s12
-          = f.label "もう一度パスワードを入力してください"
-          = f.password_field :password_confirmation, autocomplete: "off", required: ""
-      .row
-        .col.s12
-          = f.button "登録する", class: " btn light-blue right waves-effect waves-light"
+          = f.button "登録する", class: "btn light-blue right waves-effect waves-light"
 
     = render "devise/shared/links"

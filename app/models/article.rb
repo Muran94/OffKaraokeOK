@@ -23,22 +23,48 @@ class Article < ActiveRecord::Base
   include JpPrefecture
 
   belongs_to :user
+  has_many :participants, dependent: :destroy
   jp_prefecture :prefecture_code
 
+  after_create :_draw_lots
+
   # 投稿タイトル
-  validates :title, presence: true
+  TITLE_MAXIMUM_LENGTH = 100
+  validates :title, presence: true, length: { maximum: TITLE_MAXIMUM_LENGTH }
   # 投稿本文
-  validates :text, presence: true, length: { maximum: 1000 }
+  TEXT_MAXIMUM_LENGTH = 2000
+  validates :text, presence: true, length: { maximum: TEXT_MAXIMUM_LENGTH }
   # 会場
-  validates :venue, presence: true, length: { maximum: 50 }
+  VENUE_MAXIMUM_LENGTH = 50
+  validates :venue, presence: true, length: { maximum: VENUE_MAXIMUM_LENGTH }
   # 都道府県コード
-  validates :prefecture_code, presence: true, numericality: true
+  validates :prefecture_code, inclusion: JpPrefecture::Prefecture.all.map(&:code)
   # 応募締切日時
   validates :application_period, presence: true
   # 開催日
   validates :event_date, presence: true
   # 定員
-  validates :capacity, presence: true, numericality: true
+  validates :capacity, numericality: { greater_than_or_equal_to: 0 }
   # 予算
-  validates :budget, presence: true, numericality: true
+  validates :budget, numericality: { greater_than_or_equal_to: 0 }
+
+  def execute_lottery
+    winners = participants.order('RANDOM()').limit(capacity)
+    winners.each { |winner| winner.update(elected: true) }
+    User.find(winners.pluck(:user_id))
+  end
+
+  def get_winners
+    User.find(participants.where(elected: true).pluck(:user_id))
+  end
+
+  def get_rejected_people
+    User.find(participants.where(elected: false).pluck(:user_id))
+  end
+
+  private
+
+  def _draw_lots
+    EventLotteryJob.set(wait_until: application_period).perform_later(self)
+  end
 end

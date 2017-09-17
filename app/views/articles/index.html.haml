@@ -1,5 +1,14 @@
-%h5.light-blue-text.center 記事の投稿
+#index-banner
+  .row
+    .col.s9.m9
+      %ul.collection.with-header
+        %li.collection-header.center-align
+          %h5.grey-text.text-darken-4
+            オフ会一覧
 
-.divider
+        = render @articles
 
-= render @articles
+      .center-align
+        = paginate @articles
+
+    .col.s3.m3

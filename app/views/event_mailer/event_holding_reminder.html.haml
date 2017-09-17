@@ -1,0 +1,5 @@
+%h1 前日リマインド
+
+%p 参加者一覧
+
+= @winners.pluck(:nickname).join("\n")

@@ -1,0 +1,124 @@
+.u-clb{ clear: both;}
+.u-clr{ clear: right;}
+.u-cll{ clear: left;}
+.u-cln{ clear: none;}
+
+.u-cura{ cursor: auto;}
+.u-curc{ cursor: crosshair;}
+.u-curd{ cursor: default;}
+.u-curm{ cursor: move;}
+.u-curp{ cursor: pointer;}
+.u-curt{ cursor: text;}
+
+.u-dn{ display: none;}
+.u-db{ display: block;}
+.u-df{ display: flex;}
+.u-dif{ display: inline-flex;}
+.u-di{ display: inline;}
+.u-dib{ display: inline-block;}
+.u-dli{ display: list-item;}
+.u-dtb{ display: table;}
+.u-dtbc{ display: table-cell;}
+
+.u-fll{ float: left;}
+.u-flr{ float: right;}
+.u-fln{ float: none;}
+
+.u-fsn{ font-style: normal;}
+.u-fsi{ font-style: italic;}
+.u-fso{ font-style: oblique;}
+
+.u-fwn{ font-weight: normal;}
+.u-fwb{ font-weight: bold;}
+.u-fwbr{ font-weight: bolder;}
+.u-fwlr{ font-weight: lighter;}
+
+@for $i from 0 through 100 {
+    .u-fz#{$i}{ font-size: #{$i}px;}
+}
+
+.u-ha{ height: auto;}
+.u-h0{ height: 0;}
+.u-h100p{ height: 100%;}
+
+$i: 10;
+@while $i <= 1000 {
+    .u-h#{$i}{ height: #{$i}px;}
+    $i: $i + 10;
+}
+
+$i: 100;
+@while $i <= 200 {
+    .u-lh#{$i}p{ line-height: $i / 100;}
+    $i: $i + 10;
+}
+
+@for $i from 0 through 20 {
+    .u-lts#{$i}{ letter-spacing: #{$i}px;}
+}
+
+.u-mahn{ max-height: none;}
+.u-mah100p{ max-height: 100%;}
+
+.u-mawn{ max-width: none;}
+.u-maw100p{ max-width: 100%;}
+
+.u-mih0{ min-height: 0;}
+.u-mih100p{ min-height: 100%;}
+
+.u-miw0{ min-width: 0;}
+.u-miw100p{ min-width: 100%;}
+
+@for $i from 0 through 100 {
+    .u-m#{$i} { margin: #{$i}px;}
+    .u-mt#{$i} { margin-top: #{$i}px;}
+    .u-mr#{$i} { margin-right: #{$i}px;}
+    .u-mb#{$i} { margin-bottom: #{$i}px;}
+    .u-ml#{$i} { margin-left: #{$i}px;}
+    .u-m-a#{$i} {margin: #{$i}px auto;}
+}
+
+.u-mta{ margin-top: auto;}
+.u-mra{ margin-right: auto;}
+.u-mba{ margin-bottom: auto;}
+.u-mla{ margin-left: auto;}
+
+.u-ovh{ overflow: hidden;}
+.u-ovv{ overflow: visible;}
+.u-ovs{ overflow: scroll;}
+.u-ova{ overflow: auto;}
+
+@for $i from 0 through 100 {
+    .u-p#{$i} { padding: #{$i}px;}
+    .u-pt#{$i} { padding-top: #{$i}px;}
+    .u-pr#{$i} { padding-right: #{$i}px;}
+    .u-pb#{$i} { padding-bottom: #{$i}px;}
+    .u-pl#{$i} { padding-left: #{$i}px;}
+}
+
+.u-poss{ position: static;}
+.u-posr{ position: relative;}
+.u-posa{ position: absolute;}
+.u-posf{ position: fixed;}
+
+.u-tar{ text-align: right;}
+.u-tal{ text-align: left;}
+.u-tac{ text-align: center;}
+
+.u-tdn{ text-decoration: none;}
+.u-tdu{ text-decoration: underline;}
+.u-tdo{ text-decoration: overline;}
+.u-tdl{ text-decoration: line-through;}
+
+.u-vat{ vertical-align: top;}
+.u-vam{ vertical-align: middle;}
+.u-vab{ vertical-align: bottom;}
+.u-vabl{ vertical-align: baseline;}
+
+.u-vv{ visibility: visible;}
+.u-vh{ visibility: hidden;}
+.u-vc{ visibility: collapse;}
+
+.u-wa{ width: auto;}
+.u-w0{ width: 0;}
+.u-w100p{ width: 100%;}

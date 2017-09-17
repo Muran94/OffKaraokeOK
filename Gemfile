@@ -25,6 +25,9 @@ gem 'haml-rails'
 gem 'active_decorator' # デコレーター, github : https://github.com/amatsuda/active_decorator
 gem 'jp_prefecture' # 都道府県用Gem, github : https://github.com/chocoby/jp_prefecture
 gem 'rails_admin', '~> 1.2' # 管理画面作成用Gem, github : https://github.com/sferik/rails_admin
+gem 'xray-rails'
+gem 'config' # 環境ごとに定数を管理できる素敵なGem
+gem 'rubocop' # いわずもがな
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -37,6 +40,8 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.2'  # RspecなどでRailsをプリロードする
   gem 'shoulda-matchers'                   # RSpecで使える便利なマッチャー集(ActiveRecord)
   gem 'pry-rails' # github : https://github.com/rweng/pry-rails
+  gem 'letter_opener_web'
+  gem 'kaminari'
 end
 
 group :development do
@@ -53,6 +58,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.3.0' # テスト実行後にDBをクリア
   gem 'simplecov', require: false # テストカバレッジ(テストカバー率)
+  gem 'email_spec' # メール送信系のカスタムマッチャを提供
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

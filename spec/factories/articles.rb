@@ -24,9 +24,15 @@ FactoryGirl.define do
     text '新宿hogehoge店にてカラオケオフ会を開催いたします！'
     venue 'カラオケ館hogehoge店'
     prefecture_code 13 # 東京
-    application_period Time.zone.now
+    application_period 1.day.from_now
     event_date 2.days.from_now
     capacity 10
     budget 3000 # 予算
+
+    trait :with_3_participant do
+      after(:create) do |article|
+        create_list(:participant, 3, article: article)
+      end
+    end
   end
 end
