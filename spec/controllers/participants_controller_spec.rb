@@ -7,6 +7,7 @@ RSpec.describe ParticipantsController, type: :controller do
   context 'ログイン済み' do
     let(:user) { create(:user) }
     before { sign_in user }
+    subject { JSON.parse(response.body) }
 
     context 'POST #create' do
       let(:params) { { article_id: article.id } }
@@ -15,10 +16,11 @@ RSpec.describe ParticipantsController, type: :controller do
         context 'レスポンス' do
           before { post :create, params: params }
 
-          it_behaves_like '投稿詳細ページにリダイレクトされる'
-
-          it 'flash[:notice]の中にメッセージが含まれていること' do
-            expect(flash[:notice]).to eq '参加申請が完了しました。'
+          it '適切なjsonレスポンスが返ってくること' do
+            aggregate_failures do
+              expect(subject["delete_path"]).to eq article_participant_path(article, assigns(:participant))
+              expect(subject["status"]).to eq "created"
+            end
           end
         end
 
@@ -32,16 +34,17 @@ RSpec.describe ParticipantsController, type: :controller do
       end
 
       context '異常系' do
-        context '同じユーザー同じ投稿の対するParticipantが既に存在する' do
+        context '既に参加済みの場合' do
           before { create(:participant, user: user, article: article) }
 
           context 'レスポンス' do
             before { post :create, params: params }
 
-            it_behaves_like '投稿詳細ページにリダイレクトされる'
-
-            it 'flash[:alert]の中にメッセージが含まれていること' do
-              expect(flash[:alert]).to eq '既に参加済みです。'
+            it '適切なjsonレスポンスが返ってくること' do
+              aggregate_failures do
+                expect(subject["delete_path"]).to eq article_participant_path(article, assigns(:participant))
+                expect(subject["status"]).to eq "already_participated"
+              end
             end
           end
         end
@@ -53,10 +56,8 @@ RSpec.describe ParticipantsController, type: :controller do
               post :create, params: params
             end
 
-            it_behaves_like '投稿詳細ページにリダイレクトされる'
-
-            it 'flash[:alert]の中にメッセージが含まれていること' do
-              expect(flash[:alert]).to eq 'エラーにより参加できませんでした。'
+            it '適切なjsonレスポンスが返ってくること' do
+              expect(subject["status"]).to eq "unprocessable_entity"
             end
           end
         end
@@ -71,10 +72,11 @@ RSpec.describe ParticipantsController, type: :controller do
         context 'レスポンス' do
           before { delete :destroy, params: params }
 
-          it_behaves_like '投稿詳細ページにリダイレクトされる'
-
-          it 'flash[:notice]の中にメッセージが含まれていること' do
-            expect(flash[:notice]).to eq '参加を辞退しました。'
+          it '適切なjsonレスポンスが返ってくること' do
+            aggregate_failures do
+              expect(subject["post_path"]).to eq article_participants_path(participant.article)
+              expect(subject["status"]).to eq "resign_completed"
+            end
           end
         end
 
@@ -95,10 +97,8 @@ RSpec.describe ParticipantsController, type: :controller do
               delete :destroy, params: params
             end
 
-            it_behaves_like '投稿詳細ページにリダイレクトされる'
-
-            it 'flash[:alert]の中にメッセージが含まれていること' do
-              expect(flash[:alert]).to eq '既に辞退しています。'
+            it '適切なjsonレスポンスが返ってくること' do
+              expect(subject["status"]).to eq "already_resigned"
             end
           end
         end

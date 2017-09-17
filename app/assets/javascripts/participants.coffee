@@ -33,7 +33,7 @@ $ ->
           $(this).children().html('<i class="material-icons grey-text">group</i><br>辞退')
 
         # 辞退系処理
-        when "resign_complete" # 辞退に成功した場合
+        when "resign_completed" # 辞退に成功した場合
           # 辞退した旨をフラッシュメッセージで表示
           Materialize.toast('辞退しました', 4000)
 
