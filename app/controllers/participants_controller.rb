@@ -10,7 +10,7 @@ class ParticipantsController < ApplicationController
         render json: { error_message: @participant.errors.messages, status: :unprocessable_entity }
       end
     else
-      render json: { status: 'already_participated' }
+      render json: { delete_path: article_participant_path(@participant.article, @participant), status: 'already_participated' }
     end
   end
 
