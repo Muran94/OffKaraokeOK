@@ -13,8 +13,8 @@
     %span.right.grey-text.u-fz11
       自分の投稿
   - else
-    %span
-      %i.secondary-content.material-icons.small.grey-text grade
+    / お気に入りボタン
+    = render 'favorite_button', article: article
 
     / 参加人数を表示
     .right
