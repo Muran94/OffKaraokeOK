@@ -60,6 +60,7 @@ class User < ApplicationRecord
   end
 
   def already_favorite?(article)
+    return false if article.blank?
     Favorite.where(user_id: id, article_id: article.id).any?
   end
 

@@ -18,9 +18,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.where(user_id: current_user.id, article_id: params[:article_id]).first
     if @favorite.present?
       @favorite.delete
-      render json: { post_path: article_favorites_path(@favorite.article), status: 'deleted' }
+      render json: { post_path: article_favorites_path(article_id: params[:article_id]), status: 'deleted' }
     else
-      render json: { post_path: article_favorites_path(@favorite.article), status: 'already_deleted' }
+      render json: { post_path: article_favorites_path(article_id: params[:article_id]), status: 'already_deleted' }
     end
   end
 end
