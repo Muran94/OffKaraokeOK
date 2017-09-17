@@ -1,0 +1,8 @@
+- if user_signed_in?
+  - if current_user.already_added_to_favorite?(article)
+    - favorite = Favorite.where(user_id: current_user.id, article_id: article.id).first
+    = link_to article_favorite_path(article, favorite), style: "text-decoration: none", class: "js-favorite-button", method: :delete, data: {confirm: "お気に入り登録を解除してもよろしいですか？"} , remote: true do
+      %i.favorite-btn.secondary-content.material-icons.small.yellow-text grade
+  - else
+    = link_to article_favorites_path(article), style: "text-decoration: none", class: "js-favorite-button", method: :post, remote: true do
+      %i.favorite-btn.secondary-content.material-icons.small.grey-text grade
