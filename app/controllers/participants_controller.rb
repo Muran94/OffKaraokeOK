@@ -5,24 +5,22 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find_or_initialize_by(user_id: current_user.id, article_id: params[:article_id])
     if @participant.new_record?
       if @participant.save
-        flash[:notice] = '参加申請が完了しました。'
+        render json: { delete_path: article_participant_path(@participant.article, @participant), status: :created }
       else
-        flash[:alert] = 'エラーにより参加できませんでした。'
+        render json: { status: :unprocessable_entity }
       end
     else
-      flash[:alert] = '既に参加済みです。'
+      render json: { delete_path: article_participant_path(@participant.article, @participant), status: 'already_participated' }
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @participant = Participant.where(user_id: current_user.id, article_id: params[:article_id]).first
     if @participant.present?
       @participant.delete
-      flash[:notice] = '参加を辞退しました。'
+      render json: { post_path: article_participants_path(@participant.article), status: 'resign_completed' }
     else
-      flash[:alert] = '既に辞退しています。'
+      render json: { status: 'already_resigned' }
     end
-    redirect_back(fallback_location: root_path)
   end
 end

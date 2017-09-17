@@ -16,6 +16,11 @@
     %span
       %i.secondary-content.material-icons.small.grey-text grade
 
+    / 参加人数を表示
+    .right
+      %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{article.participants.count}"
+      %span.u-fz11.grey-text.text-lighten-1= " / #{article.capacity}人参加予定"
+
 .collection-item.js-article-detail.grey.lighten-5{style: "display: none;"}
   .row
     .col.s12
