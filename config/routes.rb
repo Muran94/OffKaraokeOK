@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :articles do
-    resources :participants, only: [:create, :destroy]
+    resources :participants, only: [:create, :destroy] # 参加
+    resources :favorites, only: [:create, :destroy] # お気に入り
   end
 
   resources :inquiries, only: [:create]

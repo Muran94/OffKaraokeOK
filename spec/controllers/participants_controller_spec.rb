@@ -18,8 +18,8 @@ RSpec.describe ParticipantsController, type: :controller do
 
           it '適切なjsonレスポンスが返ってくること' do
             aggregate_failures do
-              expect(subject["delete_path"]).to eq article_participant_path(article, assigns(:participant))
-              expect(subject["status"]).to eq "created"
+              expect(subject['delete_path']).to eq article_participant_path(article, assigns(:participant))
+              expect(subject['status']).to eq 'created'
             end
           end
         end
@@ -42,8 +42,8 @@ RSpec.describe ParticipantsController, type: :controller do
 
             it '適切なjsonレスポンスが返ってくること' do
               aggregate_failures do
-                expect(subject["delete_path"]).to eq article_participant_path(article, assigns(:participant))
-                expect(subject["status"]).to eq "already_participated"
+                expect(subject['delete_path']).to eq article_participant_path(article, assigns(:participant))
+                expect(subject['status']).to eq 'already_participated'
               end
             end
           end
@@ -57,7 +57,7 @@ RSpec.describe ParticipantsController, type: :controller do
             end
 
             it '適切なjsonレスポンスが返ってくること' do
-              expect(subject["status"]).to eq "unprocessable_entity"
+              expect(subject['status']).to eq 'unprocessable_entity'
             end
           end
         end
@@ -74,8 +74,8 @@ RSpec.describe ParticipantsController, type: :controller do
 
           it '適切なjsonレスポンスが返ってくること' do
             aggregate_failures do
-              expect(subject["post_path"]).to eq article_participants_path(participant.article)
-              expect(subject["status"]).to eq "resign_completed"
+              expect(subject['post_path']).to eq article_participants_path(participant.article)
+              expect(subject['status']).to eq 'resign_completed'
             end
           end
         end
@@ -98,7 +98,7 @@ RSpec.describe ParticipantsController, type: :controller do
             end
 
             it '適切なjsonレスポンスが返ってくること' do
-              expect(subject["status"]).to eq "already_resigned"
+              expect(subject['status']).to eq 'already_resigned'
             end
           end
         end

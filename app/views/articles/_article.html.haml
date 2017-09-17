@@ -9,12 +9,12 @@
     = article.format_prefecture_name
   %span.title.truncate= article.format_title
 
-  - if user_signed_in? && current_user.id == article.user_id
-    %span.right.grey-text.u-fz11
-      自分の投稿
-  - else
-    %span
-      %i.secondary-content.material-icons.small.grey-text grade
+  - if user_signed_in?
+    - if current_user.id == article.user_id
+      %span.right.grey-text.u-fz11
+        自分の投稿
+    - else
+      = render 'favorite_button', article: article
 
     / 参加人数を表示
     .right
