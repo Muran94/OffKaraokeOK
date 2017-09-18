@@ -2,7 +2,7 @@
   = render 'header_tab'
 
   %ul.collection.with-header{style: "margin-top: 0; padding-top: 0;"}
-    %li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
+    %li.collection-item.avatar.grey-text.text-darken-2
       / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
       = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg galaxy.jpg live_man.jpg].sample, class: "circle")
 
@@ -42,11 +42,11 @@
       .section.no-pad-bot
         .row.u-fz13
           = link_to edit_user_registration_path, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
-            %i.material-icons.green-text edit
+            %i.material-icons.blue-text edit
             %br
             編集
           = link_to destroy_user_session_path, method: :delete, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
-            %i.material-icons.red-text lock_open
+            %i.material-icons.red-text.text-accent-2 lock_open
             %br
             ログアウト
           = link_to user_registration_path, method: :delete, data: { confirm: "本当に退会しますか？\n\n※ 退会するとユーザーデータが破棄されます。" }, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do

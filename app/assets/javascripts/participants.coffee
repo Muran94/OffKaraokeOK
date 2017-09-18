@@ -18,7 +18,7 @@ $ ->
 
           # リンクとボタンのデザインの張り替え
           $(this).attr({'data-method' : 'delete', 'data-confirm': "本当に辞退しますか？", href: event.detail[0]['delete_path']})
-          $(this).children().html('<i class="material-icons grey-text">group</i><br>辞退')
+          $(this).html('<i class="material-icons grey-text">group</i><br>辞退')
 
         when "unprocessable_entity" # 保存に失敗した場合
           # 参加失敗時のフラッシュメッセージ
@@ -30,7 +30,7 @@ $ ->
 
           # リンクとボタンのデザインの張り替え
           $(this).attr({'data-method' : 'delete', 'data-confirm': "本当に辞退しますか？", href: event.detail[0]['delete_path']})
-          $(this).children().html('<i class="material-icons grey-text">group</i><br>辞退')
+          $(this).html('<i class="material-icons grey-text">group</i><br>辞退')
 
         # 辞退系処理
         when "resign_completed" # 辞退に成功した場合
@@ -43,7 +43,7 @@ $ ->
 
           # リンクとボタンのデザインの張り替え
           $(this).attr({'data-method' : 'post', href: event.detail[0]['post_path']}).removeAttr('data-confirm')
-          $(this).children().html('<i class="material-icons red-text">group_add</i><br>参加')
+          $(this).html('<i class="material-icons red-text text-accent-2">group_add</i><br>参加')
 
         when "already_resigned" # 既に辞退していた場合
           # 既に辞退している旨をフラッシュメッセージで表示

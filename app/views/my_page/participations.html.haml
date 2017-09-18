@@ -1,8 +1,8 @@
 .section
   = render 'header_tab'
 
-  %ul.collection{style: "margin-top: 0; padding-top: 0;"}
-    - if @participations.present?
+  - if @participations.present?
+    %ul.collection{style: "margin-top: 0; padding-top: 0;"}
       = render @participations
-    - else
-      %li.collection-item.center.grey-text.text-lighten-2 参加中のオフ会がありません
+  - else
+    .u-mt30.center.u-fz16.grey-text.text-lighten-2 参加中のオフ会がありません
