@@ -1,7 +1,7 @@
 .section
   = render 'header_tab'
 
-  %ul.collection
+  %ul.collection{style: "margin-top: 0; padding-top: 0;"}
     - if @participations.present?
       = render @participations
     - else
