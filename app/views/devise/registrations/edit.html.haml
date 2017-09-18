@@ -1,7 +1,9 @@
-.card-panel
-  .container
-    %h4.light-blue-text.center 会員情報編集
+%ul.collection.with-header
+  %li.collection-header.center-align
+    %h5.grey-text.text-darken-4
+      会員情報編集
 
+  .collection-item
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
       .row
@@ -13,6 +15,7 @@
         .col.s12
           = f.label "メールアドレス"
           = f.email_field :email, autofocus: true, required: ""
+
       .row
         .col.s12
           = f.label "新パスワード（#{@minimum_password_length}文字以上）"

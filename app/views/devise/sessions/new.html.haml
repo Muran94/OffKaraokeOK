@@ -1,26 +1,26 @@
-.card-panel
-  .container
-    %h4.light-blue-text.center ログイン
+%ul.collection.with-header
+  %li.collection-header.center-align
+    %h5.grey-text.text-darken-2 ログイン
 
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .row
-        .col.s12
-          = f.label "メールアドレス"
-          = f.email_field :email, autofocus: true, required: ""
-
-      .row
-        .col.s12
-          = f.label "パスワード"
-          = f.password_field :password, autocomplete: "off", required: ""
-
-      - if devise_mapping.rememberable?
+  .section
+    .collection-item.js-article-detail
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .row
           .col.s12
-            = f.check_box :remember_me, id: "remember_me"
-            = f.label "サインインしたままにする", for: "remember_me"
+            = f.label "メールアドレス"
+            = f.email_field :email, autofocus: true, required: ""
 
-      .row
-        .col.s12
-          = f.button "ログイン", class: " btn light-blue right waves-effect waves-light"
+        .row
+          .col.s12
+            = f.label "パスワード"
+            = f.password_field :password, autocomplete: "off", required: ""
 
-    = render "devise/shared/links"
+        - if devise_mapping.rememberable?
+          .row
+            .col.s12
+              = f.check_box :remember_me, id: "remember_me"
+              = f.label "サインインしたままにする", for: "remember_me"
+
+        .row
+          .col.s12
+            = f.button "ログイン", class: " btn light-blue right waves-effect waves-light"

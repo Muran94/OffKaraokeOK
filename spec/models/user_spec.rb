@@ -233,29 +233,29 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context "#already_favorite?" do
-      let(:user) {create(:user)}
-      let(:article) {create(:article)}
+    context '#already_favorite?' do
+      let(:user) { create(:user) }
+      let(:article) { create(:article) }
 
-      context "正常系" do
-        context "既にお気に入りに登録していた場合" do
-          let!(:favorite) {create(:favorite, article: article, user: user)}
-          it "trueが返ること" do
+      context '正常系' do
+        context '既にお気に入りに登録していた場合' do
+          let!(:favorite) { create(:favorite, article: article, user: user) }
+          it 'trueが返ること' do
             expect(user.already_favorite?(article)).to eq true
           end
         end
-        context "まだお気に入り登録されていない場合" do
-          let!(:favorite) {create(:favorite)}
-          it "falseが返ること" do
+        context 'まだお気に入り登録されていない場合' do
+          let!(:favorite) { create(:favorite) }
+          it 'falseが返ること' do
             expect(user.already_favorite?(article)).to eq false
           end
         end
       end
 
-      context "異常系" do
-        context "渡されたarticleが空" do
-          let(:article) {nil}
-          it "falseが返ること" do
+      context '異常系' do
+        context '渡されたarticleが空' do
+          let(:article) { nil }
+          it 'falseが返ること' do
             expect(user.already_favorite?(article)).to eq false
           end
         end
