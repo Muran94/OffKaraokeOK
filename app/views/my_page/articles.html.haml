@@ -1,7 +1,7 @@
 .section
   = render 'header_tab'
 
-  %ul.collection.with-header
+  %ul.collection
     - if @articles.present?
       = render @articles
     - else

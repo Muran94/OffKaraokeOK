@@ -37,11 +37,11 @@
 
       .section.no-pad-bot
         .row.u-fz13
-          = link_to edit_user_registration_path, class: "col m4 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
-            %i.material-icons.blue-text edit
+          = link_to edit_user_registration_path, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.green-text edit
             %br
             編集
-          = link_to destroy_user_session_path, method: :delete, class: "col m4 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+          = link_to destroy_user_session_path, method: :delete, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
             %i.material-icons.red-text lock_open
             %br
             ログアウト
