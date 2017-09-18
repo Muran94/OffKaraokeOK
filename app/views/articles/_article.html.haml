@@ -13,7 +13,7 @@
     - if current_user.owner?(article)
       %span.u-fz11.grey-text.text-lighten-1.secondary-content 自分の投稿
     - else
-      = render 'favorite_button', article: article
+      = render 'articles/favorite_button', article: article
 
   / 参加人数を表示
   .right
@@ -59,4 +59,4 @@
   .divider
 
   / 投稿リストプルダウン時に表示されるメニューバー
-  = render "article_detail_menu_bar.html.haml", article: article
+  = render "articles/article_detail_menu_bar.html.haml", article: article

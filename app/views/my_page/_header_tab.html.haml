@@ -1,0 +1,21 @@
+%ul.tabs
+  %li.tab.col.m3
+    = link_to my_page_profile_path, class: params[:action] == "profile" ? "active" : "", target: "_self" do
+      %i.material-icons.tiny.blue-text
+        account_circle
+        %span.grey-text プロフィール
+  %li.tab.col.m3
+    = link_to my_page_articles_path, class: params[:action] == "articles" ? "active" : "", target: "_self" do
+      %i.material-icons.tiny.blue-text
+        insert_drive_file
+        %span.grey-text 投稿
+  %li.tab.col.m3
+    = link_to my_page_participations_path, class: params[:action] == "participations" ? "active" : "", target: "_self" do
+      %i.material-icons.tiny.blue-text
+        event
+        %span.grey-text 参加予定
+  %li.tab.col.m3
+    = link_to my_page_favorites_path, class: params[:action] == "favorites" ? "active" : "", target: "_self" do
+      %i.material-icons.tiny.blue-text
+        grade
+        %span.grey-text お気に入り

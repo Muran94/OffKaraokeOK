@@ -1,53 +1,51 @@
-.card-panel
-  .container
-    .row
-      .col.s12
-        %ul.tabs
-          %li.tab.col.s3= link_to "プロフィール", "#profile"
-          %li.tab.col.s3= link_to "参加中のイベント", "#participating_event"
+.section
+  = render 'header_tab'
 
-    #profile{style: "min-height: 500px;"}
-      .section.no-pad-bot
-        .row
-          .col.s12
-            %strong.light-blue-text ニックネーム
-            %p= current_user.nickname
+  %ul.collection.with-header
+    %li.collection-item
+      .row
+        .col.s12
+          %p.light-blue-text ニックネーム
+          %span.u-fz13.grey-text.text-darken-2= current_user.nickname
+
+      .divider
+
+      .row
+        .col.s12
+          %p.light-blue-text メールアドレス
+          %span.u-fz13.grey-text.text-darken-2= current_user.email
+
+
+      .divider
+
+      .row
+        .col.s6
+          %p.light-blue-text 性別
+          %span.u-fz13.grey-text.text-darken-2= current_user.sex ? current_user.sex : "（設定されていません）"
+        .col.s6
+          %p.light-blue-text 生年月日
+          %span.u-fz13.grey-text.text-darken-2= current_user.birthday ? current_user.birthday : "（設定されていません）"
+
+      .divider
+
+      .row
+        .col.s12
+          %p.light-blue-text 自己紹介
+          %span.u-fz13.grey-text.text-darken-2= current_user.introduction ? current_user.introduction : "（設定されていません）"
 
       .divider
 
       .section.no-pad-bot
-        .row
-          .col.s12
-            %strong.light-blue-text メールアドレス
-            %p= current_user.email
-
-      .divider
-
-      .section.no-pad-bot
-        .row
-          .col.s6
-            %strong.light-blue-text 性別
-            %p= current_user.sex
-          .col.s6
-            %strong.light-blue-text 生年月日
-            %p= current_user.birthday
-
-      .divider
-
-      .section.no-pad-bot
-        .row
-          .col.s12
-            %strong.light-blue-text 自己紹介
-            %p= current_user.introduction
-
-      .divider
-
-      .section.no-pad-bot
-        .row
-          .col.s6
-            = link_to "プロフィール編集", edit_user_registration_path(current_user), class: "btn light-blue center waves-effect waves-light"
-          .col.s6
-            = link_to "退会する", user_registration_path, method: :delete, data: { confirm: "一度退会するとアカウントを復活させることができません。\n\n本当に退会しますか？"}, class: "btn light-blue waves-effect waves-light"
-
-    #participating_event{style: "min-height: 500px;"}
-      = render @participating_events
+        .row.u-fz13
+          = link_to edit_user_registration_path, class: "col m4 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+            %i.material-icons.blue-text edit
+            %br
+            編集
+          = link_to destroy_user_session_path, method: :delete, class: "col m4 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+            %i.material-icons.red-text lock_open
+            %br
+            ログアウト
+          = link_to user_registration_path, method: :delete, data: { confirm: "本当に退会しますか？\n\n※ 退会するとユーザーデータが破棄されます。" }, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.grey-text delete_forever
+            %br
+            退会

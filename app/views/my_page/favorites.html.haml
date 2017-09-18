@@ -1,0 +1,8 @@
+.section
+  = render 'header_tab'
+
+  %ul.collection.with-header
+    - if @favorites.present?
+      = render @favorites
+    - else
+      %li.collection-item.center.grey-text.text-lighten-2 お気に入りが登録されていません
