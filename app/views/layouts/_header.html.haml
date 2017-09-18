@@ -6,7 +6,7 @@
         %li= link_to "記事一覧", articles_path
 
         - if current_user # ログイン中であれば
-          %li= link_to "オフ会を企画", new_article_path
+          %li= link_to "記事投稿", new_article_path
           %li= link_to "マイページ", my_page_profile_path
         - else # ログインしていなければ
           %li= link_to "会員登録", new_user_registration_path

@@ -1,27 +1,27 @@
-.card-panel
-  .container
-    %h4.light-blue-text.center 会員登録
+%ul.collection.with-header
+  %li.collection-header.center-align
+    %h5.grey-text.text-darken-2 会員登録
 
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
+  .section
+    .collection-item.js-article-detail
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
 
-      .row
-        .col.s12
-          = f.label "ニックネーム"
-          = f.text_field :nickname, autofocus: true, required: "", maxlength: User::NICKNAME_MAXIMUM_LENGTH, data: { length: User::NICKNAME_MAXIMUM_LENGTH }
+        .row
+          .col.s12
+            = f.label "ニックネーム"
+            = f.text_field :nickname, autofocus: true, required: "", maxlength: User::NICKNAME_MAXIMUM_LENGTH, data: { length: User::NICKNAME_MAXIMUM_LENGTH }
 
-      .row
-        .col.s12
-          = f.label "メールアドレス"
-          = f.email_field :email, required: ""
+        .row
+          .col.s12
+            = f.label "メールアドレス"
+            = f.email_field :email, required: ""
 
-      .row
-        .col.s12
-          = f.label "パスワード"
-          = f.password_field :password, autocomplete: "off", required: ""
+        .row
+          .col.s12
+            = f.label "パスワード"
+            = f.password_field :password, autocomplete: "off", required: ""
 
-      .row
-        .col.s12
-          = f.button "登録する", class: "btn light-blue right waves-effect waves-light"
-
-    = render "devise/shared/links"
+        .row
+          .col.s12
+            = f.button "登録する", class: "btn light-blue right waves-effect waves-light"
