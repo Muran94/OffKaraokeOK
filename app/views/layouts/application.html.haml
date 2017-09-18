@@ -17,7 +17,12 @@
         -# ダイアログ
         = render "layouts/flash"
 
-        = yield
+        .row
+          .col.m9
+            = yield
+
+          .col.m3.grey.lighten-3{style: "margin-top: 10px; min-height: 1000px;"}
+            = render 'layouts/sidebar_right'
 
     -# フッター
     = render 'layouts/footer'
