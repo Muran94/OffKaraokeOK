@@ -5,14 +5,26 @@
       / 投稿オーナー用メニューバー
       - if article.user_id == current_user.id
         / 閉じるボタン
-        .col.m12.center.u-curp.js-close-article-detail.grey-text.text-darken-2
+        = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+          %i.material-icons.blue-text library_books
+          %br
+          詳細
+        = link_to edit_article_path(article), class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+          %i.material-icons.green-text edit
+          %br
+          編集
+        = link_to article, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+          %i.material-icons.red-text delete
+          %br
+          削除
+        .col.m3.center.u-curp.js-close-article-detail.grey-text.text-darken-2
           %i.material-icons.grey-text cancel
           %br
           閉じる
 
       - else # 投稿オーナーではない一般ユーザー用のメニュー
         / 詳細ボタン
-        = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+        = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
           %i.material-icons.blue-text library_books
           %br
           詳細
@@ -22,7 +34,7 @@
           = render 'articles/participate_button', article: article
 
         / メッセージボタン
-        .col.m3.center.u-curp.grey-text.text-darken-2{style: "border-right: 1px solid #e0e0e0;"}
+        .col.m3.center.u-curp.grey-text.text-darken-2
           - if user_signed_in?
             %i.material-icons.green-text email
             %br
@@ -36,7 +48,7 @@
 
     - else # 未ログインユーザー
       / 詳細ボタン
-      = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "border-right: 1px solid #e0e0e0; text-decoration: none;" do
+      = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
         %i.material-icons.blue-text library_books
         %br
         詳細
@@ -46,7 +58,7 @@
           %b ログインして利用する
 
         / 参加ボタン
-        .col.m3.center.u-curp{style: "border-right: 1px solid #e0e0e0; filter: blur(1.5px);"}
+        .col.m3.center.u-curp{style: "filter: blur(1.5px);"}
           %i.material-icons.red-text group_add
           %br
           参加
@@ -58,7 +70,7 @@
           メッセージ
 
       / 閉じるボタン
-      .col.m3.center.u-curp.js-close-article-detail.grey-text.text-darken-2{style: "border-left: 1px solid #e0e0e0;"}
+      .col.m3.center.u-curp.js-close-article-detail.grey-text.text-darken-2
         %i.material-icons.grey-text cancel
         %br
         閉じる
