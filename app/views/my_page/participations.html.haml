@@ -1,0 +1,8 @@
+.section
+  = render 'header_tab'
+
+  %ul.collection.with-header
+    - if @participations.present?
+      = render @participations
+    - else
+      %li.collection-item.center.grey-text.text-lighten-2 参加中のオフ会がありません

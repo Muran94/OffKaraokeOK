@@ -1,4 +1,4 @@
-.section
+.section.no-pad-bot
   .row.detail-container-menu.u-fz13
     / ログインユーザー
     - if user_signed_in?
@@ -19,7 +19,7 @@
 
         / 参加ボタン
         #js-participate-container
-          = render 'participate_button', article: article
+          = render 'articles/participate_button', article: article
 
         / メッセージボタン
         .col.m3.center.u-curp.grey-text.text-darken-2{style: "border-right: 1px solid #e0e0e0;"}

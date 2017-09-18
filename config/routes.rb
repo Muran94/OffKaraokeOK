@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   # マイページ
-  get 'my_page/profile'
-  get 'my_page/participating_event'
+  get 'my_page/profile' # プロフィール
+  get 'my_page/articles' # 自分の投稿
+  get 'my_page/favorites' # お気に入り投稿
+  get 'my_page/participations' # 参加しているオフ会
 
   devise_for :users
   resources :articles do
