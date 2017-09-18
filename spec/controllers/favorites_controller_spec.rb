@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FavoritesController, type: :controller do
   let(:article) { create(:article) }
 
-  context "ログイン済み"
+  context 'ログイン済み'
 
   context 'ログイン済み' do
     let(:user) { create(:user) }
