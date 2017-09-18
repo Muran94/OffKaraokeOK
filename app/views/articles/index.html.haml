@@ -1,14 +1,9 @@
-#index-banner
-  .row
-    .col.s9.m9
-      %ul.collection.with-header
-        %li.collection-header.center-align
-          %h5.grey-text.text-darken-4
-            オフ会一覧
+%ul.collection.with-header
+  %li.collection-header.center-align
+    %h5.grey-text.text-darken-4
+      オフ会一覧
 
-        = render @articles
+  = render @articles
 
-      .center-align
-        = paginate @articles
-
-    .col.s3.m3.grey.lighten-3{style: "margin-top: 10px; min-height: 1000px;"}
+.center-align
+  = paginate @articles
