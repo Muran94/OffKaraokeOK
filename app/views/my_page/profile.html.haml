@@ -1,7 +1,7 @@
 .section
   = render 'header_tab'
 
-  %ul.collection.with-header
+  %ul.collection.with-header{style: "margin-top: 0; padding-top: 0;"}
     %li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
       / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
       = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg galaxy.jpg live_man.jpg].sample, class: "circle")
