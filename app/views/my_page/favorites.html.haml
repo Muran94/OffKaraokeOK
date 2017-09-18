@@ -1,8 +1,8 @@
 .section
   = render 'header_tab'
 
-  %ul.collection{style: "margin-top: 0; padding-top: 0;"}
-    - if @favorites.present?
+  - if @favorites.present?
+    %ul.collection{style: "margin-top: 0; padding-top: 0;"}
       = render @favorites
-    - else
-      %li.collection-item.center.grey-text.text-lighten-2 お気に入りが登録されていません
+  - else
+    .u-mt30.center.u-fz16.grey-text.text-lighten-2 お気に入りが登録されていません

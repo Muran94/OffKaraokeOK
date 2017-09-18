@@ -1,8 +1,8 @@
 .section
   = render 'header_tab'
 
-  %ul.collection{style: "margin-top: 0; padding-top: 0;"}
-    - if @articles.present?
+  - if @articles.present?
+    %ul.collection{style: "margin-top: 0; padding-top: 0;"}
       = render @articles
-    - else
-      %li.collection-item.center.grey-text.text-lighten-2 投稿がありません
+  - else
+    .u-mt30.center.u-fz16.grey-text.text-lighten-2 投稿がありません

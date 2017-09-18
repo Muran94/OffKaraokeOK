@@ -1,0 +1,110 @@
+.section.js-article-menu.no-pad-bot
+  .row.u-fz13
+    / ログインユーザー
+    - if user_signed_in?
+      / 投稿オーナー用メニューバー
+      - if current_user.owner?(article)
+        - if controller.action_name == "show" # 投稿詳細ページでは「詳細」ボタンを表示しない
+          = link_to edit_article_path(article), class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.blue-text edit
+            %br
+            編集
+          / メッセージボタン
+          .col.m4.center.u-curp.grey-text.text-darken-2
+            %i.material-icons.orange-text chat
+            %br
+            チャット
+          = link_to article, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.grey-text delete
+            %br
+            削除
+
+        - else  # 投稿詳細ページ以外では「詳細」ボタンを表示する
+          = link_to article, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.green-text library_books
+            %br
+            詳細
+          = link_to edit_article_path(article), class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.blue-text edit
+            %br
+            編集
+          / メッセージボタン
+          .col.m3.center.u-curp.grey-text.text-darken-2
+            %i.material-icons.orange-text chat
+            %br
+            チャット
+          = link_to article, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "col m3 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.grey-text delete
+            %br
+            削除
+
+      - else # 投稿オーナーではない一般ユーザー用のメニュー
+        - if controller.action_name == "show" # 投稿詳細ページでは「詳細」ボタンを表示しない
+          / メッセージボタン
+          .col.m6.center.u-curp.grey-text.text-darken-2
+            %i.material-icons.orange-text chat
+            %br
+            チャット
+          / 参加ボタン
+          #js-participate-container
+            = render 'articles/participate_button', article: article, m_grid_size: 6
+
+        - else # 投稿詳細ページ以外では「詳細」ボタンを表示する
+          / 詳細ボタン
+          = link_to article, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+            %i.material-icons.green-text library_books
+            %br
+            詳細
+
+          / メッセージボタン
+          .col.m4.center.u-curp.grey-text.text-darken-2
+            %i.material-icons.orange-text chat
+            %br
+            チャット
+
+          / 参加ボタン
+          #js-participate-container
+            = render 'articles/participate_button', article: article, m_grid_size: 4
+
+    - else # 未ログインユーザー
+      - if controller.action_name == "show" # 投稿詳細ページでは「詳細」ボタンを表示しない
+        .col.m12
+          .u-posr{style: "text-align:center;"}
+            = link_to new_user_session_path, class: "u-posa btn waves-effect waves-teal white grey-text text-darken-2 hoverable", style: "z-index: 2; width: 300px; top: 5px; bottom: 0; left: 0; right: 0; margin: 0 auto; opacity: 0.7;" do
+              %b ログインして利用する
+
+            / メッセージボタン
+            .col.m6.center.u-curp.grey-text.text-darken-2{style: "filter: blur(1.5px);"}
+              %i.material-icons.orange-text chat
+              %br
+              チャット
+
+            / 参加ボタン
+            .col.m6.center.u-curp{style: "filter: blur(1.5px);"}
+              %i.material-icons.red-text.text-accent-2 group_add
+              %br
+              参加
+
+      - else  # 投稿詳細ページ以外では「詳細」ボタンを表示する
+        / 詳細ボタン
+        = link_to article, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+          %i.material-icons.green-text library_books
+          %br
+          詳細
+
+        .col.m8
+          .u-posr{style: "text-align:center;"}
+            = link_to new_user_session_path, class: "u-posa btn waves-effect waves-teal white grey-text text-darken-2 hoverable", style: "z-index: 2; width: 300px; top: 5px; bottom: 0; left: 0; right: 0; margin: 0 auto; opacity: 0.7;" do
+              %b ログインして利用する
+
+            / メッセージボタン
+            .col.m6.center.u-curp.grey-text.text-darken-2{style: "filter: blur(1.5px);"}
+              %i.material-icons.orange-text chat
+              %br
+              チャット
+
+            / 参加ボタン
+            .col.m6.center.u-curp{style: "filter: blur(1.5px);"}
+              %i.material-icons.red-text.text-accent-2 group_add
+              %br
+              参加
