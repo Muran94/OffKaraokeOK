@@ -34,7 +34,7 @@ main {
 
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  @extend .grey-text, .text-darken-2;
 }
 
 .button-collapse {

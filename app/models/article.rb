@@ -25,6 +25,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :participants, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :messages, dependent: :destroy
   jp_prefecture :prefecture_code
 
   after_create :_draw_lots

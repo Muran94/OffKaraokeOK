@@ -1,0 +1,42 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.message-container {
+  display: inline-block;
+  max-width: 80%;
+  padding: 7px 15px;
+  border-radius: 2px;
+
+  .message-header-content {
+    width: 100%;
+    height: 25px;
+
+    img {
+      float: left;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+
+    .message-user-nickname-disp {
+      float: left;
+      font-size: 14px;
+      margin-right: 15px;
+    }
+
+    .message-created-at-disp {
+      text-align: right;
+      float: right;
+      font-size: 10px;
+      opacity: 0.8;
+    }
+  }
+
+  .message-text-content {
+    font-size: 12px;
+    word-wrap: break-word;
+  }
+}
