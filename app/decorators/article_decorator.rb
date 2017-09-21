@@ -36,4 +36,12 @@ module ArticleDecorator
   def format_budget
     budget.present? ? "#{budget.to_s(:delimited)}円" : '- 円'
   end
+
+  def current_participant_count_disp
+    if participants.count >= capacity
+      content_tag :strong, participants.count, class: "js-participant-num-disp capacity-exceeded"
+    else
+      content_tag :strong, participants.count, class: "js-participant-num-disp capacity-cracking"
+    end
+  end
 end

@@ -1,10 +1,23 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "materialize/components/color";
+
 .favorite-btn {
   transition: opacity .3s;
 
   &:hover {
     opacity: 0.7;
   }
+}
+
+// 定員超えの時の参加人数のスタイル
+.capacity-exceeded {
+  @extend .red-text, .text-accent-2;
+  font-size: 14px;
+}
+// 定員割れの時の参加人数のスタイル
+.capacity-cracking {
+  @extend .light-blue-text, .text-lighten-2;
+  font-size: 11px;
 }
