@@ -5,7 +5,7 @@ module MessageDecorator
   end
 
   def format_user_nickname
-    return "名無しさん" if user_id.blank?
+    return '名無しさん' if user_id.blank?
     User.find(user_id).nickname
   end
 end

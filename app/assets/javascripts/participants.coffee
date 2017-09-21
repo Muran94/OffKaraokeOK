@@ -13,8 +13,7 @@ $ ->
           Materialize.toast('参加申請が完了しました', 4000)
 
           # 参加人数の表示に＋１
-          $participant_num_disp = $(this).parents('.js-article-detail').prev().find('.js-participant-num-disp')
-          $participant_num_disp.text(($participant_num_disp.text() * 1) + 1)
+          incrementParticipantCount($(this).parents('.js-article-detail').prev())
 
           # リンクとボタンのデザインの張り替え
           $(this).attr({'data-method' : 'delete', 'data-confirm': "本当に辞退しますか？", href: event.detail[0]['delete_path']})
@@ -38,8 +37,7 @@ $ ->
           Materialize.toast('辞退しました', 4000)
 
           # 参加人数の表示に−１
-          $participant_num_disp = $(this).parents('.js-article-detail').prev().find('.js-participant-num-disp')
-          $participant_num_disp.text(($participant_num_disp.text() * 1) - 1)
+          decrementParticipantCount($(this).parents('.js-article-detail').prev())
 
           # リンクとボタンのデザインの張り替え
           $(this).attr({'data-method' : 'post', href: event.detail[0]['post_path']}).removeAttr('data-confirm')
@@ -52,3 +50,23 @@ $ ->
     .on 'ajax:error', (event) ->
       # 通信に失敗した旨をフラッシュメッセージで表示
       Materialize.toast('サーバーとの通信に失敗しました。しばらく時間を置いてから再度お試しください。', 4000)
+
+incrementParticipantCount = ($capacity_count_disp) ->
+  $participant_num_disp = $capacity_count_disp.find('.js-participant-num-disp')
+  $participant_num = ($participant_num_disp.text() * 1) + 1
+  $capacity_num_disp = $capacity_count_disp.children().find('.js-capacity-num-disp')
+  $capacity_num = $capacity_num_disp.text() * 1
+
+  $participant_num_disp.text($participant_num)
+  if $participant_num >= $capacity_num
+    $participant_num_disp.attr('class', 'js-participant-num-disp u-fz14 red-text text-accent-2')
+
+decrementParticipantCount = ($capacity_count_disp) ->
+  $participant_num_disp = $capacity_count_disp.find('.js-participant-num-disp')
+  $participant_num = ($participant_num_disp.text() * 1) - 1
+  $capacity_num_disp = $capacity_count_disp.children().find('.js-capacity-num-disp')
+  $capacity_num = $capacity_num_disp.text() * 1
+
+  $participant_num_disp.text($participant_num)
+  if $participant_num < $capacity_num
+    $participant_num_disp.attr('class', 'js-participant-num-disp u-fz11 light-blue-text')

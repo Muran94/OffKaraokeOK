@@ -6,6 +6,13 @@
   .collection-item
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
+      .row.file-field.input-field
+        .col.m2.btn
+          画像
+          = f.file_field :image
+        .col.m10.file-path-wrapper
+          %input.file-path.validate{value: resource.image.present? ? resource.image.url : ""}
+
       .row
         .col.s12
           = f.label "ニックネーム"

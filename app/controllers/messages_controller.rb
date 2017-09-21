@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   def create
     @new_message = @article.messages.build(_message_params)
     @new_message.user_id = current_user.id if current_user.present?
-    flash[:error] = "メッセージの送信に失敗しました" unless @new_message.save
+    flash[:error] = 'メッセージの送信に失敗しました' unless @new_message.save
     redirect_to article_messages_path(@article)
   end
 
