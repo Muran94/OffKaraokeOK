@@ -1,0 +1,9 @@
+%ul.collection.with-header
+  .collection-item
+    = render 'form', article: @article, message: @new_message
+
+  - if @messages.present?
+    .collection-item.grey.lighten-5
+      = render @messages
+  - else
+    .u-m-a30.center.u-fz16.grey-text.text-lighten-2 まだメッセージがありません

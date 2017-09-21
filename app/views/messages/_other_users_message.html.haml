@@ -1,0 +1,11 @@
+.col.m12
+  .message-container.z-depth-1.grey-text.text-darken-2
+    .message-header-content
+      = image_tag(%w[shimaenaga.jpg ugly_cat.jpg owl_and_mushroom.jpg ao.jpg sora.jpg sato_chiaki.jpg galaxy.jpg live_man.jpg].sample, class: "circle responsive-img")
+      .message-user-nickname-disp= message.format_user_nickname
+      .message-created-at-disp= message.created_at.strftime('%Y/%m/%d %T')
+
+    .divider
+
+    .message-text-content
+      = simple_format(message.text)

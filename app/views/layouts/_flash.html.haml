@@ -1,9 +1,2 @@
-- if notice.present?
-  .notice.card-panel.light-blue.lighten-5.light-blue-text.text-darken-3.valign-wrapper
-    %i.material-icons check
-    = notice
-
-- if alert.present?
-  .card-panel.red.lighten-5.red-text.text-darken-3.valign-wrapper
-    %i.material-icons info
-    = alert
+- flash.each do |message_type, message|
+  = javascript_tag "Materialize.toast('#{message}', 4000)"

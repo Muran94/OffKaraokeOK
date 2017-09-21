@@ -1,0 +1,6 @@
+.row
+  - if message.is_mine? # 自分のメッセージ
+    = render 'my_message', message: message
+
+  - else # 相手のメッセージ
+    = render 'other_users_message', message: message

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_917_162_101) do
+ActiveRecord::Schema.define(version: 20_170_920_104_208) do
   create_table 'articles', force: :cascade do |t|
     t.string 'title'
     t.text 'text'
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20_170_917_162_101) do
     t.text 'message'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'messages', force: :cascade do |t|
+    t.text 'text'
+    t.integer 'read_count'
+    t.integer 'article_id'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['article_id'], name: 'index_messages_on_article_id'
+    t.index ['user_id'], name: 'index_messages_on_user_id'
   end
 
   create_table 'participants', force: :cascade do |t|

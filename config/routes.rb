@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :participants, only: [:create, :destroy] # 参加
     resources :favorites, only: [:create, :destroy] # お気に入り
+    resources :messages, only: [:index, :create]
   end
 
   resources :inquiries, only: [:create]
