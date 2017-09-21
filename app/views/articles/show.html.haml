@@ -18,8 +18,11 @@
 
     / 参加人数を表示
     .right
-      %strong.js-participant-num-disp.u-fz14.light-blue-text= "#{@article.participants.count}"
-      %span.u-fz11.grey-text.text-lighten-1= " / #{@article.capacity}人参加予定"
+      = article.participant_count_disp
+      %span.u-fz11.grey-text.text-lighten-1
+        = " / "
+        %span.js-capacity-num-disp= @article.capacity
+        人参加予定
 
   .collection-item.grey.lighten-5
     .row
