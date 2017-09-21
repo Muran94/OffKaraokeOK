@@ -1,14 +1,14 @@
 class ProfileImageUploader < CarrierWave::Uploader::Base
-
   # リサイズしたり画像形式を変更するのに必要
   include CarrierWave::RMagick
 
   # 画像の上限を200pxにする
-  MAX_WIDTH, MAX_HEIGHT = [300, 300]
-  process :resize_to_limit => [MAX_WIDTH, MAX_HEIGHT]
+  MAX_WIDTH = 300
+  MAX_HEIGHT = 300
+  process resize_to_limit: [MAX_WIDTH, MAX_HEIGHT]
 
   # 保存形式をJPGにする
-  process :convert => 'jpg'
+  process convert: 'jpg'
 
   # Choose what kind of storage to use for this uploader:
   storage :file

@@ -2,8 +2,7 @@ require 'rails_helper'
 require 'shared_examples/model_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe Message, type: :model do
-
-  context "text" do
+  context 'text' do
     context 'length検証(maximum)' do
       it_behaves_like '値の長さが上限値以下であれば通る' do
         let(:model_object) { :message }
@@ -17,5 +16,4 @@ RSpec.describe Message, type: :model do
       end
     end
   end
-
 end

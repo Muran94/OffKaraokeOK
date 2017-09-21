@@ -39,9 +39,9 @@ module ArticleDecorator
 
   def participant_count_disp
     if participants.count >= capacity
-      content_tag :strong, participants.count, class: "js-participant-num-disp capacity-exceeded"
+      content_tag :strong, participants.count, class: 'js-participant-num-disp capacity-exceeded'
     else
-      content_tag :strong, participants.count, class: "js-participant-num-disp capacity-cracking"
+      content_tag :strong, participants.count, class: 'js-participant-num-disp capacity-cracking'
     end
   end
 end
