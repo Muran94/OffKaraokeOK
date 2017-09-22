@@ -68,6 +68,15 @@ RSpec.describe User, type: :model do
           let(:max_length) { User::NICKNAME_MAXIMUM_LENGTH }
         end
       end
+
+      context "使用できないニックネームが入力された場合" do
+        let(:user) {build(:user, nickname: "名無しさん")}
+
+        it "バリデーションに引っかかり、指定のエラーメッセージが格納されること" do
+          user.valid?
+          expect(user.errors.messages[:nickname]).to include("そのニックネームは使用できません")
+        end
+      end
     end
 
     context '性別' do

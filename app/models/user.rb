@@ -38,6 +38,8 @@ class User < ApplicationRecord
   # ニックネーム
   NICKNAME_MAXIMUM_LENGTH = 50
   validates :nickname, presence: true, length: { maximum: NICKNAME_MAXIMUM_LENGTH }
+  validate :_reject_particular_nicknames
+
   # 性別
   SEX_OPTIONS = { '男性' => 'male', '女性' => 'female' }.freeze
   validates :sex, inclusion: { in: SEX_OPTIONS.values }, allow_nil: true
@@ -70,5 +72,9 @@ class User < ApplicationRecord
 
   def _convert_empty_values
     self.sex = nil if sex.blank?
+  end
+
+  def _reject_particular_nicknames
+    errors.add(:nickname, "そのニックネームは使用できません") if %w[名無しさん].include?(nickname)
   end
 end
