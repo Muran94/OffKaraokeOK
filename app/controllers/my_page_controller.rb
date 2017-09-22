@@ -9,10 +9,10 @@ class MyPageController < ApplicationController
   end
 
   def favorites
-    @favorites = Article.find(current_user.favorites.pluck(:article_id))
+    @favorites = Article.includes(:user).find(current_user.favorites.pluck(:article_id))
   end
 
   def participations
-    @participations = Article.find(current_user.participants.pluck(:article_id))
+    @participations = Article.includes(:user).find(current_user.participants.pluck(:article_id))
   end
 end

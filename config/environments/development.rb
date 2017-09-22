@@ -25,8 +25,12 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
+  end
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
   end
 
   # Don't care if the mailer can't send.
