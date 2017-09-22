@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20_170_921_122_147) do
     t.datetime 'application_period'
     t.integer 'capacity'
     t.string 'venue'
-    t.integer 'budget'
+    t.integer 'participation_cost'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.datetime 'event_date'

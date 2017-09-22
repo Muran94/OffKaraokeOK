@@ -8,7 +8,7 @@
 #  application_period :datetime
 #  capacity           :integer
 #  venue              :string
-#  budget             :integer
+#  participation_cost             :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  event_date         :datetime
@@ -27,7 +27,7 @@ FactoryGirl.define do
     application_period 1.day.from_now
     event_date 2.days.from_now
     capacity 10
-    budget 3000 # 予算
+    participation_cost 3000 # 参加費
 
     trait :with_2_participant do
       after(:create) do |article|

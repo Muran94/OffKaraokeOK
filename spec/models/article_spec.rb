@@ -8,7 +8,7 @@
 #  application_period :datetime
 #  capacity           :integer
 #  venue              :string
-#  budget             :integer
+#  participation_cost             :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  event_date         :datetime
@@ -157,26 +157,26 @@ RSpec.describe Article, type: :model do
           let(:field_name) { :capacity }
         end
 
-        context "定員が2人未満の時" do
-          let(:article) {build(:article, capacity: 1)}
-          it "バリデーションに引っかかること" do
+        context '定員が2人未満の時' do
+          let(:article) { build(:article, capacity: 1) }
+          it 'バリデーションに引っかかること' do
             article.valid?
-            expect(article.errors.messages[:capacity]).to include "must be greater than or equal to 2"
+            expect(article.errors.messages[:capacity]).to include 'must be greater than or equal to 2'
           end
         end
       end
     end
 
-    context '予算' do
+    context '参加費' do
       context 'numericality検証' do
         it_behaves_like '整数値以外の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
-          let(:field_name) { :budget }
+          let(:field_name) { :participation_cost }
         end
 
         it_behaves_like '負の数の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
-          let(:field_name) { :budget }
+          let(:field_name) { :participation_cost }
         end
       end
     end

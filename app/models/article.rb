@@ -8,7 +8,7 @@
 #  application_period :datetime
 #  capacity           :integer
 #  venue              :string
-#  budget             :integer
+#  participation_cost             :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  event_date         :datetime
@@ -48,8 +48,8 @@ class Article < ActiveRecord::Base
   # 定員
   CAPACITY_BOTTOM_LINE = 2
   validates :capacity, numericality: { greater_than_or_equal_to: CAPACITY_BOTTOM_LINE }
-  # 予算
-  validates :budget, numericality: { greater_than_or_equal_to: 0 }
+  # 参加費
+  validates :participation_cost, numericality: { greater_than_or_equal_to: 0 }
 
   def execute_lottery
     winners = participants.order('RANDOM()').limit(capacity)
@@ -78,6 +78,5 @@ class Article < ActiveRecord::Base
     Participant.skip_callback(:create, :after, :_send_participation_application_completed_notify_mail)
     participants.create(user_id: user_id)
     Participant.set_callback(:create, :after, :_send_participation_application_completed_notify_mail)
-
   end
 end

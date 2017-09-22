@@ -33,8 +33,8 @@ module ArticleDecorator
     capacity.present? ? "#{capacity}人" : '- 人'
   end
 
-  def format_budget
-    budget.present? ? "#{budget.to_s(:delimited)}円" : '- 円'
+  def format_participation_cost
+    participation_cost.present? ? "#{participation_cost.to_s(:delimited)}円" : '- 円'
   end
 
   def participant_count_disp
