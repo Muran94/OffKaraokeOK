@@ -69,12 +69,12 @@ RSpec.describe User, type: :model do
         end
       end
 
-      context "使用できないニックネームが入力された場合" do
-        let(:user) {build(:user, nickname: "名無しさん")}
+      context '使用できないニックネームが入力された場合' do
+        let(:user) { build(:user, nickname: '名無しさん') }
 
-        it "バリデーションに引っかかり、指定のエラーメッセージが格納されること" do
+        it 'バリデーションに引っかかり、指定のエラーメッセージが格納されること' do
           user.valid?
-          expect(user.errors.messages[:nickname]).to include("そのニックネームは使用できません")
+          expect(user.errors.messages[:nickname]).to include('そのニックネームは使用できません')
         end
       end
     end

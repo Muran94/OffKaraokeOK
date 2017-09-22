@@ -78,6 +78,5 @@ class Article < ActiveRecord::Base
     Participant.skip_callback(:create, :after, :_send_participation_application_completed_notify_mail)
     participants.create(user_id: user_id)
     Participant.set_callback(:create, :after, :_send_participation_application_completed_notify_mail)
-
   end
 end

@@ -75,6 +75,6 @@ class User < ApplicationRecord
   end
 
   def _reject_particular_nicknames
-    errors.add(:nickname, "そのニックネームは使用できません") if %w[名無しさん].include?(nickname)
+    errors.add(:nickname, 'そのニックネームは使用できません') if %w(名無しさん).include?(nickname)
   end
 end

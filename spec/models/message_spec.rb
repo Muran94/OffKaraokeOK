@@ -19,18 +19,18 @@ RSpec.describe Message, type: :model do
 
   # メッセージ投稿主のUserオブジェクトを返す
   context '#owner' do
-    let(:user) {create(:user)}
-    let(:message) {create(:message, user_id: user_id)}
+    let(:user) { create(:user) }
+    let(:message) { create(:message, user_id: user_id) }
 
-    context "会員によるメッセージである場合" do
+    context '会員によるメッセージである場合' do
       let(:user_id) { user.id }
-      it "メッセージオーナーのUserオブジェクトが返ってくること" do
+      it 'メッセージオーナーのUserオブジェクトが返ってくること' do
         expect(message.owner).to eq user
       end
     end
-    context "名無しさんによるメッセージである場合" do
+    context '名無しさんによるメッセージである場合' do
       let(:user_id) { nil }
-      it "nilを返すこと" do
+      it 'nilを返すこと' do
         expect(message.owner).to eq nil
       end
     end

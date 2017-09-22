@@ -137,26 +137,26 @@ describe ArticleDecorator do
     end
   end
 
-  context "#participant_count_disp" do
-    let!(:article) {create(:article, capacity: 2)}
+  context '#participant_count_disp' do
+    let!(:article) { create(:article, capacity: 2) }
     subject { decorate(article).participant_count_disp }
 
-    context "参加者が定員以上の場合" do
-      context "定員と参加者数がちょうど同じ場合" do
-        let!(:participant) {create(:participant, article: article)} # 投稿者1人 + それ以外の参加者1人で合計２人になる
-        it "定員以上の時に適用されるタグが返ってくること" do
+    context '参加者が定員以上の場合' do
+      context '定員と参加者数がちょうど同じ場合' do
+        let!(:participant) { create(:participant, article: article) } # 投稿者1人 + それ以外の参加者1人で合計２人になる
+        it '定員以上の時に適用されるタグが返ってくること' do
           expect(subject).to eq %(<strong class="js-participant-num-disp capacity-exceeded">2</strong>)
         end
       end
-      context "参加者数が定員を超えていた場合" do
-        let!(:participant) {create_list(:participant, 2, article: article)} # 投稿者1人 + それ以外の参加者2人で合計3人になる
-        it "定員以上の時に適用されるタグが返ってくること" do
+      context '参加者数が定員を超えていた場合' do
+        let!(:participant) { create_list(:participant, 2, article: article) } # 投稿者1人 + それ以外の参加者2人で合計3人になる
+        it '定員以上の時に適用されるタグが返ってくること' do
           expect(subject).to eq %(<strong class="js-participant-num-disp capacity-exceeded">3</strong>)
         end
       end
     end
-    context "定員割れしている場合" do
-      it "定員割れしている時に適用されるタグが返ってくること" do
+    context '定員割れしている場合' do
+      it '定員割れしている時に適用されるタグが返ってくること' do
         expect(subject).to eq %(<strong class="js-participant-num-disp capacity-cracking">1</strong>)
       end
     end

@@ -58,7 +58,7 @@ class ArticlesController < ApplicationController
       :event_date,          # 開催日
       :application_period,  # 応募締切日
       :capacity,            # 定員
-      :participation_cost               # 参加費
+      :participation_cost # 参加費
     )
   end
 end

@@ -157,11 +157,11 @@ RSpec.describe Article, type: :model do
           let(:field_name) { :capacity }
         end
 
-        context "定員が2人未満の時" do
-          let(:article) {build(:article, capacity: 1)}
-          it "バリデーションに引っかかること" do
+        context '定員が2人未満の時' do
+          let(:article) { build(:article, capacity: 1) }
+          it 'バリデーションに引っかかること' do
             article.valid?
-            expect(article.errors.messages[:capacity]).to include "must be greater than or equal to 2"
+            expect(article.errors.messages[:capacity]).to include 'must be greater than or equal to 2'
           end
         end
       end
