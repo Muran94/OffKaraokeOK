@@ -32,7 +32,7 @@ RSpec.describe ArticlesController, type: :controller do
       it_behaves_like 'updateアクション異常系（バリデーションに引っかかる）'
     end
 
-    describe 'DELETE #edit' do
+    describe 'DELETE #destroy' do
       it_behaves_like 'deleteアクション正常系'
     end
   end

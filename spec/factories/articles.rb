@@ -29,9 +29,9 @@ FactoryGirl.define do
     capacity 10
     budget 3000 # 予算
 
-    trait :with_3_participant do
+    trait :with_2_participant do
       after(:create) do |article|
-        create_list(:participant, 3, article: article)
+        create_list(:participant, 2, article: article)
       end
     end
   end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe EventLotteryJob, type: :job do
   ActiveJob::Base.queue_adapter = :test
 
-  let!(:article) { create(:article, :with_3_participant, capacity: 2) }
+  let!(:article) { create(:article, :with_2_participant, capacity: 2) }
 
   after { clear_enqueued_jobs }
 
@@ -31,7 +31,7 @@ RSpec.describe EventLotteryJob, type: :job do
 
   context '実行時間テスト' do
     let(:application_period) { 1.minute.from_now }
-    let(:article) { create(:article, :with_3_participant, application_period: application_period) }
+    let(:article) { create(:article, :with_2_participant, application_period: application_period) }
     it '指定時間のキューにセットされる' do
       expect do
         EventLotteryJob.set(wait_until: application_period).perform_later(article)

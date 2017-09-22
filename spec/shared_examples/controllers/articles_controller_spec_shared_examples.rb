@@ -184,8 +184,8 @@ shared_examples 'deleteアクション正常系' do
     before do
       delete :destroy, params: params
     end
-    it 'root_pathにリダイレクトされること' do
-      expect(response).to redirect_to root_path
+    it 'マイページの投稿一覧ページにリダイレクトされること' do
+      expect(response).to redirect_to my_page_articles_path
     end
     it 'flash[:notice]の中にメッセージが含まれていること' do
       expect(flash[:notice]).to eq '記事を削除しました。'
