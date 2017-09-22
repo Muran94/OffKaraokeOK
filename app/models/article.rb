@@ -28,7 +28,7 @@ class Article < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   jp_prefecture :prefecture_code
 
-  after_create :_draw_lots
+  after_create :_draw_lots, :_add_owner_to_participant
 
   # 投稿タイトル
   TITLE_MAXIMUM_LENGTH = 100
@@ -46,7 +46,8 @@ class Article < ActiveRecord::Base
   # 開催日
   validates :event_date, presence: true
   # 定員
-  validates :capacity, numericality: { greater_than_or_equal_to: 0 }
+  CAPACITY_BOTTOM_LINE = 2
+  validates :capacity, numericality: { greater_than_or_equal_to: CAPACITY_BOTTOM_LINE }
   # 予算
   validates :budget, numericality: { greater_than_or_equal_to: 0 }
 
@@ -68,5 +69,13 @@ class Article < ActiveRecord::Base
 
   def _draw_lots
     EventLotteryJob.set(wait_until: application_period).perform_later(self)
+  end
+
+  def _add_owner_to_participant
+    # 投稿者には参加完了メールを送信したくないのでコールバックを飛ばす
+    Participant.skip_callback(:create, :after, :_send_participation_application_completed_notify_mail)
+    participants.create(user_id: user_id)
+    Participant.set_callback(:create, :after, :_send_participation_application_completed_notify_mail)
+
   end
 end

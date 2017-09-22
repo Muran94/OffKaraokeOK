@@ -30,7 +30,7 @@
       .row
         .col.s6
           = f.label "定員"
-          = f.telephone_field :capacity, class: "validate", required: ""
+          = f.telephone_field :capacity, placeholder: %(#{Article::CAPACITY_BOTTOM_LINE}人から), class: "validate", required: ""
         .col.s6
           = f.label "予算"
           = f.text_field :budget, class: "validate", required: ""
