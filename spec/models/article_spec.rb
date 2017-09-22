@@ -8,7 +8,7 @@
 #  application_period :datetime
 #  capacity           :integer
 #  venue              :string
-#  budget             :integer
+#  participation_cost             :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  event_date         :datetime
@@ -167,16 +167,16 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    context '予算' do
+    context '参加費' do
       context 'numericality検証' do
         it_behaves_like '整数値以外の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
-          let(:field_name) { :budget }
+          let(:field_name) { :participation_cost }
         end
 
         it_behaves_like '負の数の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
-          let(:field_name) { :budget }
+          let(:field_name) { :participation_cost }
         end
       end
     end

@@ -37,7 +37,7 @@ begin
       event_date: Random.rand(Time.zone.now..2.month.from_now),
       capacity: (2..5).to_a.sample,
       venue: "カラオケ館hogehoge#{num}号店",
-      budget: (1000..3000).to_a.sample,
+      participation_cost: (1000..3000).to_a.sample,
       prefecture_code: (1..47).to_a.sample,
       user: user
     )

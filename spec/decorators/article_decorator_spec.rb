@@ -120,17 +120,17 @@ describe ArticleDecorator do
     end
   end
 
-  context '#format_budget' do
-    let(:article) { build(:article, budget: budget) }
-    subject { decorate(article).format_budget }
-    context '予算が存在する場合' do
-      let(:budget) { 3000 }
-      it '予算を整形して返すこと' do
-        expect(subject).to eq %(#{budget.to_s(:delimited)}円)
+  context '#format_participation_cost' do
+    let(:article) { build(:article, participation_cost: participation_cost) }
+    subject { decorate(article).format_participation_cost }
+    context '参加費が存在する場合' do
+      let(:participation_cost) { 3000 }
+      it '参加費を整形して返すこと' do
+        expect(subject).to eq %(#{participation_cost.to_s(:delimited)}円)
       end
     end
-    context '予算が存在しない場合' do
-      let(:budget) { nil }
+    context '参加費が存在しない場合' do
+      let(:participation_cost) { nil }
       it '「- 円」が返ること' do
         expect(subject).to eq '- 円'
       end

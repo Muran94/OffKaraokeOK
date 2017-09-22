@@ -6,7 +6,7 @@ class CreateArticles < ActiveRecord::Migration[5.1]
       t.datetime :application_period
       t.integer :capacity
       t.string :venue
-      t.integer :budget
+      t.integer :participation_cost
 
       t.timestamps
     end
