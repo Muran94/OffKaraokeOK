@@ -14,9 +14,23 @@ RSpec.describe MyPageController, type: :controller do
       end
     end
 
-    describe 'GET #participating_event' do
+    describe 'GET #articles' do
       it 'returns http success' do
-        get :participating_event
+        get :articles
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    describe 'GET #favorites' do
+      it 'returns http success' do
+        get :favorites
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    describe 'GET #participations' do
+      it 'returns http success' do
+        get :participations
         expect(response).to have_http_status(:success)
       end
     end

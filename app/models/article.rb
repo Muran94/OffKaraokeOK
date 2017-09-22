@@ -67,10 +67,12 @@ class Article < ActiveRecord::Base
 
   private
 
+  # 抽選ジョブのエンキュー
   def _draw_lots
     EventLotteryJob.set(wait_until: application_period).perform_later(self)
   end
 
+  # 投稿者を参加者に含める。また、自動で当選状態にする
   def _add_owner_to_participant
     # 投稿者には参加完了メールを送信したくないのでコールバックを飛ばす
     Participant.skip_callback(:create, :after, :_send_participation_application_completed_notify_mail)

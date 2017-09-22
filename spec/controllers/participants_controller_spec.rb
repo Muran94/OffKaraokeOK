@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'shared_examples/controllers/participants_controller_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
 RSpec.describe ParticipantsController, type: :controller do
-  let(:article) { create(:article) }
+  let!(:article) { create(:article) }
 
   context 'ログイン済み' do
     let(:user) { create(:user) }

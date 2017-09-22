@@ -25,11 +25,10 @@ require 'shared_examples/models/article_spec_shared_examples'
 RSpec.describe Article, type: :model do
   context '関連付け' do
     context 'dependent' do
-      let(:article) { create(:article) }
-      let!(:participant) { create_list(:participant, 2, article: article) }
+      let!(:article) { create(:article) }
 
       it 'Articleが削除されたらそれに紐づくParticipantも削除する' do
-        expect { article.destroy }.to change(Participant, :count).by(-2)
+        expect { article.destroy }.to change(Participant, :count).by(-1)
       end
     end
   end
@@ -158,9 +157,12 @@ RSpec.describe Article, type: :model do
           let(:field_name) { :capacity }
         end
 
-        it_behaves_like '負の数の時はバリデーションに引っかかること' do
-          let(:model_object) { :article }
-          let(:field_name) { :capacity }
+        context "定員が2人未満の時" do
+          let(:article) {build(:article, capacity: 1)}
+          it "バリデーションに引っかかること" do
+            article.valid?
+            expect(article.errors.messages[:capacity]).to include "must be greater than or equal to 2"
+          end
         end
       end
     end
@@ -193,7 +195,7 @@ RSpec.describe Article, type: :model do
   context 'メソッド' do
     context '#execute_lottery' do
       before { article.execute_lottery }
-      let(:article) { create(:article, :with_3_participant, capacity: capacity) } # ３件の参加申請を持つ投稿
+      let(:article) { create(:article, :with_2_participant, capacity: capacity) } # ３件の参加申請を持つ投稿
 
       context '参加申請数が定員を満たなかったら' do
         let(:capacity) { 4 } # 定員３人
@@ -245,13 +247,10 @@ RSpec.describe Article, type: :model do
 
     context '#get_rejected_people' do
       let(:article) { create(:article) }
-      let(:user) { create(:user) }
 
       context '落選者が１人以上いる場合' do
-        let!(:participant) { create(:participant, user: user, article: article) }
-
         it '当選者のUserオブジェクトを含む配列を返すこと' do
-          expect(article.get_rejected_people).to match_array([user])
+          expect(article.get_rejected_people).to match_array([article.user])
         end
       end
       context '当選者が１人もいない場合' do
