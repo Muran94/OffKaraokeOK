@@ -1,4 +1,6 @@
 %ul.collection.with-header
+  = render 'articles/article', article: @article
+
   .collection-item
     = render 'form', article: @article, message: @new_message
 
