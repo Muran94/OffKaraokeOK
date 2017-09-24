@@ -157,11 +157,30 @@ RSpec.describe Article, type: :model do
           let(:field_name) { :capacity }
         end
 
-        context '定員が2人未満の時' do
-          let(:article) { build(:article, capacity: 1) }
+        context "定員が#{Article::CAPACITY_MINIMUM_VALUE - 1}人未満の時" do
+          let(:article) { build(:article, capacity: Article::CAPACITY_MINIMUM_VALUE - 1) }
           it 'バリデーションに引っかかること' do
             article.valid?
-            expect(article.errors.messages[:capacity]).to include 'must be greater than or equal to 2'
+            expect(article.errors.messages[:capacity]).to include "must be greater than or equal to #{Article::CAPACITY_MINIMUM_VALUE}"
+          end
+        end
+
+        context "定員が#{Article::CAPACITY_MINIMUM_VALUE}人以上#{Article::CAPACITY_MAXIMUM_VALUE - 1}人未満の時" do
+          it '通ること' do
+            article = build(:article, capacity: Article::CAPACITY_MINIMUM_VALUE)
+            expect(article.valid?).to be true
+          end
+          it '通ること' do
+            article = build(:article, capacity: Article::CAPACITY_MAXIMUM_VALUE - 1)
+            expect(article.valid?).to be true
+          end
+        end
+
+        context "定員が#{Article::CAPACITY_MAXIMUM_VALUE}人以上の時" do
+          let(:article) { build(:article, capacity: Article::CAPACITY_MAXIMUM_VALUE) }
+          it 'バリデーションに引っかかること' do
+            article.valid?
+            expect(article.errors.messages[:capacity]).to include "must be less than #{Article::CAPACITY_MAXIMUM_VALUE}"
           end
         end
       end
@@ -177,6 +196,33 @@ RSpec.describe Article, type: :model do
         it_behaves_like '負の数の時はバリデーションに引っかかること' do
           let(:model_object) { :article }
           let(:field_name) { :participation_cost }
+        end
+      end
+
+      context "参加費が#{Article::PARTICIPATION_COST_MINIMUM_VALUE - 1}円未満の時" do
+        let(:article) { build(:article, participation_cost: Article::PARTICIPATION_COST_MINIMUM_VALUE - 1) }
+        it 'バリデーションに引っかかること' do
+          article.valid?
+          expect(article.errors.messages[:participation_cost]).to include "must be greater than or equal to #{Article::PARTICIPATION_COST_MINIMUM_VALUE}"
+        end
+      end
+
+      context "参加費が#{Article::PARTICIPATION_COST_MINIMUM_VALUE}人以上#{Article::PARTICIPATION_COST_MAXIMUM_VALUE - 1}円未満の時" do
+        it '通ること' do
+          article = build(:article, participation_cost: Article::PARTICIPATION_COST_MINIMUM_VALUE)
+          expect(article.valid?).to be true
+        end
+        it '通ること' do
+          article = build(:article, participation_cost: Article::PARTICIPATION_COST_MAXIMUM_VALUE - 1)
+          expect(article.valid?).to be true
+        end
+      end
+
+      context "参加費が#{Article::PARTICIPATION_COST_MAXIMUM_VALUE}円以上の時" do
+        let(:article) { build(:article, participation_cost: Article::PARTICIPATION_COST_MAXIMUM_VALUE) }
+        it 'バリデーションに引っかかること' do
+          article.valid?
+          expect(article.errors.messages[:participation_cost]).to include "must be less than #{Article::PARTICIPATION_COST_MAXIMUM_VALUE}"
         end
       end
     end

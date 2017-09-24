@@ -30,10 +30,10 @@
       .row
         .col.s6
           = f.label "定員"
-          = f.telephone_field :capacity, placeholder: %(#{Article::CAPACITY_BOTTOM_LINE}人から), class: "validate", required: ""
+          = f.telephone_field :capacity, placeholder: %(#{Article::CAPACITY_MINIMUM_VALUE} ~ #{Article::CAPACITY_MAXIMUM_VALUE.to_s(:delimited)}人), maxlength: Article::CAPACITY_MAXIMUM_VALUE, class: "validate", required: ""
         .col.s6
           = f.label "参加費"
-          = f.text_field :participation_cost, class: "validate", required: ""
+          = f.telephone_field :participation_cost, placeholder: %(#{Article::PARTICIPATION_COST_MINIMUM_VALUE} ~ #{Article::PARTICIPATION_COST_MAXIMUM_VALUE.to_s(:delimited)}円), class: "validate", required: ""
 
       .row
         =f.button form_submit_button_text, class: " btn light-blue right waves-effect waves-light"
