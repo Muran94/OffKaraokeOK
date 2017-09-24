@@ -1,0 +1,19 @@
+%li.collection-item.avatar.grey-text.text-darken-2
+  = image_tag(profile_image_url(user), class: "circle")
+
+  %span.u-fz11.grey-text.valign-wrapper
+    %i.material-icons.tiny.u-mr5 cake
+    未設定
+    %i.material-icons.tiny.u-mr5.u-pl10 location_city
+    未設定
+  %span.title.truncate= user.nickname
+
+%li.collection-item.grey.lighten-5
+  = render 'profiles/private_profile', user: user if controller_name == "my_page"
+
+  .row
+    .col.s12
+      %p.light-blue-text 自己紹介
+      %span.u-fz13.grey-text.text-darken-2= user.format_introduction
+
+  = render 'profiles/menu_bar' if controller_name == "my_page"

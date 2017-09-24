@@ -5,6 +5,9 @@ $(document).on('turbolinks:load', function() {
     if( $(e.target).closest('.favorite-btn').length ){
       return // お気に入りボタンを押した時はslideDown()しない
     }
+    if ( $(e.target).closest('.article-owner-profile-img').length ) {
+      return // 投稿リストの投稿者プロフィール画像を押した時はslideDown()しない
+    }
     $(".js-article-detail").not($(this).next()).slideUp();
     $(this).next().slideToggle();
   })
