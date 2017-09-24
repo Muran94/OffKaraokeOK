@@ -46,11 +46,13 @@ class Article < ActiveRecord::Base
   # 開催日
   validates :event_date, presence: true
   # 定員
-  CAPACITY_MINIMUM_VALUE, CAPACITY_MAXIMUM_VALUE = [2, 1000]
+  CAPACITY_MINIMUM_VALUE = 2
+  CAPACITY_MAXIMUM_VALUE = 1000
   validates :capacity, numericality: { greater_than_or_equal_to: CAPACITY_MINIMUM_VALUE, less_than: CAPACITY_MAXIMUM_VALUE }
   # 参加費
-  PARTICIPATION_COST_MINIMUM_VALUE, PARTICIPATION_COST_MAXIMUM_VALUE = [0, 100_000]
-  validates :participation_cost, numericality: { greater_than_or_equal_to: PARTICIPATION_COST_MINIMUM_VALUE, less_than: PARTICIPATION_COST_MAXIMUM_VALUE}
+  PARTICIPATION_COST_MINIMUM_VALUE = 0
+  PARTICIPATION_COST_MAXIMUM_VALUE = 100_000
+  validates :participation_cost, numericality: { greater_than_or_equal_to: PARTICIPATION_COST_MINIMUM_VALUE, less_than: PARTICIPATION_COST_MAXIMUM_VALUE }
 
   def execute_lottery
     winners = participants.order('RANDOM()').limit(capacity)

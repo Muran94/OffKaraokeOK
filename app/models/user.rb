@@ -32,6 +32,7 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :user_reports, dependent: :destroy
 
   before_validation :_convert_empty_values
 

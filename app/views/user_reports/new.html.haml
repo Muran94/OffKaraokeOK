@@ -1,0 +1,16 @@
+%ul.collection.with-header
+  %li.collection-header.center-align
+    %h5.grey-text.text-darken-2 通報
+
+  .section
+    .collection-item
+      = form_for @user_report do |f|
+        .row
+          .col.s12
+            = f.label "内容"
+            = f.text_area :text, class: "materialize-textarea validate", placeholder: %(#{UserReport::TEXT_MAXIMUM_LENGTH.to_s(:delimited)}文字まで), maxlength: UserReport::TEXT_MAXIMUM_LENGTH, required: ""
+
+            = f.hidden_field :user_id, value: params[:format] # deviseのルーティングだと、newアクションを呼ぶ際にparams[:id]ではなく、params[:format]を指定する必要がある
+
+        .row
+          =f.button "通報", class: " btn light-blue right waves-effect waves-light"
