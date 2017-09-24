@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show]
     resources :user_reports, only: [:new, :create]
   end
-  # get '/profiles/:user_id', to: 'profiles#show', as: 'profile' # 公開プロフィール
-  # get '/user_reports/:user_id', to: 'user_reports#new', as: 'user_reports'
 
   resources :articles do
     resources :participants, only: [:create, :destroy] # 参加
