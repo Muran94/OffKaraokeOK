@@ -4,7 +4,7 @@ RSpec.describe ProfilesController, type: :controller do
   context 'GET #show' do
     let(:user) { create(:user) }
     let(:articles) { create_list(:article, 5, user: user) }
-    let(:params) { { user_id: user.id } }
+    let(:params) { { id: user.id } }
 
     before { get :show, params: params }
 
