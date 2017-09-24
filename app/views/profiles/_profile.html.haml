@@ -8,6 +8,9 @@
     未設定
   %span.title.truncate= user.nickname
 
+  = link_to new_user_report_path(user) do
+    %i.favorite-btn.secondary-content.material-icons.small.red-text.text-accent-2.u-curp error
+
 %li.collection-item.grey.lighten-5
   = render 'profiles/private_profile', user: user if controller_name == "my_page"
 
