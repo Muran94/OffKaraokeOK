@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'my_page/participations' # 参加しているオフ会
 
   devise_for :users
+
+  get '/profiles/:user_id', to: 'profiles#show', as: 'profile' # 公開プロフィール
+
   resources :articles do
     resources :participants, only: [:create, :destroy] # 参加
     resources :favorites, only: [:create, :destroy] # お気に入り

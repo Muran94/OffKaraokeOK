@@ -1,0 +1,19 @@
+%ul.collection.with-header
+  %li.collection-header.u-fz12
+    = article.format_title
+  %li.collection-item.grey.lighten-5.u-fz10
+    .row
+      .col.s12
+        %p.u-fz11.light-blue-text 投稿本文
+        %span.u-fz10.grey-text.text-darken-2= simple_format(article.format_text)
+
+    .divider
+
+    .row.section
+      = link_to article, class: "col m6 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+        %i.material-icons.green-text library_books
+        %br
+        詳細
+      / 参加ボタン
+      #js-participate-container
+        = render 'articles/participate_button', article: article, m_grid_size: 6

@@ -1,6 +1,6 @@
 %li.collection-item.avatar.js-article-header.grey-text.text-darken-2.u-curp
-  / 本来は投稿に紐づく画像か、投稿主のプロフィール画像を表示するべきだが、まだそこまで実装できていないので、暫定対応として適当に画像を表示している。
-  = image_tag(profile_image_url(article.user), class: "circle")
+  = link_to profile_path(article.user) do
+    = image_tag(profile_image_url(article.user), class: "circle article-owner-profile-img")
 
   %span.u-fz11.grey-text.valign-wrapper
     %i.material-icons.tiny.u-mr5 date_range

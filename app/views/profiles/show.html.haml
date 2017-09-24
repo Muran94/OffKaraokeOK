@@ -1,0 +1,16 @@
+.section
+
+  %ul.collection.with-header{style: "margin-top: 0; padding-top: 0;"}
+    = render 'profile', user: @user
+
+    %li.collection-header.center-align
+      %h5.grey-text.text-darken-4
+        = %(#{@user.nickname}さんによる投稿)
+
+      - if @articles.present?
+        = render @articles
+      - else
+        .u-mt30.center.u-fz16.grey-text.text-lighten-2 投稿がありません
+
+  .center-align
+    = paginate @articles
