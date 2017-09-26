@@ -75,38 +75,37 @@ class Article < ActiveRecord::Base
 
   # インデクシング時に呼び出されるメソッド
   # マッピングのデータを返すようにする
-  def as_indexed_json(options = {})
+  def as_indexed_json(_options = {})
     attributes
       .symbolize_keys
       .slice(:title, :text, :application_period, :capacity, :venue, :participation_cost, :event_date, :prefecture_code)
   end
 
   def self.search(search_conditions = {})
-
-    search_definition = Elasticsearch::DSL::Search.search {
-      query {
-        if search_conditions.present? && search_conditions.values.any? {|v| v.present?}
-          filtered {
+    search_definition = Elasticsearch::DSL::Search.search do
+      query do
+        if search_conditions.present? && search_conditions.values.any?(&:present?)
+          filtered do
             if search_conditions.dig(:keyword).present?
-              query {
-                multi_match {
+              query do
+                multi_match do
                   query search_conditions.dig(:keyword)
-                  fields %w[title text]
-                }
-              }
+                  fields %w(title text)
+                end
+              end
             end
             if search_conditions.dig(:prefecture_code).present?
-              filter {
+              filter do
                 term prefecture_code: search_conditions.dig(:prefecture_code)
-              }
+              end
             end
-          }
+          end
         else
           match_all
         end
-      }
-      size "10000"
-    }
+      end
+      size '10000'
+    end
 
     __elasticsearch__.search(search_definition)
   end
