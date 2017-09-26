@@ -59,7 +59,8 @@ class Article < ActiveRecord::Base
   validates :participation_cost, numericality: { greater_than_or_equal_to: PARTICIPATION_COST_MINIMUM_VALUE, less_than: PARTICIPATION_COST_MAXIMUM_VALUE }
 
   def execute_lottery
-    winners = participants.order('RANDOM()').limit(capacity)
+    elected_participants_count = participants.where(elected: true).count
+    winners = participants.where(elected: false).order('RANDOM()').limit(capacity - elected_participants_count)
     winners.each { |winner| winner.update(elected: true) }
     User.find(winners.pluck(:user_id))
   end
@@ -121,7 +122,7 @@ class Article < ActiveRecord::Base
   def _add_owner_to_participant
     # 投稿者には参加完了メールを送信したくないのでコールバックを飛ばす
     Participant.skip_callback(:create, :after, :_send_participation_application_completed_notify_mail)
-    participants.create(user_id: user_id)
+    participants.create(user_id: user_id, elected: true)
     Participant.set_callback(:create, :after, :_send_participation_application_completed_notify_mail)
   end
 end
