@@ -1,3 +1,3 @@
 admin:
-  id: "admintest"
-  password: "admintest"
+  id: "admin"
+  password: "admin"
