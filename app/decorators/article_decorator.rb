@@ -44,4 +44,9 @@ module ArticleDecorator
       content_tag :strong, participants.count, class: 'js-participant-num-disp capacity-cracking'
     end
   end
+
+  # まだ受付中か判定
+  def currently_accepting?
+    application_period > Time.zone.now ? true : false
+  end
 end
