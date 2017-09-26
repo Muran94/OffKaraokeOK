@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.3'
-gem 'sqlite3' # Use sqlite3 as the database for Active Record
 gem 'puma', '~> 3.7' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'
 # Materialize
@@ -38,6 +37,7 @@ gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-ra
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sqlite3' # Use sqlite3 as the database for Active Record
   gem 'capybara', '~> 2.4.3'               # ブラウザでの操作をシミュレートしてテストができる
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'              # Rails用機能を追加するRSpecラッハー
@@ -68,5 +68,7 @@ group :test do
   gem 'simplecov', require: false # テストカバレッジ(テストカバー率)
   gem 'email_spec' # メール送信系のカスタムマッチャを提供
 end
+
+gem 'pg', group: :production
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
