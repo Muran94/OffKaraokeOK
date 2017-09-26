@@ -162,18 +162,18 @@ describe ArticleDecorator do
     end
   end
 
-  context "#currently_accepting?" do
-    subject {decorate(article).currently_accepting?}
-    context "参加締切日を過ぎていない場合（受付中）" do
-      let(:article) {build(:article, application_period: 1.day.from_now)}
-      it "trueが返ってくること" do
+  context '#currently_accepting?' do
+    subject { decorate(article).currently_accepting? }
+    context '参加締切日を過ぎていない場合（受付中）' do
+      let(:article) { build(:article, application_period: 1.day.from_now) }
+      it 'trueが返ってくること' do
         expect(subject).to be true
       end
     end
-    context "参加締切日を過ぎている場合（受付終了）" do
-      let(:article) {build(:article, application_period: 1.day.ago)}
-      it "falseが返ってくること" do
-          expect(subject).to be false
+    context '参加締切日を過ぎている場合（受付終了）' do
+      let(:article) { build(:article, application_period: 1.day.ago) }
+      it 'falseが返ってくること' do
+        expect(subject).to be false
       end
     end
   end
