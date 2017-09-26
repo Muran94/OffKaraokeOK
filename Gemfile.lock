@@ -83,6 +83,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bonsai-elasticsearch-rails (0.0.4)
     builder (3.2.3)
     bullet (5.6.1)
       activesupport (>= 3.0.0)
@@ -417,6 +418,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
+  bonsai-elasticsearch-rails
   bullet
   byebug
   capybara (~> 2.4.3)
