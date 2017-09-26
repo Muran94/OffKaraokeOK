@@ -69,6 +69,9 @@ group :test do
   gem 'email_spec' # メール送信系のカスタムマッチャを提供
 end
 
-gem 'pg', group: :production
+group :production do
+  gem 'pg'
+  gem 'bonsai-elasticsearch-rails'
+end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
