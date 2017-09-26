@@ -12,6 +12,7 @@ title_samples = %w(
   TheBeatles縛り！ビールでも飲みながら楽しく歌いましょう！
   平均250名参加！馬鹿騒ぎしながら歌えるのはここだけ！
   ボカロだけ。新宿hogehoge店
+  今から新宿カラ館で歌える人募集！
 )
 
 text_samples = %w(
@@ -26,10 +27,12 @@ text_samples = %w(
 )
 
 begin
-  user = User.create(nickname: '名無し', email: 'nanashi@gmail.com', password: 'nanashi')
+  User.delete_all
+  user = User.create(nickname: 'PaulMcCartney', email: 'paulmccartney@gmail.com', password: 'nanashi')
 
+  Article.delete_all
   Article.skip_callback(:create, :after, :_draw_lots)
-  300.times do |num|
+  500.times do |num|
     article = Article.create(
       title: title_samples.sample,
       text: text_samples.sample,

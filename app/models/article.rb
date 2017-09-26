@@ -28,6 +28,10 @@ class Article < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   jp_prefecture :prefecture_code
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  index_name "article_#{Rails.env}"
+
   after_create :_draw_lots, :_add_owner_to_participant
 
   # 投稿タイトル
@@ -66,6 +70,44 @@ class Article < ActiveRecord::Base
 
   def get_rejected_people
     User.find(participants.where(elected: false).pluck(:user_id))
+  end
+
+  # インデクシング時に呼び出されるメソッド
+  # マッピングのデータを返すようにする
+  def as_indexed_json(options = {})
+    attributes
+      .symbolize_keys
+      .slice(:title, :text, :application_period, :capacity, :venue, :participation_cost, :event_date, :prefecture_code)
+  end
+
+  def self.search(search_conditions = {})
+
+    search_definition = Elasticsearch::DSL::Search.search {
+      query {
+        if search_conditions.present? && search_conditions.values.any? {|v| v.present?}
+          filtered {
+            if search_conditions.dig(:keyword).present?
+              query {
+                multi_match {
+                  query search_conditions.dig(:keyword)
+                  fields %w[title text]
+                }
+              }
+            end
+            if search_conditions.dig(:prefecture_code).present?
+              filter {
+                term prefecture_code: search_conditions.dig(:prefecture_code)
+              }
+            end
+          }
+        else
+          match_all
+        end
+      }
+      size "10000"
+    }
+
+    __elasticsearch__.search(search_definition)
   end
 
   private
