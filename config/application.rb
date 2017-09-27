@@ -9,7 +9,7 @@ require 'elasticsearch/rails/instrumentation'
 
 module KaraokeOffApp
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    config.assets.enabled = true
     config.load_defaults 5.1
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
 
