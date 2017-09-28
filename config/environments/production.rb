@@ -12,6 +12,8 @@ Rails.application.configure do
       :enable_starttls_auto => true
     }
 
+  GA.tracker = "UA-107239870-1"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
