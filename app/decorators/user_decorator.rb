@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module UserDecorator
   def format_sex
     sex ? sex : '未設定'

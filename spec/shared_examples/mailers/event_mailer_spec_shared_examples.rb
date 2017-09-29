@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 shared_examples '表題・送信元・送信先が全て正しいこと' do
   it do
     aggregate_failures do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 shared_examples '当選者と落選者の人数が正しいこと' do
   it do
     expect(article.participants.where(elected: true).count).to be expected_winner_count

@@ -1,3 +1,15 @@
+# frozen_string_literal: true
+# == Schema Information
+#
+# Table name: user_reports
+#
+#  id         :integer          not null, primary key
+#  text       :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 require 'shared_examples/model_spec_shared_examples'

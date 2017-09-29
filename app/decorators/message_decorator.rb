@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module MessageDecorator
   def is_mine?
     return false if current_user.blank?

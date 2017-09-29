@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ArticlesController < ApplicationController
   before_action :_get_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
@@ -6,8 +7,7 @@ class ArticlesController < ApplicationController
     @articles = Article.search(params[:search]).records(includes: :user).page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @article = current_user.articles.build
@@ -24,8 +24,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @article.update(_get_article_params)

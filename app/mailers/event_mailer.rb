@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class EventMailer < ApplicationMailer
   default from: Settings.mailer.event.from # config/settings.ymlに定数として定義
 

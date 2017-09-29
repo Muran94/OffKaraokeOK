@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: articles
@@ -8,7 +9,7 @@
 #  application_period :datetime
 #  capacity           :integer
 #  venue              :string
-#  participation_cost             :integer
+#  participation_cost :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  event_date         :datetime

@@ -3,9 +3,9 @@
 
   %span.u-fz11.grey-text.valign-wrapper
     %i.material-icons.tiny.u-mr5 cake
-    未設定
-    %i.material-icons.tiny.u-mr5.u-pl10 location_city
-    未設定
+    = user.format_birthday
+    %i.material-icons.tiny.u-mr5.u-pl10 face
+    = user.format_sex
   %span.title.truncate= user.nickname
 
   = link_to new_user_report_path(user) do

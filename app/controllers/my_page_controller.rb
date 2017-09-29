@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class MyPageController < ApplicationController
   before_action :authenticate_user!
 
-  def profile
-  end
+  def profile; end
 
   def articles
     @articles = current_user.articles

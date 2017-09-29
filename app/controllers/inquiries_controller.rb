@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class InquiriesController < ApplicationController
   before_action :_inquiry_params
 
