@@ -1,7 +1,7 @@
 {
   "name": "OffKaraokeOK",
   "scripts": {
-    "postdeploy": "bundle exec rails db:migrate"
+    "postdeploy": "bundle exec rake db:schema:load db:seed"
   },
   "env": {
     "BONSAI_URL": {
