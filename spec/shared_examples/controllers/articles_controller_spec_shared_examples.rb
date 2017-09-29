@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 shared_examples 'indexアクション正常系' do
   before do
     create(:article, title: 'カラオケオフ会開催決定！')

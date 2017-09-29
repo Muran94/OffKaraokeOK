@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ArticlesHelper
   def form_submit_button_text
     case action_name

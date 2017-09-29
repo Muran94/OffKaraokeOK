@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # presence系
 shared_examples '空文字かnilの時はバリデーションに引っかかること' do
   after do

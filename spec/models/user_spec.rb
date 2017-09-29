@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: users
@@ -19,6 +20,10 @@
 #  sex                    :string
 #  birthday               :date
 #  nickname               :string
+#  image                  :string
+#  failed_attempts        :integer          default(0), not null
+#  unlock_token           :string
+#  locked_at              :datetime
 #
 
 require 'rails_helper'

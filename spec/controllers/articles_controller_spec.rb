@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 require 'shared_examples/controllers/articles_controller_spec_shared_examples' # spec内で使われてるshared_examplesはこのファイル内で定義
 
