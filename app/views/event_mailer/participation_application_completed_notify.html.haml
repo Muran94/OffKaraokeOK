@@ -1,4 +1,14 @@
-%h1= "#{@user.nickname}様"
+.section
+  %b= "#{@user.nickname}様"
 
-%p
- = "#{@article.title}への参加申請が完了しました！\nなお、応募数が定員を越しているイベントにつきましては、自動抽選により参加者が決定されます。"
+  %p= %(オフ会「#{@article.title}」への参加申請が完了しました！)
+  %p.u-fz13.text-darken-2= %(※ 定員越えのオフ会につきましては、自動抽選により参加者が決定されます。)
+
+.divider
+
+.section
+  %b 辞退するには
+
+  %p 以下のリンクより該当のオフ会のページにアクセスし、「辞退」をクリックすることで辞退できます。
+
+  %p= link_to @article.title, article_url(@article)

@@ -1,7 +1,20 @@
 %html
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
-  %body
-    = yield
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  %body.grey.lighten-3.u-fz16
+    .grey-text.text-darken-4
+      .container.white.u-h100p
+        .container.section
+          .center-align
+            = link_to root_url, id: "logo-container", class: "brand-logo center" do
+              = image_tag("logo_transparent_background.png", alt: "OffKara", height: 120)
+
+          .divider
+
+          = yield
+
+          .divider
+
+          .section.grey-text © 2017 OffOK, All rights reserved.

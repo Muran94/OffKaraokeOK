@@ -5,13 +5,13 @@ mailer:
     from: "event-notice@offkara.jp"
 
     participation_application_completed_notify:
-      subject: "【オフカラOK】イベントへの参加応募が完了しました！"
+      subject: "OFF KARA | イベントへの参加申請が完了しました！"
 
     notify_result_of_lottery_to_winners:
-      subject: "【オフカラOK】当選のお知らせ"
+      subject: "OFF KARA | 当選のお知らせ"
 
     notify_result_of_lottery_to_rejected_people:
-      subject: "【オフカラOK】落選のお知らせ"
+      subject: "OFF KARA | 落選のお知らせ"
 
     event_holding_reminder:
-      subject: "【オフカラOK】オフ会イベント前日リマインド"
+      subject: "OFF KARA | オフ会イベント前日リマインド"
