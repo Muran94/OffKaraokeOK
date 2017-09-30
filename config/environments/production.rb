@@ -12,6 +12,9 @@ Rails.application.configure do
     domain: 'heroku.com',
     enable_starttls_auto: true
   }
+  # メール内にcssを適用するための設定
+  config.action_controller.asset_host = 'http://offkara.jp'
+  config.action_mailer.asset_host = config.action_controller.asset_host
 
   GA.tracker = 'UA-107239870-1'
 
