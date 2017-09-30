@@ -7,8 +7,6 @@
       %ul.right.hide-on-med-and-down
         %li{class: current_page_article_index_page? ? "active" : ""}= link_to "記事一覧", articles_path
 
-
-
         - if current_user # ログイン中であれば
           %li{class: current_page_article_new_page? ? "active" : ""}= link_to "記事投稿", new_article_path
           %li{class: current_page_my_page? ? "active" : ""}= link_to "マイページ", my_page_profile_path
@@ -27,4 +25,4 @@
           %li= link_to "ログイン", new_user_session_path
 
       %a.button-collapse.right{"data-activates" => "nav-mobile", :href => "#"}
-        %i.material-icons menu
+        %i.material-icons.grey-text menu
