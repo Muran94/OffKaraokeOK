@@ -276,35 +276,35 @@ RSpec.describe Article, type: :model do
       let(:article) { create(:article) }
       let(:user) { create(:user) }
 
-      context '当選者が１人以上いる場合' do
+      context '投稿者以外に当選者がいる場合' do
         let!(:participant) { create(:participant, :elected, user: user, article: article) }
 
-        it '当選者のUserオブジェクトを含む配列を返すこと' do
-          expect(article.get_winners).to match_array([user])
+        it '当選者と投稿者のUserオブジェクトを含む配列を返すこと' do
+          expect(article.get_winners).to match_array([user, article.user])
         end
       end
-      context '当選者が１人もいない場合' do
+      context '当選者が投稿者以外にいない場合' do
         let(:participant) { create(:participant, user: user, article: article) }
 
-        it '空配列を返すこと' do
-          expect(article.get_winners).to match_array([])
+        it '投稿者のUserオブジェクトを含む配列を返すこと' do
+          expect(article.get_winners).to match_array([article.user])
         end
       end
     end
 
     context '#get_rejected_people' do
       let(:article) { create(:article) }
+      let(:user) {create(:user)}
 
       context '落選者が１人以上いる場合' do
-        it '当選者のUserオブジェクトを含む配列を返すこと' do
-          expect(article.get_rejected_people).to match_array([article.user])
+        before {create(:participant, user: user, article: article)}
+        it '落選者のUserオブジェクトを含む配列を返すこと' do
+          expect(article.get_rejected_people).to match_array([user])
         end
       end
-      context '当選者が１人もいない場合' do
-        let(:participant) { create(:participant, :elected, user: user, article: article) }
-
+      context '落選者が１人もいない場合' do
         it '空配列を返すこと' do
-          expect(article.get_winners).to match_array([])
+          expect(article.get_rejected_people).to match_array([])
         end
       end
     end
