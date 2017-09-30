@@ -2,6 +2,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { host: 'offkara.jp' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
@@ -13,7 +14,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   # メール内にcssを適用するための設定
-  config.action_controller.asset_host = 'http://offkara.jp'
+  config.action_controller.asset_host = 'http://offkara.jp/'
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   GA.tracker = 'UA-107239870-1'
