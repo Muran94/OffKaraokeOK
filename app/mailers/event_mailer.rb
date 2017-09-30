@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class EventMailer < ApplicationMailer
+  include Roadie::Rails::Automatic
   default from: Settings.mailer.event.from # config/settings.ymlに定数として定義
 
   # 参加申請完了通知メール
