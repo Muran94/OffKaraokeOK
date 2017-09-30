@@ -14,17 +14,16 @@
   %body
     -# ヘッダー
     = render "layouts/header"
+    -# フラッシュメッセージ
+    = render "layouts/flash"
 
     %main
       .container
-        -# ダイアログ
-        = render "layouts/flash"
-
         .row
-          .col.m9.s12
+          .col.s12.m12.l9
             = yield
 
-          .col.m3.grey.lighten-3{style: "margin-top: 10px; min-height: 1000px;"}
+          .col.l3.hide-on-med-and-down.grey.lighten-3{style: "margin-top: 10px; min-height: 500px;"}
             = render 'layouts/sidebar_right'
 
     -# フッター
