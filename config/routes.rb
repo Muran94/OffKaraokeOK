@@ -2,7 +2,6 @@
 Rails.application.routes.draw do
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   # ログインしてない時のパス
   root 'articles#index'

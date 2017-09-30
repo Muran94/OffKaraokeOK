@@ -48,7 +48,6 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.2'  # RspecなどでRailsをプリロードする
   gem 'shoulda-matchers'                   # RSpecで使える便利なマッチャー集(ActiveRecord)
   gem 'pry-rails' # github : https://github.com/rweng/pry-rails
-  gem 'letter_opener_web'
   gem 'kaminari'
 end
 
@@ -61,7 +60,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard-rspec' # ファイルが変更されたらRsepcを自動実行
   gem 'active_decorator-rspec' # デコレーター用rspecを追加
-  gem 'bullet'
+  gem 'bullet' # n + 1問題を発見できるよ
+  gem 'mailcatcher' # ローカルでメールの確認をするためのgem
 end
 
 group :test do
