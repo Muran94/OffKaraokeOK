@@ -23,6 +23,6 @@ class Participant < ApplicationRecord
   private
 
   def _send_participation_application_completed_notify_mail
-    EventMailer.participation_application_completed_notify(self).deliver_now
+    EventMailer.participation_application_completed_notify(self).deliver_later
   end
 end
