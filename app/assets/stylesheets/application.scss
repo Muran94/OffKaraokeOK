@@ -37,6 +37,6 @@ nav .brand-logo {
   @extend .grey-text, .text-darken-2;
 }
 
-.button-collapse {
-  color: $primary-color;
+.navbar-fixed {
+  z-index: 1000; // navbar-fixedを適用するときに、スマホのサイドメニューの表示に不具合が生じてしまう。その不具合解消法としてz-indexを997よりもう高い値にしている。
 }
