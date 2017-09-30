@@ -1,7 +1,7 @@
+- grid_sizes = %w[s12 m12 l12 xl12]
 = form_with model: [article, message] do |f|
   .row{style: "margin: 0 0 5px 0;"}
-    .col.m12
-      = f.label :text, "新規メッセージ"
-      = f.text_area :text, placeholder: "#{(Message::TEXT_MAXIMUM_LENGTH).to_s(:delimited)}文字まで", maxlength: Message::TEXT_MAXIMUM_LENGTH, class: "materialize-textarea", style: "margin: 5px 0;", required: true
+    .col{class: grid_sizes.join(" ")}
+      = f.text_area :text, placeholder: "#{(Message::TEXT_MAXIMUM_LENGTH).to_s(:delimited)}文字まで", maxlength: Message::TEXT_MAXIMUM_LENGTH, class: "materialize-textarea", style: "margin: 0;", required: true
   .row{style: "margin: 0 0 5px 0;"}
-    = f.submit "送信", class: "btn col m12 waves-effect waves-light grey lighten-3 grey-text text-darken-2"
+    = f.submit "送信", class: "btn col #{grid_sizes.join(" ")} waves-effect waves-light grey lighten-3 grey-text text-darken-2"

@@ -1,0 +1,24 @@
+%li.collection-header.center-align.grey-text.text-darken-2{style: "margin-bottom: 0; padding-bottom: 0;"}
+  = form_tag articles_path, method: :get, enforce_utf8: false do
+    .hide-on-small-only
+      .row.valign-wrapper{style: "margin-bottom: 0; padding-bottom: 0;"}
+        - keyword_value = params.dig(:search, :keyword)
+        - prefecture_code_value = params.dig(:search, :prefecture_code)
+        .col.m7.input-field
+          = search_field_tag 'search[keyword]', keyword_value, placeholder: '検索'
+        .col.m3.input-field
+          = collection_select :search, :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, selected: prefecture_code_value, include_blank: "都道府県"
+        .col.m2
+          = submit_tag "検索", class: "btn", style: "margin-bottom: 10px;"
+
+    .hide-on-med-and-up
+      .row.valign-wrapper{style: "margin-bottom: 0; padding-bottom: 0;"}
+        - keyword_value = params.dig(:search, :keyword)
+        - prefecture_code_value = params.dig(:search, :prefecture_code)
+        .col.s12.input-field
+          = search_field_tag 'search[keyword]', keyword_value, placeholder: '検索'
+      .row.valign-wrapper{style: "margin-bottom: 0; padding-bottom: 0;"}
+        .col.s7.input-field
+          = collection_select :search, :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, selected: prefecture_code_value, include_blank: "都道府県"
+        .col.s5
+          = submit_tag "検索", class: "btn", style: "margin-bottom: 10px;"

@@ -5,12 +5,11 @@
 
 .message-container {
   display: inline-block;
-  max-width: 80%;
   padding: 7px 15px;
+  max-width: 100%;
   border-radius: 2px;
 
   .message-header-content {
-    width: 100%;
     height: 25px;
 
     img {
@@ -24,19 +23,16 @@
     .message-user-nickname-disp {
       float: left;
       font-size: 14px;
-      margin-right: 15px;
-    }
-
-    .message-created-at-disp {
-      text-align: right;
-      float: right;
-      font-size: 10px;
-      opacity: 0.8;
     }
   }
 
   .message-text-content {
     font-size: 12px;
     word-wrap: break-word;
+  }
+
+  .message-created-at-disp {
+    font-size: 10px;
+    opacity: 0.8;
   }
 }

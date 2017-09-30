@@ -1,4 +1,4 @@
-.navbar-fixed{style: "z-index: 1000;"}
+.navbar-fixed
   %nav.white{:role => "navigation"}
     .nav-wrapper.container
       = link_to root_path, id: "logo-container", class: "brand-logo" do
@@ -15,14 +15,14 @@
           %li{class: current_page_user_login_page? ? "active" : ""}= link_to "ログイン", new_user_session_path
 
       %ul#nav-mobile.side-nav
-        %li= link_to "記事一覧", articles_path
-
         - if current_user # ログイン中であれば
-          %li= link_to "記事投稿", new_article_path
           %li= link_to "マイページ", my_page_profile_path
+          %li= link_to "記事投稿", new_article_path
         - else # ログインしていなければ
           %li= link_to "会員登録", new_user_registration_path
           %li= link_to "ログイン", new_user_session_path
+
+        %li= link_to "記事一覧", articles_path
 
       %a.button-collapse.right{"data-activates" => "nav-mobile", :href => "#"}
         %i.material-icons.grey-text menu

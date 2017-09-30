@@ -1,18 +1,18 @@
 - if article.currently_accepting? # 期日をすぎていて参加受付を終了している場合
   - if current_user.already_participated?(article) # 参加済みの場合
     - participant = Participant.where(article: article, user: current_user).first
-    = link_to article_participant_path(article_id: article.id, id: participant.id), method: :delete, data: { confirm: "本当に辞退しますか？" }, class: "col m#{m_grid_size} center u-curp grey-text text-darken-2 js-participate-button", style: "text-decoration: none;", remote: true do
+    = link_to article_participant_path(article_id: article.id, id: participant.id), method: :delete, data: { confirm: "本当に辞退しますか？" }, class: "col #{grid_sizes.join(" ")} center u-curp grey-text text-darken-2 js-participate-button", style: "text-decoration: none;", remote: true do
       %i.material-icons.grey-text group
       %br
       辞退
   - else # まだ参加していない場合
-    = link_to article_participants_path(article), method: :post, class: "col m#{m_grid_size} center u-curp grey-text text-darken-2 js-participate-button", style: "text-decoration: none;", remote: true do
+    = link_to article_participants_path(article), method: :post, class: "col #{grid_sizes.join(" ")} center u-curp grey-text text-darken-2 js-participate-button", style: "text-decoration: none;", remote: true do
       %i.material-icons.red-text.text-accent-2 group_add
       %br
       参加
 
 - else
-  .col.center.grey-text.text-darken-2{class: "m#{m_grid_size}"}
+  .col.center.grey-text.text-darken-2{class: "#{grid_sizes.join(" ")}"}
     %i.material-icons.grey-text group
     %br
     受付終了

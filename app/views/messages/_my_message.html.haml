@@ -1,11 +1,11 @@
-.col.m12.right-align
+.col.s12.m12.right-align
   .message-container.z-depth-1.light-blue.lighten-2.white-text.left-align
     .message-header-content
       = image_tag(profile_image_url(message.owner), class: "circle")
       .message-user-nickname-disp= message.format_user_nickname
-      .message-created-at-disp= message.created_at.strftime('%Y/%m/%d %T')
 
     .divider
 
-    .message-text-content
-      = simple_format(message.text)
+    .message-text-content= simple_format(message.text)
+
+    .message-created-at-disp.grey-text.text-lighten-4.u-fz10.right= message.created_at.strftime('%Y/%m/%d %H:%M')
