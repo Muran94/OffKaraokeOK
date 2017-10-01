@@ -23,7 +23,11 @@ module ArticleDecorator
   end
 
   def format_event_date
-    event_date.present? ? event_date.strftime("%Y年%m月%d日（#{WD[event_date.wday]}）") : '-'
+    event_date.present? ? event_date.strftime("%Y年%m月%d日 #{WD[event_date.wday]}") : '-'
+  end
+
+  def format_event_date_for_header
+    event_date.present? ? event_date.strftime("%m月%d日 #{WD[event_date.wday]}") : '-'
   end
 
   def format_application_period
