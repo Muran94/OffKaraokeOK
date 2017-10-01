@@ -14,7 +14,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   # メール内にcssを適用するための設定
-  # config.action_controller.asset_host = 'http://offkara.jp'
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   GA.tracker = 'UA-107239870-1'
@@ -43,15 +42,15 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :scss
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+  # config.action_controller.asset_host = 'http://offkara.jp'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache

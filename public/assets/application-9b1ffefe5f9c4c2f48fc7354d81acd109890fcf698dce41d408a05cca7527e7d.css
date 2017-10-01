@@ -9866,499 +9866,7 @@
 
 
 */
-/*!
- * Materialize v0.100.2 (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
-/*! nouislider - 9.1.0 - 2016-12-10 16:00:32 */
-/* Functional styling;
- * These styles are required for noUiSlider to function.
- * You don't need to change these rules to apply your design.
- */
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-/* line 14, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target,
-.noUi-target * {
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-user-select: none;
-  -ms-touch-action: none;
-  touch-action: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 27, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target {
-  position: relative;
-  direction: ltr;
-}
-
-/* line 31, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-base {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-  /* Fix 401 */
-}
-
-/* line 37, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-connect {
-  position: absolute;
-  right: 0;
-  top: 0;
-  left: 0;
-  bottom: 0;
-}
-
-/* line 44, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-origin {
-  position: absolute;
-  height: 0;
-  width: 0;
-}
-
-/* line 49, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle {
-  position: relative;
-  z-index: 1;
-}
-
-/* line 53, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-state-tap .noUi-connect,
-.noUi-state-tap .noUi-origin {
-  -webkit-transition: top 0.25s, right 0.25s, bottom 0.25s, left 0.25s;
-  transition: top 0.25s, right 0.25s, bottom 0.25s, left 0.25s;
-}
-
-/* line 58, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-state-drag * {
-  cursor: inherit !important;
-}
-
-/* line 62, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle-touch-area {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  left: -15px;
-  top: -15px;
-}
-
-/* Painting and performance;
- * Browsers can paint handles in their own layer.
- */
-/* line 72, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-base,
-.noUi-handle {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-/* Slider size and handle placement;
- */
-/* line 80, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal {
-  height: 18px;
-}
-
-/* line 83, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal .noUi-handle {
-  width: 34px;
-  height: 28px;
-  left: -17px;
-  top: -6px;
-}
-
-/* line 89, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical {
-  width: 18px;
-}
-
-/* line 92, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-handle {
-  width: 28px;
-  height: 34px;
-  left: -6px;
-  top: -17px;
-}
-
-/* Styling;
- */
-/* line 101, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target {
-  background: #cdcdcd;
-  border-radius: 4px;
-  border: 1px solid transparent;
-}
-
-/* line 106, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-connect {
-  background: #26A69A;
-  -webkit-transition: background 450ms;
-  transition: background 450ms;
-}
-
-/* Handles and cursors;
- */
-/* line 114, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-draggable {
-  cursor: ew-resize;
-}
-
-/* line 117, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-draggable {
-  cursor: ns-resize;
-}
-
-/* line 120, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle {
-  border: 1px solid #D9D9D9;
-  border-radius: 3px;
-  background: #FFF;
-  cursor: default;
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
-}
-
-/* line 129, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-active {
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
-}
-
-/* Handle stripes
- */
-/* line 137, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle:before,
-.noUi-handle:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 14px;
-  width: 1px;
-  background: #E8E7E6;
-  left: 14px;
-  top: 6px;
-}
-
-/* line 148, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle:after {
-  left: 17px;
-}
-
-/* line 151, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-handle:before,
-.noUi-vertical .noUi-handle:after {
-  width: 14px;
-  height: 1px;
-  left: 6px;
-  top: 14px;
-}
-
-/* line 158, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-handle:after {
-  top: 17px;
-}
-
-/* Disabled state;
- */
-/* line 165, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-[disabled] .noUi-connect {
-  background: #B8B8B8;
-}
-
-/* line 168, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-[disabled].noUi-target,
-[disabled].noUi-handle,
-[disabled] .noUi-handle {
-  cursor: not-allowed;
-}
-
-/* Base;
- *
- */
-/* line 178, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-pips,
-.noUi-pips * {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 183, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-pips {
-  position: absolute;
-  color: #999;
-}
-
-/* Values;
- *
- */
-/* line 191, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-value {
-  position: absolute;
-  text-align: center;
-}
-
-/* line 195, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-value-sub {
-  color: #ccc;
-  font-size: 10px;
-}
-
-/* Markings;
- *
- */
-/* line 203, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker {
-  position: absolute;
-  background: #CCC;
-}
-
-/* line 207, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-sub {
-  background: #AAA;
-}
-
-/* line 210, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-large {
-  background: #AAA;
-}
-
-/* Horizontal layout;
- *
- */
-/* line 217, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-pips-horizontal {
-  padding: 10px 0;
-  height: 80px;
-  top: 100%;
-  left: 0;
-  width: 100%;
-}
-
-/* line 224, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-value-horizontal {
-  -webkit-transform: translate3d(-50%, 50%, 0);
-  transform: translate3d(-50%, 50%, 0);
-}
-
-/* line 229, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-horizontal.noUi-marker {
-  margin-left: -1px;
-  width: 2px;
-  height: 5px;
-}
-
-/* line 234, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-horizontal.noUi-marker-sub {
-  height: 10px;
-}
-
-/* line 237, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-horizontal.noUi-marker-large {
-  height: 15px;
-}
-
-/* Vertical layout;
- *
- */
-/* line 244, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-pips-vertical {
-  padding: 0 10px;
-  height: 100%;
-  top: 0;
-  left: 100%;
-}
-
-/* line 250, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-value-vertical {
-  -webkit-transform: translate3d(0, 50%, 0);
-  transform: translate3d(0, 50%, 0);
-  padding-left: 25px;
-}
-
-/* line 256, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-vertical.noUi-marker {
-  width: 5px;
-  height: 2px;
-  margin-top: -1px;
-}
-
-/* line 261, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-vertical.noUi-marker-sub {
-  width: 10px;
-}
-
-/* line 264, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-marker-vertical.noUi-marker-large {
-  width: 15px;
-}
-
-/* line 268, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-tooltip {
-  display: block;
-  position: absolute;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background: #fff;
-  color: #000;
-  padding: 5px;
-  text-align: center;
-}
-
-/* line 278, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal .noUi-tooltip {
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-  left: 50%;
-  bottom: 120%;
-}
-
-/* line 284, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-tooltip {
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  top: 50%;
-  right: 120%;
-}
-
-/* Materialize Styles */
-/* line 292, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target {
-  border: 0;
-  border-radius: 0;
-}
-
-/* line 296, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal {
-  height: 3px;
-}
-
-/* line 300, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical {
-  height: 100%;
-  width: 3px;
-}
-
-/* line 305, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal .noUi-handle,
-.noUi-vertical .noUi-handle {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  box-shadow: none;
-  background-color: #26A69A;
-  border: none;
-  left: -5px;
-  top: -6px;
-  transition: width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), height 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), top 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-/* line 320, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle:before {
-  content: none;
-}
-
-/* line 323, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-handle:after {
-  content: none;
-}
-
-/* line 327, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target .noUi-active.noUi-handle {
-  width: 3px;
-  height: 3px;
-  left: 0;
-  top: 0;
-}
-
-/* line 334, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target.noUi-horizontal .noUi-tooltip {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  top: -17px;
-  left: -2px;
-  background-color: #26A69A;
-  border-radius: 50%;
-  transition: border-radius 0.25s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: scale(0.5) rotate(-45deg);
-  transform-origin: 50% 100%;
-}
-
-/* line 347, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target.noUi-horizontal .noUi-active .noUi-tooltip {
-  border-radius: 15px 15px 15px 0;
-  transform: rotate(-45deg) translate(23px, -25px);
-}
-
-/* line 352, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-tooltip span {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 12px;
-  opacity: 0;
-  position: absolute;
-  top: 6px;
-  left: -1px;
-  transition: opacity 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-/* line 364, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal .noUi-tooltip span {
-  transform: rotate(45deg);
-}
-
-/* line 368, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-tooltip span {
-  transform: rotate(135deg);
-}
-
-/* line 373, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target.noUi-vertical .noUi-tooltip {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  top: -17px;
-  left: -2px;
-  background-color: #26A69A;
-  border-radius: 50%;
-  transition: border-radius 0.25s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: scale(0.5) rotate(-45deg);
-  transform-origin: 50% 100%;
-}
-
-/* line 386, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-target.noUi-vertical .noUi-active .noUi-tooltip {
-  border-radius: 15px 15px 15px 0;
-  transform: rotate(-135deg) translate(35px, -10px);
-}
-
-/* line 390, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-vertical .noUi-tooltip span {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 12px;
-  transform: rotate(135deg);
-  opacity: 0;
-  position: absolute;
-  top: 7px;
-  left: -1px;
-  transition: opacity 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-/* line 403, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/extras/nouislider.css */
-.noUi-horizontal .noUi-active .noUi-tooltip span,
-.noUi-vertical .noUi-active .noUi-tooltip span {
-  opacity: 1;
-}
-
 /* line 370, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/components/_color.scss */
 .materialize-red {
   background-color: #e51c23 !important;
@@ -13058,6 +12566,31 @@ nav .text-darken-4.brand-logo {
   color: transparent !important;
 }
 
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url(http://localhost:3000/assets/roboto/Roboto-Thin-f72697a71fca2e477282ced1ccf5a95803aabde0ab649a00bd1bf6efb516da76.woff2) format("woff2"), url(http://localhost:3000/assets/roboto/Roboto-Thin-33e42b84471d63e1c58993d387e1946e57fb6b8ff8f25c97bfa73dc7e600f083.woff) format("woff");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url(http://localhost:3000/assets/roboto/Roboto-Light-acec38d50a6f94a303ccecab62bd2814b6aa7753b15f55b053fd54a7d2fa1a4f.woff2) format("woff2"), url(http://localhost:3000/assets/roboto/Roboto-Light-b1ae247c0649cfddf68d47ec63e34e4c26a8f2b9d2fce9f4f1a908b9bc91a771.woff) format("woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url(http://localhost:3000/assets/roboto/Roboto-Regular-02a7cd67c545041654af047f04ce327f2df086386eab421adc16269010c50365.woff2) format("woff2"), url(http://localhost:3000/assets/roboto/Roboto-Regular-14a2b59cbc2e03f9325d4af6681ab0781d71048a586ae90236a4a8c013c63b45.woff) format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Medium), url(http://localhost:3000/assets/roboto/Roboto-Medium-c013c361fcb111a48c09d8b748a866e5871e992754fa4e927f2c92f4e5d2a850.woff2) format("woff2"), url(http://localhost:3000/assets/roboto/Roboto-Medium-adc00a50646f1c1d13a5e8fda923a27764ab675380ec4ffb0932942ade2c209a.woff) format("woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url(http://localhost:3000/assets/roboto/Roboto-Bold-03b4584f80ee94497a7fc4157d534818ccad1a554536cf49167442f711bd3870.woff2) format("woff2"), url(http://localhost:3000/assets/roboto/Roboto-Bold-166fb09710c1774e70734243ae050fcf68bfb7401dfb8bbb514746bbd28304d2.woff) format("woff");
+  font-weight: 700;
+}
 /* line 370, /Users/muramuar/myRailsProject/OffKaraokeOK/vendor/bundle/ruby/2.3.0/gems/materialize-sass-0.100.2/app/assets/stylesheets/materialize/components/_color.scss */
 .materialize-red {
   background-color: #e51c23 !important;
@@ -30263,19 +29796,19 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   width: 100%;
 }
 
-/* line 26, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
+/* line 27, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
 
-/* line 32, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
+/* line 33, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
 main {
   flex: 1 0 auto;
 }
 
-/* line 41, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
+/* line 42, /Users/muramuar/myRailsProject/OffKaraokeOK/app/assets/stylesheets/application.scss */
 .navbar-fixed {
   z-index: 1000;
 }
