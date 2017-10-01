@@ -8,8 +8,9 @@
     = user.format_sex
   %span.title.truncate= user.nickname
 
-  = link_to new_user_report_path(user) do
-    %i.favorite-btn.secondary-content.material-icons.small.red-text.text-accent-2.u-curp error
+  - if user != current_user
+    = link_to new_user_report_path(user) do
+      %i.favorite-btn.secondary-content.material-icons.small.red-text.text-accent-2.u-curp error
 
 %li.collection-item.grey.lighten-5
   = render 'profiles/private_profile', user: user if controller_name == "my_page"

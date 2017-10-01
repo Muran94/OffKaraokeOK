@@ -2,15 +2,16 @@
 
 .section.no-pad-bot
   .row.u-fz13
-    = link_to edit_user_registration_path, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+    - grid_sizes = %w[s4 m4 l4 xl4]
+    = link_to edit_user_registration_path, class: "col #{grid_sizes.join(" ")} center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
       %i.material-icons.blue-text edit
       %br
       編集
-    = link_to destroy_user_session_path, method: :delete, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+    = link_to destroy_user_session_path, method: :delete, class: "col #{grid_sizes.join(" ")} center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
       %i.material-icons.red-text.text-accent-2 lock_open
       %br
       ログアウト
-    = link_to user_registration_path, method: :delete, data: { confirm: "本当に退会しますか？\n\n※ 退会するとユーザーデータが破棄されます。" }, class: "col m4 center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
+    = link_to user_registration_path, method: :delete, data: { confirm: "本当に退会しますか？\n\n※ 退会するとユーザーデータが破棄されます。" }, class: "col #{grid_sizes.join(" ")} center u-curp grey-text text-darken-2", style: "text-decoration: none;" do
       %i.material-icons.grey-text delete_forever
       %br
       退会

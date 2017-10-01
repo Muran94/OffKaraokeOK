@@ -24,7 +24,7 @@
     = f.text_area :message, placeholder: "お問い合わせ内容（#{Inquiry::MESSAGE_MAXIMUM_LENGTH.to_s(:delimited, delimiter: ',')}字以内）", maxlength: Inquiry::MESSAGE_MAXIMUM_LENGTH, class: "browser-default", id: "inquiry-form-text-area", required: true
     #error-message-for-inquiry-message-field.red-text.text-lighten-2.hide ※ 不正な値です
 
-    = f.button class: "btn light-blue right waves-effect waves-light", id: "js-inquiry-form-submit-btn" do
+    = f.button class: "btn light-blue right waves-effect waves-light col s12", id: "js-inquiry-form-submit-btn" do
       送信
       %i.material-icons.right send
 
