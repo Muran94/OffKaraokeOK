@@ -86,12 +86,12 @@ class Article < ActiveRecord::Base
     search_definition = Elasticsearch::DSL::Search.search do
       query do
         if search_conditions.present? && search_conditions.values.any?(&:present?)
-          filtered do
+          bool do
             if search_conditions.dig(:keyword).present?
-              query do
+              must do
                 multi_match do
-                  query search_conditions.dig(:keyword)
                   fields %w(title text)
+                  query search_conditions.dig(:keyword)
                 end
               end
             end
