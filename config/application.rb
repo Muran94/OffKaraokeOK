@@ -10,9 +10,13 @@ require 'elasticsearch/rails/instrumentation'
 
 module KaraokeOffApp
   class Application < Rails::Application
-    config.assets.enabled = true
     config.load_defaults 5.1
+
+    config.assets.enabled = true
+
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
+    config.i18n.default_locale = :ja
 
     config.generators do |g|
       g.test_framework :rspec,
