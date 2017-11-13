@@ -74,7 +74,6 @@ end
 group :production do
   gem 'pg'
   gem 'bonsai-elasticsearch-rails'
-  gem 'newrelic_rpm'
   gem 'google-analytics-rails'
 end
 
